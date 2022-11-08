@@ -31,5 +31,7 @@ public class Floor extends GameElement {
 		// TODO Auto-generated method stub
 		return true;
 	}
+	
+	
 
 }

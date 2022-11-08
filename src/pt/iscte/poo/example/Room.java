@@ -32,44 +32,43 @@ public class Room {
 				int j = 0;
 				for (int k = 0; k < current.length(); k++) {
 					GameElement currentElement = GameElement.create(String.valueOf(current.charAt(k)),
-							new Point2D(j, i));
+							new Point2D(j, i),null,null,null);
 					roomLayout.add(currentElement);
 					roomTiles.add(currentElement);
 					j++;
 				}
 				i++;
 			}
-			while (roomRead.hasNext() && i<16) {
-				String cuurentLine = roomRead.nextLine();
-				if(i!=10) {
-					Scanner lineRead = new Scanner(cuurentLine);
-					lineRead.useDelimiter(",");
-					GameElement currentElement = GameElement.create(lineRead.next(),
-							new Point2D(lineRead.nextInt(), lineRead.nextInt()));
-					roomObjects.add(currentElement);
-					roomTiles.add(currentElement);
-				}
-				i++;
-			}
-			/*while (roomRead.hasNext()) {
-				String cuurentLine = roomRead.nextLine();
-				if(i!=10) {
-					Scanner lineRead = new Scanner(cuurentLine);
+
+			while (roomRead.hasNext()) {
+				String currentLine = roomRead.nextLine();
+				if (i != 10) {
+					Scanner lineRead = new Scanner(currentLine);
 					lineRead.useDelimiter(",");
 					String name = lineRead.next();
 					int px = lineRead.nextInt();
 					int py = lineRead.nextInt();
-					String nextRoom = lineRead.next();
-					int nextPx = lineRead.nextInt();
-					int nextPy = lineRead.nextInt();
-					String keyCode = lineRead.next();
-					GameElement currentElement = GameElement.create(name,
-							new Point2D(px, py));
-					gameElements.add(currentElement);
-					tileList.add(currentElement);
+					GameElement currentElement = null;
+					if (lineRead.hasNext()) {
+						
+						String keyOrNextRoom = lineRead.next();
+						if (lineRead.hasNext()) {
+							// DOOR
+							currentElement = GameElement.create(name, new Point2D(px, py), keyOrNextRoom,
+									new Point2D(lineRead.nextInt(), lineRead.nextInt()), lineRead.next());
+						} else {
+							currentElement = GameElement.create(name, new Point2D(px, py), null,null,keyOrNextRoom);
+						}
+					} else {
+						currentElement = GameElement.create(name, new Point2D(px, py),null,null,null);
+					}
+					lineRead.close();
+					roomObjects.add(currentElement);
+					roomTiles.add(currentElement);
 				}
 				i++;
-			}*/
+
+			}
 			roomRead.close();
 		} catch (FileNotFoundException e) {
 			System.err.println("File not found");
@@ -79,11 +78,9 @@ public class Room {
 	public List<GameElement> getRoomLayout() {
 		return roomLayout;
 	}
-	
+
 	public List<GameElement> getRoomObjects() {
 		return roomObjects;
 	}
-	
-	
 
 }

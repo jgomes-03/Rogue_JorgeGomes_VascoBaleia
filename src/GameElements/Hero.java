@@ -65,4 +65,5 @@ public class Hero extends GameElement implements movable {
 		}
 		return false;
 	}
+	
 }

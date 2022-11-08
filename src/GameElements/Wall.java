@@ -29,6 +29,7 @@ public class Wall extends GameElement  {
 	public boolean isTransposable() {
 		return false;
 	}
-
+	
+	
 
 }

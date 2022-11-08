@@ -7,16 +7,22 @@ import pt.iscte.poo.utils.Point2D;
 public class Door extends GameElement  {
 	
 	private Point2D position;
-	private Key key;
+	private String keyCode;
+	private String nextRoom;
+	private Point2D nextRoomPosition;
 
-	public Door(Point2D position) {
+	public Door(Point2D position,String nextRoom,Point2D nextRoomPosition,String keyCode) {
 		this.position = position;
+		this.keyCode = keyCode;
+		this.nextRoom = nextRoom;
+		this.nextRoomPosition = nextRoomPosition;
 	}
 	
 	@Override
 	public String getName() {
-		return "Door";
+		return "DoorClosed";
 	}
+	
 	
 	@Override
 	public Point2D getPosition() {
@@ -33,4 +39,5 @@ public class Door extends GameElement  {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
 }

@@ -32,4 +32,8 @@ public class Bat extends GameElement  {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	
+	
+	
 }

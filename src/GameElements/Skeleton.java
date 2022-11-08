@@ -35,6 +35,12 @@ public class Skeleton extends GameElement /*implements movable*/  {
 	public boolean isTransposable() {
 		return false;
 	}
+
+	@Override
+	public boolean isPickable() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 
 	

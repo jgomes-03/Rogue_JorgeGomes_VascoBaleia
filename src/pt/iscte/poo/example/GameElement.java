@@ -30,5 +30,6 @@ public abstract class GameElement implements ImageTile {
 	}
 
 	public abstract boolean isTransposable();
+	public abstract boolean isPickable();
 
 }

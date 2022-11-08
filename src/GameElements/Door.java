@@ -39,5 +39,11 @@ public class Door extends GameElement  {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	@Override
+	public boolean isPickable() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 }

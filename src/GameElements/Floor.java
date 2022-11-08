@@ -31,6 +31,12 @@ public class Floor extends GameElement {
 		// TODO Auto-generated method stub
 		return true;
 	}
+
+	@Override
+	public boolean isPickable() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 	
 

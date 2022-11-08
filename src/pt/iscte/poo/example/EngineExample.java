@@ -56,7 +56,7 @@ public class EngineExample implements Observer {
 	private void addRooms() {
 		roomList.add(new Room("rooms/room0.txt"));
 	}
-	
+	//
 	@Override
 	public void update(Observed source) {
 		

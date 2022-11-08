@@ -36,7 +36,7 @@ public class Sword extends GameElement  {
 	@Override
 	public boolean isPickable() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 	
 

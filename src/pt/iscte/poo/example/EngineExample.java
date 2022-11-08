@@ -54,7 +54,7 @@ public class EngineExample implements Observer {
 	}
 	
 	private void addRooms() {
-		roomList.add(new Room("rooms/room0.txt"));
+		roomList.add(new Room("rooms/room2.txt"));
 	}
 	//
 	@Override

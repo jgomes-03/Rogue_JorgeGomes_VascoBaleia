@@ -4,22 +4,18 @@ package GameElements;
 import pt.iscte.poo.example.GameElement;
 import pt.iscte.poo.utils.Point2D;
 
-public class Key extends GameElement  {
+public class HealingPotion extends GameElement  {
 	
 	private Point2D position;
-	private String keyCode = null;
 
-	public Key(Point2D position,String keyCode) {
+	public HealingPotion(Point2D position) {
 		this.position = position;
-		this.keyCode = keyCode;
 	}
-
 	
 	@Override
 	public String getName() {
-		return "Key";
+		return "HealingPotion";
 	}
-	
 
 	@Override
 	public Point2D getPosition() {
@@ -37,11 +33,11 @@ public class Key extends GameElement  {
 		return false;
 	}
 
-
 	@Override
 	public boolean isPickable() {
 		// TODO Auto-generated method stub
 		return true;
 	}
 	
+
 }

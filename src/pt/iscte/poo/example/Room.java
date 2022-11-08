@@ -32,7 +32,7 @@ public class Room {
 				int j = 0;
 				for (int k = 0; k < current.length(); k++) {
 					GameElement currentElement = GameElement.create(String.valueOf(current.charAt(k)),
-							new Point2D(j, i),null,null,null);
+							new Point2D(j, i), null, null, null);
 					roomLayout.add(currentElement);
 					roomTiles.add(currentElement);
 					j++;
@@ -50,17 +50,24 @@ public class Room {
 					int py = lineRead.nextInt();
 					GameElement currentElement = null;
 					if (lineRead.hasNext()) {
-						
 						String keyOrNextRoom = lineRead.next();
 						if (lineRead.hasNext()) {
-							// DOOR
-							currentElement = GameElement.create(name, new Point2D(px, py), keyOrNextRoom,
-									new Point2D(lineRead.nextInt(), lineRead.nextInt()), lineRead.next());
+							int pxD = lineRead.nextInt();
+							int pyD = lineRead.nextInt();
+							if (lineRead.hasNext()) {
+								// DOOR W/ KEY
+								currentElement = GameElement.create(name, new Point2D(px, py), keyOrNextRoom,
+										new Point2D(pxD, pyD), lineRead.next());
+							} else {
+								// DOOR WITHOUT/ KEY
+								currentElement = GameElement.create(name, new Point2D(px, py), keyOrNextRoom,
+										new Point2D(pxD, pxD), null);
+							}
 						} else {
-							currentElement = GameElement.create(name, new Point2D(px, py), null,null,keyOrNextRoom);
+							currentElement = GameElement.create(name, new Point2D(px, py), null, null, keyOrNextRoom);
 						}
 					} else {
-						currentElement = GameElement.create(name, new Point2D(px, py),null,null,null);
+						currentElement = GameElement.create(name, new Point2D(px, py), null, null, null);
 					}
 					lineRead.close();
 					roomObjects.add(currentElement);
@@ -70,7 +77,9 @@ public class Room {
 
 			}
 			roomRead.close();
-		} catch (FileNotFoundException e) {
+		} catch (
+
+		FileNotFoundException e) {
 			System.err.println("File not found");
 		}
 	}

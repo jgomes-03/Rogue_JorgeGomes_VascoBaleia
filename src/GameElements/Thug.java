@@ -1,29 +1,29 @@
 package GameElements;
 
-
 import pt.iscte.poo.example.GameElement;
 import pt.iscte.poo.utils.Point2D;
 
-public class Key extends GameElement  {
+public class Thug extends GameElement /*implements movable*/  {
 	
 	private Point2D position;
-	private String keyCode = null;
-
-	public Key(Point2D position,String keyCode) {
+	
+	/*public Skeleton(int hitpoints, int damage) {
+		super(hitpoints, damage);
+		this.setHitpoints(GameSettings.skeleton_hitpoints);
+		this.setDamage(GameSettings.skeleton_damage);
+	}*/
+	
+	public Thug(Point2D position) {
 		this.position = position;
-		this.keyCode = keyCode;
 	}
 
-	
-	@Override
 	public String getName() {
-		return "Key";
+		return "Thug";
 	}
 	
-
 	@Override
 	public Point2D getPosition() {
-		return position;
+		return this.position;
 	}
 
 	@Override
@@ -33,15 +33,15 @@ public class Key extends GameElement  {
 	
 	@Override
 	public boolean isTransposable() {
-		// TODO Auto-generated method stub
 		return false;
 	}
-
 
 	@Override
 	public boolean isPickable() {
 		// TODO Auto-generated method stub
-		return true;
+		return false;
 	}
+	
+
 	
 }

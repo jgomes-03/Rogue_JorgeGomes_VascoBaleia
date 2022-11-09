@@ -6,8 +6,15 @@ import pt.iscte.poo.utils.Point2D;
 
 public abstract class GameElement implements ImageTile {
 
+	private Point2D position;
+
+	public GameElement(Point2D position) {
+		this.position = position;
+	}
+
 	// Metodo Fabrica
-	public static GameElement create(String code, Point2D point, String roomName, Point2D nextPosition, String keyCode) {
+	public static GameElement create(String code, Point2D point, String roomName, Point2D nextPosition,
+			String keyCode) {
 		switch (code) {
 		case "#":
 			return new Wall(point);
@@ -22,9 +29,9 @@ public abstract class GameElement implements ImageTile {
 		case "Sword":
 			return new Sword(point);
 		case "Key":
-			return new Key(point,keyCode);
+			return new Key(point, keyCode);
 		case "Door":
-			return new Door(point,roomName,nextPosition,keyCode);
+			return new Door(point, roomName, nextPosition, keyCode);
 		case "HealingPotion":
 			return new HealingPotion(point);
 		case "Thug":
@@ -36,6 +43,10 @@ public abstract class GameElement implements ImageTile {
 	}
 
 	public abstract boolean isTransposable();
+
 	public abstract boolean isPickable();
 
+	public Point2D getPosition() {
+		return this.position;
+	}
 }

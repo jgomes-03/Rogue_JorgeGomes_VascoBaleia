@@ -6,11 +6,10 @@ import pt.iscte.poo.utils.Point2D;
 
 public class Key extends GameElement  {
 	
-	private Point2D position;
 	private String keyCode = null;
 
 	public Key(Point2D position,String keyCode) {
-		this.position = position;
+		super(position);
 		this.keyCode = keyCode;
 	}
 
@@ -20,11 +19,6 @@ public class Key extends GameElement  {
 		return "Key";
 	}
 	
-
-	@Override
-	public Point2D getPosition() {
-		return position;
-	}
 
 	@Override
 	public int getLayer() {

@@ -4,9 +4,7 @@ import pt.iscte.poo.example.GameElement;
 import pt.iscte.poo.utils.Point2D;
 
 public class Skeleton extends GameElement /*implements movable*/  {
-	
-	private Point2D position;
-	
+		
 	/*public Skeleton(int hitpoints, int damage) {
 		super(hitpoints, damage);
 		this.setHitpoints(GameSettings.skeleton_hitpoints);
@@ -14,17 +12,13 @@ public class Skeleton extends GameElement /*implements movable*/  {
 	}*/
 	
 	public Skeleton(Point2D position) {
-		this.position = position;
+		super(position);
 	}
 
 	public String getName() {
 		return "Skeleton";
 	}
 	
-	@Override
-	public Point2D getPosition() {
-		return this.position;
-	}
 
 	@Override
 	public int getLayer() {

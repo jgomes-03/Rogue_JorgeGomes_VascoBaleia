@@ -1,7 +1,9 @@
 package pt.iscte.poo.example;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.function.Predicate;
 
 import GameElements.Hero;
 import pt.iscte.poo.gui.ImageMatrixGUI;
@@ -41,7 +43,6 @@ public class EngineExample implements Observer {
 	public void start() {
 		addRooms();
 		addObjects();
-		gui.addImages(roomList.get(0).roomTiles);
 		gui.setStatusMessage("ROGUE Starter Package - Turns:" + turns);
 		gui.update();
 	}
@@ -55,6 +56,9 @@ public class EngineExample implements Observer {
 	
 	private void addRooms() {
 		roomList.add(new Room("rooms/room0.txt"));
+		for(GameElement ge : roomList.get(0).roomObjects) {
+			gui.addImage(ge);
+		}
 	}
 	//
 	@Override
@@ -68,4 +72,17 @@ public class EngineExample implements Observer {
 		gui.setStatusMessage("ROGUE Starter Package - Turns:" + turns);
 		gui.update();
 	}
+	
+	public ArrayList<GameElement> selectBy(Predicate<GameElement> predicate){
+		ArrayList<GameElement> result = new ArrayList<>();
+		Iterator<GameElement> iterator = roomList.get(0).roomObjects.iterator();
+		while(iterator.hasNext()) {
+			GameElement current = iterator.next();
+			if(predicate.test(current)) {
+				result.add(current);
+			}
+		}
+		return result;
+	}
+	
 }

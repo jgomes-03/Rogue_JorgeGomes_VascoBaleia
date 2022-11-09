@@ -49,4 +49,8 @@ public abstract class GameElement implements ImageTile {
 	public Point2D getPosition() {
 		return this.position;
 	}
+	
+	public void setPosition(Point2D position) {
+		this.position = position;
+	}
 }

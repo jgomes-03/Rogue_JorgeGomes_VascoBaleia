@@ -1,5 +1,6 @@
 package GameElements;
 
+import java.util.ArrayList;
 import pt.iscte.poo.example.EngineExample;
 import pt.iscte.poo.example.GameElement;
 import pt.iscte.poo.example.Room;
@@ -10,11 +11,10 @@ import pt.iscte.poo.utils.Vector2D;
 
 public class Hero extends GameElement implements movable {
 
-	private Point2D position;
 	private int hitpoints = 10;
 
 	public Hero(Point2D position) {
-		this.position = position;
+		super(position);
 	}
 
 	@Override
@@ -22,26 +22,14 @@ public class Hero extends GameElement implements movable {
 		return "Hero";
 	}
 
-	public int getHitpoints() {
-		return this.hitpoints;
-	}
-
-	public void setHitpoints(int hitpoints) {
-		this.hitpoints = hitpoints;
-	}
-
 	public void move(int keyPressed) {
 		Direction moveTo = Direction.directionFor(keyPressed);
 		Vector2D moveVector = moveTo.asVector();
 		if (canMove(moveVector) ) {
-			position = position.plus(moveVector); // proxima position do heroi
+			super.setPosition(getPosition().plus(moveVector)); // proxima position do heroi
 		}
 	}
 
-	@Override
-	public Point2D getPosition() {
-		return position;
-	}
 
 	@Override
 	public int getLayer() {
@@ -54,16 +42,25 @@ public class Hero extends GameElement implements movable {
 		return false;
 	}
 	
-	public boolean canMove(Vector2D moveVector,Room currentRoom) {
-		Point2D nextPosition = position.plus(moveVector);
+	public boolean canMove(Vector2D moveVector) {
+		Point2D nextPosition = this.getPosition().plus(moveVector);
+		/*
 		if(currentRoom.getRoomLayout().get(nextPosition.getY()*EngineExample.GRID_HEIGHT + nextPosition.getX()).isTransposable()) {
 			for(GameElement element : currentRoom.getRoomObjects()) {
 				if(element.getPosition().equals(nextPosition) && !element.isTransposable()) {
 					return false;
 				} else return true;
 			}
-		}
+		}*/
+		
+		
+		ArrayList<GameElement> selection = EngineExample.getInstance().selectBy(s -> s.getPosition().equals(nextPosition) && !s.isTransposable());
+		if(selection.isEmpty()) {
+			System.out.println("EMPTY");
+			return true;
+		} else selection.forEach(s -> System.out.println(s));
 		return false;
+		
 	}
 
 	@Override

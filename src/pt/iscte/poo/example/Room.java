@@ -12,8 +12,6 @@ import pt.iscte.poo.utils.Point2D;
 
 public class Room {
 	List<GameElement> roomObjects = new ArrayList<>();
-	List<GameElement> roomLayout = new ArrayList<>();//TIRAR
-	List<ImageTile> roomTiles = new ArrayList<>();//TIRAR
 	String roomName;
 
 	public Room(String roomName) {
@@ -33,8 +31,7 @@ public class Room {
 				for (int k = 0; k < current.length(); k++) {
 					GameElement currentElement = GameElement.create(String.valueOf(current.charAt(k)),
 							new Point2D(j, i), null, null, null);
-					roomLayout.add(currentElement);
-					roomTiles.add(currentElement);
+					roomObjects.add(currentElement);
 					j++;
 				}
 				i++;
@@ -71,25 +68,14 @@ public class Room {
 					}
 					lineRead.close();
 					roomObjects.add(currentElement);
-					roomTiles.add(currentElement);
 				}
 				i++;
 
 			}
 			roomRead.close();
-		} catch (
-
-		FileNotFoundException e) {
+		} catch (FileNotFoundException e) {
 			System.err.println("File not found");
 		}
-	}
-
-	public List<GameElement> getRoomLayout() {
-		return roomLayout;
-	}
-
-	public List<GameElement> getRoomObjects() {
-		return roomObjects;
 	}
 
 }

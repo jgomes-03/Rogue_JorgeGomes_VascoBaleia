@@ -30,10 +30,10 @@ public class Hero extends GameElement implements movable {
 		this.hitpoints = hitpoints;
 	}
 
-	public void move(int keyPressed, Room currentRoom) {
+	public void move(int keyPressed) {
 		Direction moveTo = Direction.directionFor(keyPressed);
 		Vector2D moveVector = moveTo.asVector();
-		if (canMove(moveVector,currentRoom) ) {
+		if (canMove(moveVector) ) {
 			position = position.plus(moveVector); // proxima position do heroi
 		}
 	}

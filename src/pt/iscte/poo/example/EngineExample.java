@@ -54,7 +54,7 @@ public class EngineExample implements Observer {
 	}
 	
 	private void addRooms() {
-		roomList.add(new Room("rooms/room2.txt"));
+		roomList.add(new Room("rooms/room0.txt"));
 	}
 	//
 	@Override
@@ -62,7 +62,7 @@ public class EngineExample implements Observer {
 		
 		int key = ((ImageMatrixGUI) source).keyPressed();
 			if(Direction.isDirection(key)){
-				hero.move(key,roomList.get(0));
+				hero.move(key);
 				turns++;
 			}
 		gui.setStatusMessage("ROGUE Starter Package - Turns:" + turns);

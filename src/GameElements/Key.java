@@ -18,11 +18,14 @@ public class Key extends GameElement  {
 	public String getName() {
 		return "Key";
 	}
-	
 
 	@Override
 	public int getLayer() {
 		return 0;
+	}
+	
+	public String getKeycode() {
+		return keyCode;
 	}
 	
 	@Override

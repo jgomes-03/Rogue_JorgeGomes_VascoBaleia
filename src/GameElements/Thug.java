@@ -34,7 +34,4 @@ public class Thug extends GameElement /*implements movable*/  {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
-
-	
 }

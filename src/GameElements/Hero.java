@@ -11,25 +11,44 @@ import pt.iscte.poo.utils.Vector2D;
 
 public class Hero extends GameElement implements movable {
 
-	private int hitpoints = 10;
+	private ArrayList<GameElement> inventory;
 
 	public Hero(Point2D position) {
 		super(position);
+		inventory = new ArrayList<>();
 	}
 
 	@Override
 	public String getName() {
 		return "Hero";
 	}
-
+	
 	public void move(int keyPressed) {
 		Direction moveTo = Direction.directionFor(keyPressed);
 		Vector2D moveVector = moveTo.asVector();
-		if (canMove(moveVector) ) {
+		if (canMove(moveVector)) {
 			super.setPosition(getPosition().plus(moveVector)); // proxima position do heroi
 		}
 	}
 
+	public void addInventory(GameElement ge) {
+		if (ge != null) {
+			inventory.add(ge);
+			EngineExample.getInstance().removeObject(ge);
+			ArrayList<GameElement> selection = EngineExample.getInstance().selectBy(s -> s.getName()=="DoorClosed");
+			for(GameElement element : selection) {
+				if(ge instanceof Key && element instanceof Door) {
+					Key k = (Key)ge;
+					Door d = (Door)element;
+					if(k.getKeycode().equals(d.getKeycode())) d.openDoor();
+					EngineExample.getInstance().removeObject(element);
+					EngineExample.getInstance().addObject(element);
+					
+				}
+			}
+		}
+		
+	}
 
 	@Override
 	public int getLayer() {
@@ -41,26 +60,23 @@ public class Hero extends GameElement implements movable {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
+
 	public boolean canMove(Vector2D moveVector) {
 		Point2D nextPosition = this.getPosition().plus(moveVector);
-		/*
-		if(currentRoom.getRoomLayout().get(nextPosition.getY()*EngineExample.GRID_HEIGHT + nextPosition.getX()).isTransposable()) {
-			for(GameElement element : currentRoom.getRoomObjects()) {
-				if(element.getPosition().equals(nextPosition) && !element.isTransposable()) {
-					return false;
-				} else return true;
-			}
-		}*/
-		
-		
-		ArrayList<GameElement> selection = EngineExample.getInstance().selectBy(s -> s.getPosition().equals(nextPosition) && !s.isTransposable());
+		ArrayList<GameElement> selection = EngineExample.getInstance().selectBy(s -> s.getPosition().equals(nextPosition) && (!s.isTransposable() || s instanceof Door));
 		if(selection.isEmpty()) {
-			System.out.println("EMPTY");
 			return true;
-		} else selection.forEach(s -> System.out.println(s));
+		} else {
+			for(GameElement ge : selection) {
+				if(ge.isPickable()) {
+					addInventory(ge);
+					return true;
+				} else if(ge.getName().equals("DoorOpen")) {
+					EngineExample.getInstance().nextRoom();
+				}
+			}
+		}
 		return false;
-		
 	}
 
 	@Override
@@ -68,5 +84,5 @@ public class Hero extends GameElement implements movable {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
+
 }

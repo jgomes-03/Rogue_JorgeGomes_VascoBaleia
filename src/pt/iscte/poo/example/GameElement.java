@@ -1,8 +1,11 @@
 package pt.iscte.poo.example;
 
+import java.util.ArrayList;
+
 import GameElements.*;
 import pt.iscte.poo.gui.ImageTile;
 import pt.iscte.poo.utils.Point2D;
+import pt.iscte.poo.utils.Vector2D;
 
 public abstract class GameElement implements ImageTile {
 
@@ -53,4 +56,7 @@ public abstract class GameElement implements ImageTile {
 	public void setPosition(Point2D position) {
 		this.position = position;
 	}
+	
+	
+	
 }

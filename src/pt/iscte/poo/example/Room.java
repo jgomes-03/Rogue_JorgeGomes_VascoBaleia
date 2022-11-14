@@ -16,10 +16,9 @@ public class Room {
 
 	public Room(String roomName) {
 		this.roomName = roomName;
-		generateMap();
 	}
 
-	public void generateMap() {
+	public void generateCurrentMap() {
 		try {
 			Scanner roomRead = new Scanner(new File(roomName));
 			int i = 0;
@@ -76,6 +75,10 @@ public class Room {
 		} catch (FileNotFoundException e) {
 			System.err.println("File not found");
 		}
+	}
+	
+	public static void generateMap(Room room) {
+		room.generateCurrentMap();
 	}
 
 }

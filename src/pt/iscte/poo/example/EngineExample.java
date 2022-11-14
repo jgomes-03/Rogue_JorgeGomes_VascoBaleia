@@ -46,7 +46,7 @@ public class EngineExample implements Observer {
 		addRooms();
 		addHero();
 		nextRoom();
-		gui.setStatusMessage("ROGUE Starter Package - Turns:" + turns);
+		gui.setStatusMessage("ROGUE - Turns:" + turns);
 		gui.update();
 	}
 	
@@ -94,13 +94,12 @@ public class EngineExample implements Observer {
 
 	@Override
 	public void update(Observed source) {
-		
 		int key = ((ImageMatrixGUI) source).keyPressed();
 			if(Direction.isDirection(key)){
 				hero.move(key);
 				turns++;
 			}
-		gui.setStatusMessage("ROGUE Starter Package - Turns:" + turns);
+		gui.setStatusMessage("ROGUE - Turns:" + turns);
 		gui.update();
 	}
 	

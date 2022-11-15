@@ -1,4 +1,4 @@
-package GameElements;
+package GameElements.Movable;
 
 
 import pt.iscte.poo.example.GameElement;

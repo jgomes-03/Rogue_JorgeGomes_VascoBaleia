@@ -1,20 +1,19 @@
-package GameElements;
+package GameElements.Static;
+
 
 import pt.iscte.poo.example.GameElement;
 import pt.iscte.poo.utils.Point2D;
 
-public class Floor extends GameElement {
-
-
-	public Floor(Point2D position) {
+public class Sword extends GameElement  {
+	
+	public Sword(Point2D position) {
 		super(position);
 	}
-
+	
 	@Override
 	public String getName() {
-		return "Floor";
+		return "Sword";
 	}
-
 
 	@Override
 	public int getLayer() {
@@ -24,15 +23,14 @@ public class Floor extends GameElement {
 	@Override
 	public boolean isTransposable() {
 		// TODO Auto-generated method stub
-		return true;
+		return false;
 	}
 
 	@Override
 	public boolean isPickable() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
-	
 	
 
 }

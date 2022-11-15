@@ -1,4 +1,4 @@
-package GameElements;
+package GameElements.Static;
 
 
 import pt.iscte.poo.example.GameElement;

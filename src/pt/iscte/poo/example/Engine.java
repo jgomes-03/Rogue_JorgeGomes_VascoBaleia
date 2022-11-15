@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.function.Predicate;
 
-import GameElements.Hero;
+import GameElements.Movable.Hero;
 import pt.iscte.poo.gui.ImageMatrixGUI;
 import pt.iscte.poo.observer.Observed;
 import pt.iscte.poo.observer.Observer;

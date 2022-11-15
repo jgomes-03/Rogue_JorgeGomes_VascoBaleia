@@ -1,6 +1,8 @@
-package GameElements;
+package GameElements.Movable;
 
 import java.util.ArrayList;
+
+import GameElements.Static.Door;
 import pt.iscte.poo.example.Engine;
 import pt.iscte.poo.example.GameElement;
 import pt.iscte.poo.example.Room;
@@ -35,17 +37,17 @@ public class Hero extends GameElement implements movable {
 		if (ge != null) {
 			inventory.add(ge);
 			Engine.getInstance().removeObject(ge);
-			ArrayList<GameElement> selection = Engine.getInstance().selectBy(s -> s.getName()=="DoorClosed");
-			for(GameElement element : selection) {
-				if(ge instanceof Key && element instanceof Door) {
-					Key k = (Key)ge;
-					Door d = (Door)element;
-					if(k.getKeycode().equals(d.getKeycode())) d.openDoor();
-					Engine.getInstance().removeObject(element);
-					Engine.getInstance().addObject(element);
-					
-				}
-			}
+//			ArrayList<GameElement> selection = Engine.getInstance().selectBy(s -> s.getName()=="DoorClosed");
+//			for(GameElement element : selection) {
+//				if(ge instanceof Key && element instanceof Door) {
+//					Key k = (Key)ge;
+//					Door d = (Door)element;
+//					if(k.getKeycode().equals(d.getKeycode())) d.openDoor();
+//					Engine.getInstance().removeObject(element);
+//					Engine.getInstance().addObject(element);
+//					
+//				}
+//			}
 		}
 		
 	}

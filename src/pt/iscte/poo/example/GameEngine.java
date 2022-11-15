@@ -123,5 +123,4 @@ public class GameEngine implements Observer {
 		}
 		return result;
 	}
-	
 }

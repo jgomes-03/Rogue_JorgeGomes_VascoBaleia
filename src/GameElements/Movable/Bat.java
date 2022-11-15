@@ -2,9 +2,11 @@ package GameElements.Movable;
 
 
 import pt.iscte.poo.example.GameElement;
+import pt.iscte.poo.example.movable;
 import pt.iscte.poo.utils.Point2D;
+import pt.iscte.poo.utils.Vector2D;
 
-public class Bat extends GameElement  {
+public class Bat extends movable  {
 	
 	public Bat(Point2D position) {
 		super(position);
@@ -28,6 +30,12 @@ public class Bat extends GameElement  {
 
 	@Override
 	public boolean isPickable() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean canMove(Vector2D moveVector) {
 		// TODO Auto-generated method stub
 		return false;
 	}

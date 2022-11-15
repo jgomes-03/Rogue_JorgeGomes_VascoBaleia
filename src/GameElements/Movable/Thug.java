@@ -1,9 +1,11 @@
 package GameElements.Movable;
 
 import pt.iscte.poo.example.GameElement;
+import pt.iscte.poo.example.movable;
 import pt.iscte.poo.utils.Point2D;
+import pt.iscte.poo.utils.Vector2D;
 
-public class Thug extends GameElement /*implements movable*/  {
+public class Thug extends movable  {
 	
 	/*public Skeleton(int hitpoints, int damage) {
 		super(hitpoints, damage);
@@ -31,6 +33,12 @@ public class Thug extends GameElement /*implements movable*/  {
 
 	@Override
 	public boolean isPickable() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean canMove(Vector2D moveVector) {
 		// TODO Auto-generated method stub
 		return false;
 	}

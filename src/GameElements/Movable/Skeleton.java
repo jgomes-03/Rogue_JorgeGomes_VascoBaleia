@@ -7,7 +7,7 @@ import pt.iscte.poo.utils.Direction;
 import pt.iscte.poo.utils.Point2D;
 import pt.iscte.poo.utils.Vector2D;
 
-public class Skeleton extends GameElement implements movable  {
+public class Skeleton extends movable  {
 		
 	/*public Skeleton(int hitpoints, int damage) {
 		super(hitpoints, damage);
@@ -42,11 +42,11 @@ public class Skeleton extends GameElement implements movable  {
 		return false;
 	}
 
-	public void move(int keyPressed) {
-		if(Engine.getInstance().getTurns()%2==0 || Engine.getInstance().getTurns()!=0) {
-			Direction moveTo = Direction.random();
-			Vector2D moveVector = moveTo.asVector();
-			super.setPosition(getPosition().plus(moveVector)); // proxima position do heroi
-		}
+
+
+	@Override
+	public boolean canMove(Vector2D moveVector) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

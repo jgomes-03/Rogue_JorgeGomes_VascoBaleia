@@ -1,5 +1,4 @@
 package pt.iscte.poo.example;
-import pt.iscte.poo.test.*;
 import pt.iscte.poo.utils.Direction;
 import pt.iscte.poo.utils.Point2D;
 import pt.iscte.poo.utils.Vector2D;

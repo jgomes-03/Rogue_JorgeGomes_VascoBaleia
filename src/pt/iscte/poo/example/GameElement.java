@@ -1,22 +1,9 @@
 package pt.iscte.poo.example;
 
-import java.util.ArrayList;
-
-import GameElements.*;
-import GameElements.Movable.Bat;
-import GameElements.Movable.Hero;
-import GameElements.Movable.Skeleton;
-import GameElements.Movable.Thug;
-import GameElements.Static.Door;
-import GameElements.Static.Floor;
-import GameElements.Static.HealingPotion;
-import GameElements.Static.Key;
-import GameElements.Static.Sword;
-import GameElements.Static.Treasure;
-import GameElements.Static.Wall;
+import GameElements.Movable.*;
+import GameElements.Static.*;
 import pt.iscte.poo.gui.ImageTile;
 import pt.iscte.poo.utils.Point2D;
-import pt.iscte.poo.utils.Vector2D;
 
 public abstract class GameElement implements ImageTile {
 

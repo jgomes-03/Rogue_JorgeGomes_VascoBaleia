@@ -1,7 +1,5 @@
 package GameElements.Movable;
 
-
-import pt.iscte.poo.example.GameElement;
 import pt.iscte.poo.example.movable;
 import pt.iscte.poo.utils.Point2D;
 import pt.iscte.poo.utils.Vector2D;

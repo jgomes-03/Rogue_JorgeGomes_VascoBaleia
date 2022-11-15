@@ -1,6 +1,6 @@
 package GameElements;
 
-import pt.iscte.poo.example.EngineExample;
+import pt.iscte.poo.example.Engine;
 import pt.iscte.poo.example.GameElement;
 import pt.iscte.poo.example.movable;
 import pt.iscte.poo.utils.Direction;
@@ -43,7 +43,7 @@ public class Skeleton extends GameElement implements movable  {
 	}
 
 	public void move(int keyPressed) {
-		if(EngineExample.getInstance().getTurns()%2==0 || EngineExample.getInstance().getTurns()!=0) {
+		if(Engine.getInstance().getTurns()%2==0 || Engine.getInstance().getTurns()!=0) {
 			Direction moveTo = Direction.random();
 			Vector2D moveVector = moveTo.asVector();
 			super.setPosition(getPosition().plus(moveVector)); // proxima position do heroi

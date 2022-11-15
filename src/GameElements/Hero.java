@@ -1,7 +1,7 @@
 package GameElements;
 
 import java.util.ArrayList;
-import pt.iscte.poo.example.EngineExample;
+import pt.iscte.poo.example.Engine;
 import pt.iscte.poo.example.GameElement;
 import pt.iscte.poo.example.Room;
 import pt.iscte.poo.example.movable;
@@ -34,15 +34,15 @@ public class Hero extends GameElement implements movable {
 	public void addInventory(GameElement ge) {
 		if (ge != null) {
 			inventory.add(ge);
-			EngineExample.getInstance().removeObject(ge);
-			ArrayList<GameElement> selection = EngineExample.getInstance().selectBy(s -> s.getName()=="DoorClosed");
+			Engine.getInstance().removeObject(ge);
+			ArrayList<GameElement> selection = Engine.getInstance().selectBy(s -> s.getName()=="DoorClosed");
 			for(GameElement element : selection) {
 				if(ge instanceof Key && element instanceof Door) {
 					Key k = (Key)ge;
 					Door d = (Door)element;
 					if(k.getKeycode().equals(d.getKeycode())) d.openDoor();
-					EngineExample.getInstance().removeObject(element);
-					EngineExample.getInstance().addObject(element);
+					Engine.getInstance().removeObject(element);
+					Engine.getInstance().addObject(element);
 					
 				}
 			}
@@ -63,7 +63,7 @@ public class Hero extends GameElement implements movable {
 
 	public boolean canMove(Vector2D moveVector) {
 		Point2D nextPosition = this.getPosition().plus(moveVector);
-		ArrayList<GameElement> selection = EngineExample.getInstance().selectBy(s -> s.getPosition().equals(nextPosition) && (!s.isTransposable() || s instanceof Door));
+		ArrayList<GameElement> selection = Engine.getInstance().selectBy(s -> s.getPosition().equals(nextPosition) && (!s.isTransposable() || s instanceof Door));
 		if(selection.isEmpty()) {
 			return true;
 		} else {
@@ -72,7 +72,7 @@ public class Hero extends GameElement implements movable {
 					addInventory(ge);
 					return true;
 				} else if(ge.getName().equals("DoorOpen")) {
-					EngineExample.getInstance().nextRoom();
+					Engine.getInstance().nextRoom();
 				}
 			}
 		}

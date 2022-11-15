@@ -14,12 +14,12 @@ import pt.iscte.poo.utils.Direction;
 import pt.iscte.poo.utils.Point2D;
 
 
-public class EngineExample implements Observer {
+public class Engine implements Observer {
 
 	public static final int GRID_HEIGHT = 10;
 	public static final int GRID_WIDTH = 10;
 	
-	private static EngineExample INSTANCE = null;
+	private static Engine INSTANCE = null;
 	private ImageMatrixGUI gui = ImageMatrixGUI.getInstance();
 	
 	private Hero hero;
@@ -29,14 +29,14 @@ public class EngineExample implements Observer {
 	List<Room> roomList = new ArrayList<>();
 	
 	
-	public static EngineExample getInstance() {
+	public static Engine getInstance() {
 		if (INSTANCE == null)
-			INSTANCE = new EngineExample();
+			INSTANCE = new Engine();
 		return INSTANCE;
 	}
 	
 
-	private EngineExample() {		
+	private Engine() {		
 		gui.registerObserver(this);
 		gui.setSize(GRID_WIDTH, GRID_HEIGHT);
 		gui.go();
@@ -79,7 +79,7 @@ public class EngineExample implements Observer {
 	
 	public void nextRoom() {
 		currentRoom++;
-		Room.generateMap(EngineExample.getInstance().roomList.get(EngineExample.getInstance().currentRoom));
+		Room.generateMap(Engine.getInstance().roomList.get(Engine.getInstance().currentRoom));
 		for(GameElement ge : roomList.get(currentRoom).roomObjects) {
 			gui.addImage(ge);
 		}

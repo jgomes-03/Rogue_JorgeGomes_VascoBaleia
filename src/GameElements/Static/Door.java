@@ -42,7 +42,7 @@ public class Door extends GameElement  {
 //		if(k.getKeycode().equals(d.getKeycode())) d.openDoor();
 //		Engine.getInstance().removeObject(element);
 //		Engine.getInstance().addObject(element);
-		//Makte this a void, and if opens sucessfully return true, 
+		//Make this a void, and if opens successfully return true, 
 		//else return false and perhaps throw an error in the GUI or
 		//play a sound? could be unimplemented even
 	}

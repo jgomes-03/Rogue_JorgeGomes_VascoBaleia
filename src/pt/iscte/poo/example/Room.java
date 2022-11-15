@@ -24,7 +24,7 @@ public class Room {
 			int i = 0;
 
 			// reads the map
-			while (roomRead.hasNext() && i < Engine.GRID_HEIGHT) {
+			while (roomRead.hasNext() && i < GameEngine.GRID_HEIGHT) {
 				String current = roomRead.nextLine();
 				int j = 0;
 				for (int k = 0; k < current.length(); k++) {

@@ -4,6 +4,6 @@ import pt.iscte.poo.example.*;
 
 public class MainExample {
 	public static void main(String[] args) {
-		Engine.getInstance().start();
+		GameEngine.getInstance().start();
 	}
 }

@@ -30,6 +30,6 @@ public class Wall extends GameElement  {
 		return false;
 	}
 	
-	
+
 
 }

@@ -3,15 +3,14 @@ package GameElements.Movable;
 import java.util.ArrayList;
 
 import GameElements.Static.Door;
-import pt.iscte.poo.example.Engine;
+import pt.iscte.poo.example.GameEngine;
 import pt.iscte.poo.example.GameElement;
 import pt.iscte.poo.example.Room;
-import pt.iscte.poo.example.movable;
 import pt.iscte.poo.utils.Direction;
 import pt.iscte.poo.utils.Point2D;
 import pt.iscte.poo.utils.Vector2D;
 
-public class Hero extends movable {
+public class Hero extends Movable {
 
 	private ArrayList<GameElement> inventory;
 
@@ -25,24 +24,7 @@ public class Hero extends movable {
 		return "Hero";
 	}
 
-	@Override
-	public boolean canMove(Vector2D moveVector) {
-		Point2D nextPosition = this.getPosition().plus(moveVector);
-		ArrayList<GameElement> selection = Engine.getInstance().selectBy(s -> s.getPosition().equals(nextPosition) && (!s.isTransposable() || s instanceof Door));
-		if(selection.isEmpty()) {
-			return true;
-		} else {
-			for(GameElement ge : selection) {
-				if(ge.isPickable()) {
-					addInventory(ge);
-					return true;
-				} else if(ge.getName().equals("DoorOpen")) {
-					Engine.getInstance().nextRoom();
-				}
-			}
-		}
-		return false;
-	}
+
 	
 	@Override
 	public int getLayer() {
@@ -60,11 +42,12 @@ public class Hero extends movable {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
 
 	public void addInventory(GameElement ge) {
 		if (ge != null) {
 			inventory.add(ge);
-			Engine.getInstance().removeObject(ge);
+			GameEngine.getInstance().removeObject(ge);
 //			ArrayList<GameElement> selection = Engine.getInstance().selectBy(s -> s.getName()=="DoorClosed");
 //			for(GameElement element : selection) {
 //				if(ge instanceof Key && element instanceof Door) {

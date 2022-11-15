@@ -31,6 +31,6 @@ public class Treasure extends GameElement  {
 		// TODO Auto-generated method stub
 		return true;
 	}
-	
 
+	
 }

@@ -33,4 +33,5 @@ public class HealingPotion extends GameElement  {
 	}
 	
 
+
 }

@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.function.Predicate;
 
 import GameElements.Movable.Hero;
+import GameElements.Movable.Movable;
 import pt.iscte.poo.gui.ImageMatrixGUI;
 import pt.iscte.poo.observer.Observed;
 import pt.iscte.poo.observer.Observer;
@@ -14,29 +15,29 @@ import pt.iscte.poo.utils.Direction;
 import pt.iscte.poo.utils.Point2D;
 
 
-public class Engine implements Observer {
+public class GameEngine implements Observer {
 
 	public static final int GRID_HEIGHT = 10;
 	public static final int GRID_WIDTH = 10;
 	
-	private static Engine INSTANCE = null;
+	private static GameEngine INSTANCE = null;
 	private ImageMatrixGUI gui = ImageMatrixGUI.getInstance();
 	
 	private Hero hero;
 	private int turns;
-	private int currentRoom = -1;
+	private int currentRoom = 1;
 	
 	List<Room> roomList = new ArrayList<>();
 	
 	
-	public static Engine getInstance() {
+	public static GameEngine getInstance() {
 		if (INSTANCE == null)
-			INSTANCE = new Engine();
+			INSTANCE = new GameEngine();
 		return INSTANCE;
 	}
 	
 
-	private Engine() {		
+	private GameEngine() {		
 		gui.registerObserver(this);
 		gui.setSize(GRID_WIDTH, GRID_HEIGHT);
 		gui.go();
@@ -53,6 +54,10 @@ public class Engine implements Observer {
 	
 	public int getTurns() {
 		return turns;
+	}
+	
+	public Point2D getHeroPosition() {
+		return hero.getPosition();
 	}
 	
 	private void addHero() {
@@ -79,7 +84,7 @@ public class Engine implements Observer {
 	
 	public void nextRoom() {
 		currentRoom++;
-		Room.generateMap(Engine.getInstance().roomList.get(Engine.getInstance().currentRoom));
+		Room.generateMap(GameEngine.getInstance().roomList.get(GameEngine.getInstance().currentRoom));
 		for(GameElement ge : roomList.get(currentRoom).roomObjects) {
 			gui.addImage(ge);
 		}
@@ -97,6 +102,11 @@ public class Engine implements Observer {
 		int key = ((ImageMatrixGUI) source).keyPressed();
 			if(Direction.isDirection(key)){
 				hero.move(key);
+				for(GameElement ge : roomList.get(currentRoom).roomObjects) {
+					if(ge instanceof Movable) {
+						((Movable) ge).move(key);
+					}
+				}
 				turns++;
 			}
 		gui.setStatusMessage("ROGUE - Turns:" + turns);

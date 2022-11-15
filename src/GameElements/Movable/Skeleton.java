@@ -1,13 +1,12 @@
 package GameElements.Movable;
 
-import pt.iscte.poo.example.Engine;
+import pt.iscte.poo.example.GameEngine;
 import pt.iscte.poo.example.GameElement;
-import pt.iscte.poo.example.movable;
 import pt.iscte.poo.utils.Direction;
 import pt.iscte.poo.utils.Point2D;
 import pt.iscte.poo.utils.Vector2D;
 
-public class Skeleton extends movable  {
+public class Skeleton extends Movable  {
 		
 	/*public Skeleton(int hitpoints, int damage) {
 		super(hitpoints, damage);
@@ -43,10 +42,10 @@ public class Skeleton extends movable  {
 	}
 
 
-
 	@Override
-	public boolean canMove(Vector2D moveVector) {
-		// TODO Auto-generated method stub
-		return false;
+	public void move(int keyPressed) {
+		if(GameEngine.getInstance().getTurns()%2==0) {
+			super.move(keyPressed);
+		}
 	}
 }

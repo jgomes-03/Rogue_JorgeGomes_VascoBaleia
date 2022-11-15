@@ -1,7 +1,7 @@
 package GameElements.Static;
 
 
-import pt.iscte.poo.example.Engine;
+import pt.iscte.poo.example.GameEngine;
 import pt.iscte.poo.example.GameElement;
 import pt.iscte.poo.utils.Point2D;
 
@@ -60,5 +60,6 @@ public class Door extends GameElement  {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
 	
 }

@@ -33,6 +33,4 @@ public class Floor extends GameElement {
 		return false;
 	}
 	
-	
-
 }

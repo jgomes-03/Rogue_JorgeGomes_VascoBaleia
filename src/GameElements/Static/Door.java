@@ -1,6 +1,7 @@
 package GameElements.Static;
 
 
+import pt.iscte.poo.example.Engine;
 import pt.iscte.poo.example.GameElement;
 import pt.iscte.poo.utils.Point2D;
 
@@ -36,6 +37,14 @@ public class Door extends GameElement  {
 	
 	public void openDoor() {
 		isClosed = false;
+//		Key k = (Key)ge;
+//		Door d = (Door)element;
+//		if(k.getKeycode().equals(d.getKeycode())) d.openDoor();
+//		Engine.getInstance().removeObject(element);
+//		Engine.getInstance().addObject(element);
+		//Makte this a void, and if opens sucessfully return true, 
+		//else return false and perhaps throw an error in the GUI or
+		//play a sound? could be unimplemented even
 	}
 	
 	@Override

@@ -77,7 +77,6 @@ public class Hero extends movable {
 //				}
 //			}
 		}
-		
 	}
 	
 }

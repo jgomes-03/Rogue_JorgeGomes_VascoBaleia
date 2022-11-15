@@ -1,6 +1,8 @@
 package GameElements.Movable;
 
 import pt.iscte.poo.example.GameElement;
+import pt.iscte.poo.example.GameEngine;
+import pt.iscte.poo.utils.Direction;
 import pt.iscte.poo.utils.Point2D;
 import pt.iscte.poo.utils.Vector2D;
 
@@ -34,6 +36,12 @@ public class Thug extends Movable  {
 	public boolean isPickable() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	
+	@Override
+	public void move(int keyPressed) {
+		keyPressed = super.getKey(Direction.forVector(Vector2D.movementVector(getPosition(), GameEngine.getInstance().getHeroPosition())));
+		super.move(keyPressed);
 	}
 
 }

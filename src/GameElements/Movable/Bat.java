@@ -42,23 +42,10 @@ public class Bat extends Movable {
 	@Override
 	public void move(int keyPressed) {
 		if (Math.random() > 0.5) {
-			super.move(getRandomKey(Direction.random()));
+			super.move(getKey(Direction.random()));
 		}
 	}
 
-	private int getRandomKey(Direction d) {
-		switch (d) {
-		case UP:
-			return KeyEvent.VK_UP;
-		case DOWN:
-			return KeyEvent.VK_DOWN;
-		case RIGHT:
-			return KeyEvent.VK_RIGHT;
-		case LEFT:
-			return KeyEvent.VK_LEFT;
-		default:
-			return 0;
-		}
-	}
+	
 
 }

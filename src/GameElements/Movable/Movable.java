@@ -1,5 +1,6 @@
 package GameElements.Movable;
 
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 import GameElements.Static.Door;
@@ -21,9 +22,26 @@ public abstract class Movable extends GameElement {
 		ArrayList<GameElement> selection = GameEngine.getInstance()
 				.selectBy(s -> s.getPosition().equals(nextPosition) && (!s.isTransposable() || s instanceof Door));
 		if (selection.isEmpty()) {
+			if(GameEngine.getInstance().getHeroPosition().equals(super.getPosition().plus(moveVector)))
+				return; //If is in Hero view
 			super.setPosition(getPosition().plus(moveVector)); // proxima position do heroi
-		} else if(this instanceof Thug){
-			super.setPosition(getPosition().plus(Vector2D.movementVector(getPosition(), GameEngine.getInstance().getHeroPosition())));
+		} 
+		
+		
+	}
+	
+	public int getKey(Direction d) {
+		switch (d) {
+		case UP:
+			return KeyEvent.VK_UP;
+		case DOWN:
+			return KeyEvent.VK_DOWN;
+		case RIGHT:
+			return KeyEvent.VK_RIGHT;
+		case LEFT:
+			return KeyEvent.VK_LEFT;
+		default:
+			return 0;
 		}
 	}
 }

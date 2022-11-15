@@ -25,7 +25,7 @@ public class GameEngine implements Observer {
 	
 	private Hero hero;
 	private int turns;
-	private int currentRoom = 1;
+	private int currentRoom = 3;
 	
 	List<Room> roomList = new ArrayList<>();
 	
@@ -77,13 +77,12 @@ public class GameEngine implements Observer {
 	
 	private void addRooms() {
 		File dir = new File("rooms/");
-		for(int i=0;i<dir.list().length-1;i++) {
+		for(int i=0;i<dir.list().length;i++) {
 			roomList.add(new Room("rooms/room" + i + ".txt"));
 		}
 	}
 	
 	public void nextRoom() {
-		currentRoom++;
 		Room.generateMap(GameEngine.getInstance().roomList.get(GameEngine.getInstance().currentRoom));
 		for(GameElement ge : roomList.get(currentRoom).roomObjects) {
 			gui.addImage(ge);

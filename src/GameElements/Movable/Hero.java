@@ -62,4 +62,8 @@ public class Hero extends Movable {
 		}
 	}
 	
+	public void nextRoom() {
+		
+	}
+	
 }

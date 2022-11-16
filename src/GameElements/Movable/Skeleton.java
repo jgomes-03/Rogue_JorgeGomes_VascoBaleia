@@ -8,14 +8,9 @@ import pt.iscte.poo.utils.Vector2D;
 
 public class Skeleton extends Movable  {
 		
-	/*public Skeleton(int hitpoints, int damage) {
-		super(hitpoints, damage);
-		this.setHitpoints(GameSettings.skeleton_hitpoints);
-		this.setDamage(GameSettings.skeleton_damage);
-	}*/
-	
 	public Skeleton(Point2D position) {
 		super(position);
+		super.setHitpoints(5);
 	}
 
 	public String getName() {

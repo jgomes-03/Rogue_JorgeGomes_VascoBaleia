@@ -16,6 +16,7 @@ public class Thug extends Movable  {
 	
 	public Thug(Point2D position) {
 		super(position);
+		super.setHitpoints(10);
 	}
 
 	public String getName() {

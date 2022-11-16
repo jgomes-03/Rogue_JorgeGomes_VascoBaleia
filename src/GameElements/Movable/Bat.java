@@ -1,7 +1,7 @@
 package GameElements.Movable;
 
 import java.awt.event.KeyEvent;
-
+import pt.iscte.poo.example.*;
 import pt.iscte.poo.example.GameEngine;
 import pt.iscte.poo.utils.Direction;
 import pt.iscte.poo.utils.Point2D;
@@ -11,6 +11,7 @@ public class Bat extends Movable {
 
 	public Bat(Point2D position) {
 		super(position);
+		super.setHitpoints(3);
 	}
 
 	@Override
@@ -45,7 +46,12 @@ public class Bat extends Movable {
 			super.move(getKey(Direction.random()));
 		}
 	}
-
 	
+//	@Override
+//	public void attack(GameElement ge) {
+//		if(Math.random() > 0.5) {
+//			super.attack(ge);
+//		}
+//	}
 
 }

@@ -25,7 +25,7 @@ public class GameEngine implements Observer {
 	
 	private Hero hero;
 	private int turns;
-	private int currentRoom = 3;
+	private int currentRoom = 0;
 	
 	List<Room> roomList = new ArrayList<>();
 	
@@ -90,7 +90,7 @@ public class GameEngine implements Observer {
 		hero.setPosition(new Point2D(1,1));
 	}
 	
-	private void previusRoom() {
+	private void previousRoom() {
 		currentRoom--;
 		Room.generateMap(roomList.get(currentRoom));
 	}
@@ -111,6 +111,8 @@ public class GameEngine implements Observer {
 		gui.setStatusMessage("ROGUE - Turns:" + turns);
 		gui.update();
 	}
+	
+	
 	
 	public ArrayList<GameElement> selectBy(Predicate<GameElement> predicate){
 		ArrayList<GameElement> result = new ArrayList<>();

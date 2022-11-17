@@ -34,7 +34,7 @@ public abstract class Movable extends GameElement {
 			super.setPosition(nextPosition);
 		} else {
 			GameElement enemy = getEnemy(nextPosition);
-			if (enemy != null) {
+			if (enemy != null && enemy instanceof Movable) {
 				attack(enemy);
 			} 
 		}
@@ -67,8 +67,12 @@ public abstract class Movable extends GameElement {
 				.selectBy(s -> s.getPosition().equals(position));
 		if (habitatnatural.isEmpty()) {
 			System.out.println(habitatnatural);
-			return null;
-		} else
-			return habitatnatural.get(0);
+		} else {
+			for(GameElement ge : habitatnatural) {
+				if(ge instanceof Movable) return ge;
+			}
+		}
+		return null;
+			
 	}
 }

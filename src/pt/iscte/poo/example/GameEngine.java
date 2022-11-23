@@ -87,7 +87,7 @@ public class GameEngine implements Observer {
 		for(GameElement ge : roomList.get(currentRoom).roomObjects) {
 			gui.addImage(ge);
 		}
-		addObject(hero);
+		//addObject(hero);
 		hero.setPosition(new Point2D(1,1));
 	}
 	
@@ -96,6 +96,11 @@ public class GameEngine implements Observer {
 		Room.generateMap(roomList.get(currentRoom));
 	}
 
+	private void setLifeBar() {
+		for(int i = 0; i<GRID_WIDTH;i++) {
+			gui.addImage(new GameElement(i,11));
+		}
+	}
 	
 	@Override
 	public void update(Observed source) {

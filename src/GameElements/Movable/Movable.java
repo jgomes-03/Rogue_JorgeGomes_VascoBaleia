@@ -24,12 +24,14 @@ public abstract class Movable extends GameElement {
 	}
 
 	public void move(int keyPressed) {
-		Direction moveTo = Direction.directionFor(keyPressed);
-		Vector2D moveVector = moveTo.asVector();
+		Vector2D moveVector = (Direction.directionFor(keyPressed)).asVector();
 		Point2D nextPosition = this.getPosition().plus(moveVector);
-		System.out.println(nextPosition);
+		System.out.println("Object: " + this.getName() + " Position: " + nextPosition);
 		ArrayList<GameElement> selection = GameEngine.getInstance()
-				.selectBy(s -> s.getPosition().equals(nextPosition) && (!s.isTransposable() || s instanceof Door));
+				.selectBy(s -> s.getPosition().equals(nextPosition) && (!s.isTransposable())) ;
+		if(this instanceof Skeleton) {
+			System.out.println(selection);
+		}
 		if (selection.isEmpty()) {
 			super.setPosition(nextPosition);
 		} else {

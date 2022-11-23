@@ -87,6 +87,7 @@ public class GameEngine implements Observer {
 		for(GameElement ge : roomList.get(currentRoom).roomObjects) {
 			gui.addImage(ge);
 		}
+		addObject(hero);
 		hero.setPosition(new Point2D(1,1));
 	}
 	

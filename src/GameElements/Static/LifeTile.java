@@ -5,21 +5,22 @@ import pt.iscte.poo.utils.Point2D;
 
 public class LifeTile extends GameElement{
 	
-	public enum type{
+	private type name;
+	
+	public static enum type{
 		Red,
 		Green,
 	}
 	
-	public LifeTile(Point2D position) {
+	public LifeTile(type name, Point2D position) {
 		super(position);
+		this.name = name;
 		}
 
 	@Override
-	public String getName(String type) {
+	public String getName() {
 		// TODO Auto-generated method stub
-		switch(type) {
-			case "Green":
-				return this.type.Green;
+		return name;
 		}
 	}
 

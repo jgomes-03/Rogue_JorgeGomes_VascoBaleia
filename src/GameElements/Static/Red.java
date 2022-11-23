@@ -4,15 +4,15 @@ import pt.iscte.poo.example.GameElement;
 import pt.iscte.poo.utils.Point2D;
 
 
-public class Green extends GameElement {
+public class Red extends GameElement {
 
-	public Green(Point2D position) {
+	public Red(Point2D position) {
 		super(position);
 		}
 
 	@Override
 	public String getName() {
-		return "Green";
+		return "Red";
 	}
 
 	@Override

@@ -22,6 +22,10 @@ public abstract class Movable extends GameElement {
 	public void setHitpoints(int h) {
 		hitpoints = h;
 	}
+	
+	public int getHitpoints(int h) {
+		return hitpoints;
+	}
 
 	public void move(int keyPressed) {
 		Vector2D moveVector = (Direction.directionFor(keyPressed)).asVector();

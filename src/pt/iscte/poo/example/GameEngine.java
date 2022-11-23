@@ -8,6 +8,7 @@ import java.util.function.Predicate;
 
 import GameElements.Movable.Hero;
 import GameElements.Movable.Movable;
+import GameElements.Static.Green;
 import pt.iscte.poo.gui.ImageMatrixGUI;
 import pt.iscte.poo.observer.Observed;
 import pt.iscte.poo.observer.Observer;
@@ -96,12 +97,6 @@ public class GameEngine implements Observer {
 		Room.generateMap(roomList.get(currentRoom));
 	}
 
-	private void setLifeBar() {
-		for(int i = 0; i<GRID_WIDTH;i++) {
-			gui.addImage(new GameElement(i,11));
-		}
-	}
-	
 	@Override
 	public void update(Observed source) {
 		int key = ((ImageMatrixGUI) source).keyPressed();

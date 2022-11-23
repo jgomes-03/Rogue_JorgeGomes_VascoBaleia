@@ -5,14 +5,18 @@ import pt.iscte.poo.utils.Point2D;
 
 public class LifeTile extends GameElement{
 	
-	private type name;
-	
-	public static enum type{
+	enum Color{
 		Red,
-		Green,
+		Green;
+		
+	public String Clname;
+		
+	Color(String cname) {
+		name = cname;
+		}
 	}
 	
-	public LifeTile(type name, Point2D position) {
+	public LifeTile(Color name) {
 		super(position);
 		this.name = name;
 		}
@@ -20,9 +24,9 @@ public class LifeTile extends GameElement{
 	@Override
 	public String getName() {
 		// TODO Auto-generated method stub
-		return name;
+		return name.toString();
 		}
-	}
+
 
 	@Override
 	public int getLayer() {

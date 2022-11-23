@@ -8,7 +8,7 @@ import java.util.function.Predicate;
 
 import GameElements.Movable.Hero;
 import GameElements.Movable.Movable;
-import GameElements.Static.Green;
+import GameElements.Static.Lifebar;
 import pt.iscte.poo.gui.ImageMatrixGUI;
 import pt.iscte.poo.observer.Observed;
 import pt.iscte.poo.observer.Observer;
@@ -50,6 +50,7 @@ public class GameEngine implements Observer {
 		nextRoom();
 		gui.setStatusMessage("ROGUE - Turns:" + turns);
 		gui.update();
+		addObject(new Lifebar((super.,new Point2D(0,11)));
 	}
 	
 	

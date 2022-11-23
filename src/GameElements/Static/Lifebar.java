@@ -3,23 +3,19 @@ package GameElements.Static;
 import pt.iscte.poo.example.GameElement;
 import pt.iscte.poo.example.GameEngine;
 import pt.iscte.poo.utils.Point2D;
+import GameElements.Static.LifeTile;
 
 public class Lifebar extends GameElement {
 
-	public Lifebar(Point2D position) {
-		super(position);
-		// TODO Auto-generated constructor stub
-	}
-
-	public void initLifebar() {
+	public Lifebar(String name, Point2D position) {
+		super(name, position);
 		for(int i = 0; i<GameEngine.GRID_WIDTH;i++) {
-				//addObject(GameElement.create("Green", new Point2D(i,11)), null, null, null);
-				new Green(new Point2D(i,11)));
-				//addImage();
-			}
+			//addObject(GameElement.create("Green", new Point2D(i,11)), null, null, null);
+			GameEngine.getInstance().addObject(new LifeTile(type.Red,new Point2D(i,11)));
 		}
-
+	}
 	
+
 	@Override
 	public String getName() {
 		// TODO Auto-generated method stub

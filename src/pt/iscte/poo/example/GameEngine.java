@@ -39,7 +39,7 @@ public class GameEngine implements Observer {
 
 	private GameEngine() {		
 		gui.registerObserver(this);
-		gui.setSize(GRID_WIDTH, GRID_HEIGHT);
+		gui.setSize(GRID_WIDTH, GRID_HEIGHT + 1);
 		gui.go();
 	}
 
@@ -95,8 +95,8 @@ public class GameEngine implements Observer {
 		currentRoom--;
 		Room.generateMap(roomList.get(currentRoom));
 	}
-	
 
+	
 	@Override
 	public void update(Observed source) {
 		int key = ((ImageMatrixGUI) source).keyPressed();

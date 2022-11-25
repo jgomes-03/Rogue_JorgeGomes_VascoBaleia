@@ -1,49 +1,36 @@
 package GameElements.Static;
 
 import pt.iscte.poo.example.GameElement;
+import pt.iscte.poo.gui.ImageTile;
 import pt.iscte.poo.utils.Point2D;
 
-public class LifeTile extends GameElement{
+public class LifeTile implements ImageTile{
 	
-	enum Color{
-		Red,
-		Green;
-		
-	public String Clname;
-		
-	Color(String cname) {
-		name = cname;
-		}
-	}
+	Point2D position;
 	
 	public LifeTile(Color name) {
-		super(position);
-		this.name = name;
-		}
-
-	@Override
-	public String getName() {
-		// TODO Auto-generated method stub
-		return name.toString();
-		}
-
+	}
 
 	@Override
 	public int getLayer() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
-	@Override
-	public boolean isTransposable() {
-		// TODO Auto-generated method stub
-		return false;
+	
+	public enum Color{
+		RED("red"), GREEN("green");
+		
+	public String name;
+		
+	private Color(String name) {
+		this.name = name;
+		}
 	}
 
 	@Override
-	public boolean isPickable() {
+	public Point2D getPosition() {
 		// TODO Auto-generated method stub
-		return false;
+		return null;
 	}
-
+	
 }

@@ -48,9 +48,10 @@ public class GameEngine implements Observer {
 		addRooms();
 		addHero();
 		nextRoom();
+		hero.updateLifeBar();
 		gui.setStatusMessage("ROGUE - Turns:" + turns);
 		gui.update();
-		addObject(new Lifebar((super.,new Point2D(0,11)));
+		//addObject(new Lifebar((super.,new Point2D(0,11)));
 	}
 	
 	
@@ -86,6 +87,7 @@ public class GameEngine implements Observer {
 	
 	public void nextRoom() {
 		Room.generateMap(GameEngine.getInstance().roomList.get(GameEngine.getInstance().currentRoom));
+		roomList.get(currentRoom).roomObjects.add(hero);
 		for(GameElement ge : roomList.get(currentRoom).roomObjects) {
 			gui.addImage(ge);
 		}
@@ -102,7 +104,6 @@ public class GameEngine implements Observer {
 	public void update(Observed source) {
 		int key = ((ImageMatrixGUI) source).keyPressed();
 			if(Direction.isDirection(key)){
-				hero.move(key);
 				for(GameElement ge : roomList.get(currentRoom).roomObjects) {
 					if(ge instanceof Movable) {
 						((Movable) ge).move(key);
@@ -110,6 +111,7 @@ public class GameEngine implements Observer {
 				}
 				turns++;
 			}
+		hero.updateLifeBar();
 		gui.setStatusMessage("ROGUE - Turns:" + turns);
 		gui.update();
 	}

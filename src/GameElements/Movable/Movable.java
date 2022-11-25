@@ -22,8 +22,8 @@ public abstract class Movable extends GameElement {
 	public void setHitpoints(int h) {
 		hitpoints = h;
 	}
-	
-	public int getHitpoints(int h) {
+
+	public int getHitpoints() {
 		return hitpoints;
 	}
 
@@ -35,10 +35,10 @@ public abstract class Movable extends GameElement {
 		if (selection.isEmpty()) {
 			super.setPosition(nextPosition);
 		} else {
-			GameElement enemy = getEnemy(nextPosition);
+			GameElement enemy = getEnemy(selection);
 			if (enemy != null && enemy instanceof Movable) {
 				attack(enemy);
-			} 
+			}
 		}
 	}
 
@@ -64,17 +64,12 @@ public abstract class Movable extends GameElement {
 		}
 	}
 
-	public GameElement getEnemy(Point2D position) {
-		List<GameElement> habitatnatural = GameEngine.getInstance()
-				.selectBy(s -> s.getPosition().equals(position));
-		if (habitatnatural.isEmpty()) {
-			System.out.println(habitatnatural);
-		} else {
-			for(GameElement ge : habitatnatural) {
-				if(ge instanceof Movable) return ge;
-			}
+	public GameElement getEnemy(ArrayList<GameElement> selection) {
+		for (GameElement ge : selection) {
+			if (ge instanceof Movable)
+				return ge;
 		}
 		return null;
-			
+
 	}
 }

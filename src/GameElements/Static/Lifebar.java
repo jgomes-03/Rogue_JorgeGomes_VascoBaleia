@@ -7,11 +7,11 @@ import GameElements.Static.LifeTile;
 
 public class Lifebar extends GameElement {
 
-	public Lifebar(String name, Point2D position) {
-		super(name, position);
+	public Lifebar(Point2D position) {
+		super(position);
 		for(int i = 0; i<GameEngine.GRID_WIDTH;i++) {
 			//addObject(GameElement.create("Green", new Point2D(i,11)), null, null, null);
-			GameEngine.getInstance().addObject(new LifeTile(type.Red,new Point2D(i,11)));
+			GameEngine.getInstance().addObject(new LifeTile(type.RED,new Point2D(i,11)));
 		}
 	}
 	

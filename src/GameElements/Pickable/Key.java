@@ -1,10 +1,10 @@
-package GameElements.Static;
+package GameElements.Pickable;
 
 
 import pt.iscte.poo.example.GameElement;
 import pt.iscte.poo.utils.Point2D;
 
-public class Key extends GameElement  {
+public class Key extends Pickable  {
 	
 	private String keyCode = null;
 
@@ -33,13 +33,4 @@ public class Key extends GameElement  {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
-
-	@Override
-	public boolean isPickable() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-	
-
 }

@@ -1,10 +1,8 @@
-package GameElements.Static;
+package GameElements.Pickable;
 
-
-import pt.iscte.poo.example.GameElement;
 import pt.iscte.poo.utils.Point2D;
 
-public class HealingPotion extends GameElement  {
+public class HealingPotion extends Pickable  {
 	
 	public HealingPotion(Point2D position) {
 		super(position);
@@ -25,13 +23,4 @@ public class HealingPotion extends GameElement  {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
-	@Override
-	public boolean isPickable() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-	
-
-
 }

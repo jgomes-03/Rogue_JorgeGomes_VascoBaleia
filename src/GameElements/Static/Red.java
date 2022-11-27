@@ -25,8 +25,4 @@ public class Red extends GameElement {
 		return false;
 	}
 
-	@Override
-	public boolean isPickable() {
-		return false;
-	}
 }

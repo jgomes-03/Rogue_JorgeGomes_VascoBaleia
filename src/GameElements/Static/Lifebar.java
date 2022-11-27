@@ -34,10 +34,5 @@ public class Lifebar extends GameElement {
 		return false;
 	}
 
-	@Override
-	public boolean isPickable() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 }

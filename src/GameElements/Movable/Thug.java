@@ -33,15 +33,10 @@ public class Thug extends Movable  {
 		return false;
 	}
 
-	@Override
-	public boolean isPickable() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 	
 	@Override
 	public void move(int keyPressed) {
-		keyPressed = super.getKey(Direction.forVector(Vector2D.movementVector(getPosition(), GameEngine.getInstance().getHeroPosition())));
+		keyPressed = super.getKey(Direction.forVector(Vector2D.movementVector(getPosition(), GameEngine.getInstance().getHero().getPosition())));
 		super.move(keyPressed);
 	}
 

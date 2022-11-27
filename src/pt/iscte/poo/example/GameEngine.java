@@ -59,8 +59,8 @@ public class GameEngine implements Observer {
 		return turns;
 	}
 	
-	public Point2D getHeroPosition() {
-		return hero.getPosition();
+	public Hero getHero() {
+		return hero;
 	}
 	
 	private void addHero() {
@@ -86,8 +86,8 @@ public class GameEngine implements Observer {
 	}
 	
 	public void nextRoom() {
-		Room.generateMap(GameEngine.getInstance().roomList.get(GameEngine.getInstance().currentRoom));
 		roomList.get(currentRoom).roomObjects.add(hero);
+		Room.generateMap(GameEngine.getInstance().roomList.get(GameEngine.getInstance().currentRoom));
 		for(GameElement ge : roomList.get(currentRoom).roomObjects) {
 			gui.addImage(ge);
 		}
@@ -104,9 +104,16 @@ public class GameEngine implements Observer {
 	public void update(Observed source) {
 		int key = ((ImageMatrixGUI) source).keyPressed();
 			if(Direction.isDirection(key)){
-				for(GameElement ge : roomList.get(currentRoom).roomObjects) {
-					if(ge instanceof Movable) {
-						((Movable) ge).move(key);
+				Iterator<GameElement> iterator = roomList.get(currentRoom).roomObjects.iterator();
+				while(iterator.hasNext()) {
+					GameElement current = iterator.next();
+					if(current instanceof Movable) {
+						((Movable) current).move(key);
+						if(((Movable) current).isDead()) {
+							iterator.remove();
+							gui.removeImage(current);
+						}
+
 					}
 				}
 				turns++;

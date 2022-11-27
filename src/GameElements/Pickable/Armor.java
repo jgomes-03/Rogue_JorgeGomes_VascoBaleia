@@ -1,10 +1,9 @@
-package GameElements.Static;
+package GameElements.Pickable;
 
 
-import pt.iscte.poo.example.GameElement;
 import pt.iscte.poo.utils.Point2D;
 
-public class Armor extends GameElement  {
+public class Armor extends Pickable {
 	
 	public Armor(Point2D position) {
 		super(position);
@@ -26,12 +25,7 @@ public class Armor extends GameElement  {
 		return false;
 	}
 
-	@Override
-	public boolean isPickable() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-	
+
 
 
 }

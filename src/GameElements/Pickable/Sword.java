@@ -1,10 +1,10 @@
-package GameElements.Static;
+package GameElements.Pickable;
 
 
-import pt.iscte.poo.example.GameElement;
+
 import pt.iscte.poo.utils.Point2D;
 
-public class Sword extends GameElement  {
+public class Sword extends Pickable  {
 	
 	public Sword(Point2D position) {
 		super(position);
@@ -26,11 +26,7 @@ public class Sword extends GameElement  {
 		return false;
 	}
 
-	@Override
-	public boolean isPickable() {
-		// TODO Auto-generated method stub
-		return true;
-	}
+
 	
 
 

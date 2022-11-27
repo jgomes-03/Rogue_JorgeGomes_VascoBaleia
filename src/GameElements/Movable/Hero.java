@@ -39,13 +39,6 @@ public class Hero extends Movable {
 		return false;
 	}
 
-	@Override
-	public boolean isPickable() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	
-
 	public void addInventory(GameElement ge) {
 		if (ge != null) {
 			inventory.add(ge);
@@ -56,7 +49,7 @@ public class Hero extends Movable {
 	public void dropInventory(GameElement ge) {
 		if(ge!=null) {
 			inventory.remove(ge);
-			ge.setPosition(GameEngine.getInstance().getHeroPosition().plus(new Vector2D(1,0)));
+			ge.setPosition(GameEngine.getInstance().getHero().getPosition().plus(new Vector2D(1,0)));
 			GameEngine.getInstance().addObject(ge);
 		}
 	}
@@ -77,7 +70,6 @@ public class Hero extends Movable {
 	public void updateLifeBar() {
 		String color = "";
 		int hitpointScale =(super.getHitpoints()*7)/10;
-		System.out.println(hitpointScale);
 		for(int i=0;i<7;i++) {
 			if(i< super.getHitpoints()*0.7) {
 				color = "Green";

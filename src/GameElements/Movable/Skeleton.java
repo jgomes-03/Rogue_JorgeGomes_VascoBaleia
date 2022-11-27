@@ -28,13 +28,6 @@ public class Skeleton extends Movable  {
 		return false;
 	}
 	
-	
-	
-	@Override
-	public boolean isPickable() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 
 	@Override

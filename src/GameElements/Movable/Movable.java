@@ -38,23 +38,29 @@ public abstract class Movable extends GameElement {
 		} else if(selection.get(0) instanceof Pickable && this instanceof Hero) {
 			GameEngine.getInstance().getHero().pickToInventory(((Pickable)selection.get(0)));
 		} else {
-			GameElement enemy = getEnemy(selection);
+			Movable enemy = (Movable)getEnemy(selection);
 			if (enemy != null && enemy instanceof Movable) {
-				attack(enemy);
+					attack(enemy);
 			}
 		}
 	}
 
 	public void attack(GameElement ge) {
 		if (ge instanceof Movable) {
-			((Movable) ge).hitpoints--;
-			if(((Movable) ge).isDead() && !(ge instanceof Hero))
-				GameEngine.getInstance().removeObject(ge);
+			if(!((Movable)ge).isDeadOnNextAttack())	
+				((Movable) ge).hitpoints--;
+			else
+				kill((Movable)ge);
 			if(ge instanceof Skeleton) System.out.println(((Skeleton) ge).getHitpoints()); // DEBUG
 		}
 	}
 
 
+	public void kill(Movable ge) {
+		if(!(ge instanceof Hero))
+			GameEngine.getInstance().removeObject(ge);
+	}
+	
 	public int getKey(Direction d) {
 		switch (d) {
 		case UP:
@@ -79,8 +85,8 @@ public abstract class Movable extends GameElement {
 
 	}
 	
-	public boolean isDead() {
-		return getHitpoints()<=0?true:false;
+	public boolean isDeadOnNextAttack() {
+		return getHitpoints()<=1?true:false;
 	}
 	
 }

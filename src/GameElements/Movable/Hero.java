@@ -67,6 +67,12 @@ public class Hero extends Movable {
 		
 	}
 	
+	
+	@Override
+	public boolean isDeadOnNextAttack() {
+		return getHitpoints()<1?true:false;
+	}
+	
 	public void updateLifeBar() {
 		String color = "";
 		int hitpointScale =(super.getHitpoints()*7)/10;
@@ -78,7 +84,7 @@ public class Hero extends Movable {
 			} else color = "GreenRed";
 			GameEngine.getInstance().addObject(GameElement.create(color,new Point2D(i,GameEngine.GRID_HEIGHT),null,null,null));
 		}
-		if(this.isDead())
+		if(this.isDeadOnNextAttack())
 			GameEngine.getInstance().GameOver();
 	}
 	

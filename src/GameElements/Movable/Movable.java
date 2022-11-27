@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+import GameElements.Pickable.Pickable;
 import GameElements.Static.Door;
 import pt.iscte.poo.example.GameElement;
 import pt.iscte.poo.example.GameEngine;
@@ -34,6 +35,8 @@ public abstract class Movable extends GameElement {
 				.selectBy(s -> s.getPosition().equals(nextPosition) && (!s.isTransposable()));
 		if (selection.isEmpty()) {
 			super.setPosition(nextPosition);
+		} else if(selection.get(0) instanceof Pickable && this instanceof Hero) {
+			GameEngine.getInstance().getHero().pickToInventory(((Pickable)selection.get(0)));
 		} else {
 			GameElement enemy = getEnemy(selection);
 			if (enemy != null && enemy instanceof Movable) {
@@ -76,4 +79,5 @@ public abstract class Movable extends GameElement {
 	public boolean isDead() {
 		return getHitpoints()==0?true:false;
 	}
+	
 }

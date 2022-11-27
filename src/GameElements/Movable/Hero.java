@@ -1,5 +1,6 @@
 package GameElements.Movable;
 
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 import javax.swing.DropMode;
@@ -8,12 +9,13 @@ import pt.iscte.poo.example.GameEngine;
 import pt.iscte.poo.example.GameElement;
 import pt.iscte.poo.utils.Point2D;
 import pt.iscte.poo.utils.Vector2D;
+import GameElements.Pickable.Pickable;
 import GameElements.Static.*;
 
 public class Hero extends Movable {
 
-	private ArrayList<GameElement> inventory;
-	
+	private ArrayList<Pickable> inventory;
+	private static final int MAX_SIZE = 3;
 	
 	public Hero(Point2D position) {
 		super(position);
@@ -25,43 +27,41 @@ public class Hero extends Movable {
 	public String getName() {
 		return "Hero";
 	}
-
-
+	
 	
 	@Override
 	public int getLayer() {
 		return 1;
 	}
+	
+	public ArrayList<Pickable> getInventory(){
+		return inventory;
+	}
 
 	@Override
 	public boolean isTransposable() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
-	public void addInventory(GameElement ge) {
-		if (ge != null) {
-			inventory.add(ge);
-			GameEngine.getInstance().removeObject(ge);
+	public void pickToInventory(Pickable p) {
+		for(int i=0;i<MAX_SIZE;i++) {
+			if(inventory.isEmpty() || inventory.get(i)==null) {
+				inventory.add(p);
+				p.pick();
+				return;
+			}
 		}
 	}
 	
-	public void dropInventory(GameElement ge) {
-		if(ge!=null) {
-			inventory.remove(ge);
-			ge.setPosition(GameEngine.getInstance().getHero().getPosition().plus(new Vector2D(1,0)));
-			GameEngine.getInstance().addObject(ge);
+	public void dropFromInventory(Pickable p) {
+		for(int i=0;i<inventory.size();i++) {
+			if(p.equals(inventory.get(i))){
+				p.drop(i);
+				inventory.remove(i);
+				return;
+			}
 		}
 	}
-	
-//	@Override
-//	public void attack(GameElement ge) {
-//		for(GameElement i : inventory) {
-//			if(i.getName().equals("Sword")){
-//				
-//			}
-//		}
-//	}
 	
 	public void nextRoom() {
 		

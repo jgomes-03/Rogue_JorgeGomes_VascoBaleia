@@ -52,6 +52,7 @@ public abstract class Movable extends GameElement {
 		}
 	}
 
+
 	public int getKey(Direction d) {
 		switch (d) {
 		case UP:
@@ -77,7 +78,7 @@ public abstract class Movable extends GameElement {
 	}
 	
 	public boolean isDead() {
-		return getHitpoints()==0?true:false;
+		return getHitpoints()<=0?true:false;
 	}
 	
 }

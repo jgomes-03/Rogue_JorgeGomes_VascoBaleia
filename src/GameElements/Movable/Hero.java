@@ -78,6 +78,8 @@ public class Hero extends Movable {
 			} else color = "GreenRed";
 			GameEngine.getInstance().addObject(GameElement.create(color,new Point2D(i,GameEngine.GRID_HEIGHT),null,null,null));
 		}
+		if(this.isDead())
+			GameEngine.getInstance().GameOver();
 	}
 	
 	

@@ -134,4 +134,9 @@ public class GameEngine implements Observer {
 		}
 		return result;
 	}
+	
+	public void GameOver() {
+		gui.dispose();
+		gui.setMessage("GameOver");
+	}
 }

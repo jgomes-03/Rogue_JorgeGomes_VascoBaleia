@@ -48,6 +48,8 @@ public abstract class Movable extends GameElement {
 	public void attack(GameElement ge) {
 		if (ge instanceof Movable) {
 			((Movable) ge).hitpoints--;
+			if(((Movable) ge).isDead() && !(ge instanceof Hero))
+				GameEngine.getInstance().removeObject(ge);
 			if(ge instanceof Skeleton) System.out.println(((Skeleton) ge).getHitpoints()); // DEBUG
 		}
 	}

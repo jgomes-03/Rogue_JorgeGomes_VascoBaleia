@@ -28,7 +28,6 @@ public class GameEngine implements Observer {
 	private int turns;
 	private int currentRoom = 0;
 	
-	private String QuestionToGetPlayerName = "Introduza o seu nome";
 	private String PlayerName;
 
 	List<Room> roomList = new ArrayList<>();
@@ -50,7 +49,7 @@ public class GameEngine implements Observer {
 		addHero();
 		nextRoom();
 		hero.updateLifeBar();
-		PlayerName = gui.askUser(QuestionToGetPlayerName);
+		PlayerName = gui.askUser("Introduza o seu nome");
 		gui.setStatusMessage("ROGUE - Turns: " + turns + " | Player: " + PlayerName);
 		gui.update();
 		// addObject(new Lifebar((super.,new Point2D(0,11)));
@@ -58,7 +57,7 @@ public class GameEngine implements Observer {
 	
 	public void GameOver() {
 		gui.dispose();
-		gui.setMessage("GameOver");
+		gui.setMessage("Game Over " + PlayerName + "!");
 	}
 
 	public int getTurns() {
@@ -123,7 +122,8 @@ public class GameEngine implements Observer {
 					((Movable) current).move(key);
 				}
 			}
-		} else if(key == KeyEvent.VK_1 || key == KeyEvent.VK_2 || key == KeyEvent.VK_3) {
+		} 
+		else if(key == KeyEvent.VK_1 || key == KeyEvent.VK_2 || key == KeyEvent.VK_3) {
 			hero.dropFromInventory(hero.getInventory().get(key));
 		}
 		turns++;

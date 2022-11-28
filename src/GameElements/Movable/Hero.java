@@ -75,11 +75,10 @@ public class Hero extends Movable {
 	
 	public void updateLifeBar() {
 		String color = "";
-		int hitpointScale =(super.getHitpoints()*7)/10;
-		for(int i=0;i<7;i++) {
-			if(i< super.getHitpoints()*0.7) {
+		for(int i=0;i<5;i++) {
+			if(i< super.getHitpoints()*0.5) {
 				color = "Green";
-			} else if (i > super.getHitpoints()*0.7){
+			} else if (i > super.getHitpoints()*0.5){
 				color = "Red";
 			} else color = "GreenRed";
 			GameEngine.getInstance().addObject(GameElement.create(color,new Point2D(i,GameEngine.GRID_HEIGHT),null,null,null));

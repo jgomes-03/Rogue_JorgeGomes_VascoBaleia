@@ -25,6 +25,9 @@ public class Hero extends Movable {
 		inventory = new ArrayList<>();
 		super.setHitpoints(MAX_LIFE);
 		health = createLifebar(new Point2D(0,GameEngine.GRID_HEIGHT), this);
+		
+		inventory.add(new Sword(new Point2D(2,2)));
+		inventory.add(new Sword(new Point2D(2,2)));
 	}
 
 	@Override
@@ -48,10 +51,11 @@ public class Hero extends Movable {
 	}
 
 	public void pickToInventory(Pickable p) {
-		for(int i=0;i<MAX_SIZE;i++) {
-			if(inventory.isEmpty() || inventory.get(i)==null) {
+		for(Pickable i : inventory) {
+			if(inventory.isEmpty() || (inventory.indexOf(i)<MAX_SIZE && i!=null)) {
 				inventory.add(p);
 				p.pick();
+				System.out.println("Picked:" + p);
 				return;
 			}
 		}

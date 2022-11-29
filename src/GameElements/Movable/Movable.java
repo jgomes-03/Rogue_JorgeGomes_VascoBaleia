@@ -63,7 +63,7 @@ public abstract class Movable extends GameElement {
 	public void attack(GameElement ge, int damage) {
 		if (ge instanceof Movable) {
 			if(!((Movable)ge).isDeadOnNextAttack())	
-				((Movable) ge).hitpoints = ((Movable) ge).hitpoints-1;
+				((Movable) ge).hitpoints = ((Movable) ge).hitpoints-damage;
 			else
 				kill((Movable)ge);
 			if(ge instanceof Skeleton) System.out.println(((Skeleton) ge).getHitpoints()); // DEBUG

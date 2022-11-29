@@ -52,10 +52,6 @@ public abstract class GameElement implements ImageTile {
 		return null;
 	}
 
-	public static Lifebar createLifebar(Point2D point, Movable g) {
-			return new Lifebar(point,g);
-	}
-	
 	public abstract boolean isTransposable();
 
 	public Point2D getPosition() {

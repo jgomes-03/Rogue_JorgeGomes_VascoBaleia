@@ -6,6 +6,7 @@ import java.util.List;
 
 import GameElements.Pickable.Pickable;
 import GameElements.Static.Door;
+import GameElements.Static.Lifebar;
 import pt.iscte.poo.example.GameElement;
 import pt.iscte.poo.example.GameEngine;
 import pt.iscte.poo.utils.Direction;
@@ -20,6 +21,10 @@ public abstract class Movable extends GameElement {
 		super(position);
 	}
 
+	public static Lifebar createLifebar(Point2D point, Movable g) {
+		return new Lifebar(point,g);
+}
+	
 	public void setHitpoints(int h) {
 		hitpoints = h;
 	}

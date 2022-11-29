@@ -23,7 +23,7 @@ public class Hero extends Movable {
 		super(position);
 		inventory = new ArrayList<>();
 		super.setHitpoints(MAX_LIFE);
-		health = createLifebar(position, this);
+		health = createLifebar(new Point2D(0,GameEngine.GRID_HEIGHT), this);
 	}
 
 	@Override

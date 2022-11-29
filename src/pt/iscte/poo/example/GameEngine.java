@@ -122,6 +122,15 @@ public class GameEngine implements Observer {
 			Iterator<GameElement> iterator = roomList.get(currentRoom).roomObjects.iterator();
 			while (iterator.hasNext()) {
 				GameElement current = iterator.next();
+				if (current instanceof Hero) {
+					hero.move(key);
+					
+					turns++;
+					hero.updateLifeBar();
+					gui.setStatusMessage("ROGUE - Turns:" + turns);
+					gui.update();
+					return;
+				}
 				if (current instanceof Movable) {
 					((Movable) current).move(key);
 				}

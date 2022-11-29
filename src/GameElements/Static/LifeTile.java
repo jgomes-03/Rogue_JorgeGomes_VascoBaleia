@@ -7,8 +7,10 @@ import pt.iscte.poo.utils.Point2D;
 public class LifeTile implements ImageTile{
 	
 	Point2D position;
+	String name;
 	
-	public LifeTile(Color name) {
+	public LifeTile(Color color) {
+		this.name = color.name;
 	}
 
 	@Override
@@ -30,7 +32,13 @@ public class LifeTile implements ImageTile{
 	@Override
 	public Point2D getPosition() {
 		// TODO Auto-generated method stub
-		return null;
+		return position;
+	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return name;
 	}
 	
 }

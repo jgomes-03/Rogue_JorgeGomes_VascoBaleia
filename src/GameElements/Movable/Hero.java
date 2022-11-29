@@ -10,6 +10,7 @@ import pt.iscte.poo.example.GameElement;
 import pt.iscte.poo.utils.Point2D;
 import pt.iscte.poo.utils.Vector2D;
 import GameElements.Pickable.Pickable;
+import GameElements.Pickable.Sword;
 import GameElements.Static.*;
 
 public class Hero extends Movable {
@@ -75,7 +76,16 @@ public class Hero extends Movable {
 	public boolean isDeadOnNextAttack() {
 		return getHitpoints()<1?true:false;
 	}
-	
+	@Override
+	public void attack(GameElement ge,int d) {
+		for(Pickable i : inventory) {
+			if(i instanceof Sword) {
+				super.attack(ge,getDamage()*2);
+				return;
+			}
+		}
+		super.attack(ge, getDamage());
+	}
 	
 	
 	public void updateLifeBar() {

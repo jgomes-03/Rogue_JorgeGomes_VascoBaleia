@@ -16,9 +16,11 @@ import pt.iscte.poo.utils.Vector2D;
 public abstract class Movable extends GameElement {
 
 	private int hitpoints;
+	private int damage;
 
 	public Movable(Point2D position) {
 		super(position);
+		damage = 1;
 	}
 
 	public static Lifebar createLifebar(Point2D point, Movable g) {
@@ -28,9 +30,17 @@ public abstract class Movable extends GameElement {
 	public void setHitpoints(int h) {
 		hitpoints = h;
 	}
+	
+	/*public void setDamage(int d) {
+		damage=d;
+	} Not sure if need it yet*/
 
 	public int getHitpoints() {
 		return hitpoints;
+	}
+	
+	public int getDamage() {
+		return damage;
 	}
 
 	public void move(int keyPressed) {
@@ -45,15 +55,15 @@ public abstract class Movable extends GameElement {
 		} else {
 			Movable enemy = (Movable)getEnemy(selection);
 			if (enemy != null && enemy instanceof Movable) {
-					attack(enemy);
+					attack(enemy,damage);
 			}
 		}
 	}
 
-	public void attack(GameElement ge) {
+	public void attack(GameElement ge, int damage) {
 		if (ge instanceof Movable) {
 			if(!((Movable)ge).isDeadOnNextAttack())	
-				((Movable) ge).hitpoints--;
+				((Movable) ge).hitpoints = ((Movable) ge).hitpoints-1;
 			else
 				kill((Movable)ge);
 			if(ge instanceof Skeleton) System.out.println(((Skeleton) ge).getHitpoints()); // DEBUG

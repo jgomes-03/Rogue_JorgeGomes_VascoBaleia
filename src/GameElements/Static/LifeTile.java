@@ -20,7 +20,7 @@ public class LifeTile implements ImageTile{
 	}
 	
 	public enum Color{
-		RED("red"), GREEN("green");
+		RED("red"), GREEN("green"),GreenRed("GreenRed");
 		
 	public String name;
 		

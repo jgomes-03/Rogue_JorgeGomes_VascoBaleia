@@ -6,7 +6,6 @@ import pt.iscte.poo.utils.Point2D;
 
 public class LifeTile extends GameElement{
 	
-	//Point2D position;
 	String name;
 	
 	public LifeTile(Color color,Point2D position) {

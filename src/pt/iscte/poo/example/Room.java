@@ -12,6 +12,8 @@ import pt.iscte.poo.utils.Point2D;
 
 public class Room {
 	List<GameElement> roomObjects = new ArrayList<>();
+	List<GameElement> lifeBar = new ArrayList<>();
+
 	String roomName;
 
 	public Room(String roomName) {

@@ -110,6 +110,10 @@ public class GameEngine implements Observer {
 		currentRoom--;
 		Room.generateMap(roomList.get(currentRoom));
 	}
+	
+	public void clearLifebar() {
+		roomList.get(currentRoom).lifeBar.clear();
+	}
 
 	@Override
 	public void update(Observed source) {

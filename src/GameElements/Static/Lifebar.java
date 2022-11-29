@@ -3,19 +3,34 @@ package GameElements.Static;
 import pt.iscte.poo.example.GameElement;
 import pt.iscte.poo.example.GameEngine;
 import pt.iscte.poo.utils.Point2D;
+import GameElements.Movable.Movable;
 import GameElements.Static.LifeTile;
 
 public class Lifebar extends GameElement {
 
-	public Lifebar(Point2D position) {
+	Movable LivingElement;
+	
+	public Lifebar(Point2D position, GameElement g) {
 		super(position);
-		for(int i = 0; i<GameEngine.GRID_WIDTH;i++) {
-			//addObject(GameElement.create("Green", new Point2D(i,11)), null, null, null);
-			GameEngine.getInstance().addObject(new LifeTile(type.RED,new Point2D(i,11)));
+		LivingElement = (Movable)g;
 		}
+
+	
+	public void update() {
+		GameEngine.getInstance().clearLifebar();
+		String color = "";
+		for(int i=0;i<5;i++) {
+			if(i < (LivingElement.getHitpoints()-1)*0.5) {
+				color = "Green";
+			} else if (i > (LivingElement.getHitpoints()-1)*0.5){
+				color = "Red";
+			} else color = "GreenRed";
+			GameEngine.getInstance().addObject(GameElement.create(color,new Point2D(i,GameEngine.GRID_HEIGHT),null,null,null));
+		}
+		if(LivingElement.isDeadOnNextAttack())
+			GameEngine.getInstance().GameOver();
 	}
 	
-
 	@Override
 	public String getName() {
 		// TODO Auto-generated method stub

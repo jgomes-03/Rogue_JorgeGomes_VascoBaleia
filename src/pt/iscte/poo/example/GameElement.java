@@ -1,10 +1,7 @@
 package pt.iscte.poo.example;
 
 import GameElements.Movable.*;
-import GameElements.Pickable.Armor;
-import GameElements.Pickable.HealingPotion;
-import GameElements.Pickable.Key;
-import GameElements.Pickable.Sword;
+import GameElements.Pickable.*;
 import GameElements.Static.*;
 import pt.iscte.poo.gui.ImageTile;
 import pt.iscte.poo.utils.Point2D;
@@ -55,6 +52,10 @@ public abstract class GameElement implements ImageTile {
 		return null;
 	}
 
+	public static Lifebar createLifebar(Point2D point, Movable g) {
+			return new Lifebar(point,g);
+	}
+	
 	public abstract boolean isTransposable();
 
 	public Point2D getPosition() {

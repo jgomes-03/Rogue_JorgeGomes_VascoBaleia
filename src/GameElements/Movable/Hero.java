@@ -16,11 +16,14 @@ public class Hero extends Movable {
 
 	private ArrayList<Pickable> inventory;
 	private static final int MAX_SIZE = 3;
+	private static final int MAX_LIFE = 10;
+	private Lifebar health;
 	
 	public Hero(Point2D position) {
 		super(position);
 		inventory = new ArrayList<>();
-		super.setHitpoints(10);
+		super.setHitpoints(MAX_LIFE);
+		health = createLifebar(position, this);
 	}
 
 	@Override
@@ -73,18 +76,10 @@ public class Hero extends Movable {
 		return getHitpoints()<1?true:false;
 	}
 	
+	
+	
 	public void updateLifeBar() {
-		String color = "";
-		for(int i=0;i<5;i++) {
-			if(i< super.getHitpoints()*0.5) {
-				color = "Green";
-			} else if (i > super.getHitpoints()*0.5){
-				color = "Red";
-			} else color = "GreenRed";
-			GameEngine.getInstance().addObject(GameElement.create(color,new Point2D(i,GameEngine.GRID_HEIGHT),null,null,null));
-		}
-		if(this.isDeadOnNextAttack())
-			GameEngine.getInstance().GameOver();
+		health.update();
 	}
 	
 	

@@ -50,6 +50,10 @@ public class GameEngine implements Observer {
 		nextRoom();
 		hero.updateLifeBar();
 		PlayerName = gui.askUser("Introduza o seu nome");
+		if(PlayerName == null) {
+			gui.dispose();
+			gui.setMessage("Username inválido");
+		}
 		gui.setStatusMessage("ROGUE - Turns: " + turns + " | Player: " + PlayerName);
 		gui.update();
 		// addObject(new Lifebar((super.,new Point2D(0,11)));

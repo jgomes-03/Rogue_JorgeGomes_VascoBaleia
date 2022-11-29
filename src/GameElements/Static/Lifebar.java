@@ -26,9 +26,9 @@ public class Lifebar extends GameElement {
 			} else if (i > (LivingElement.getHitpoints()-1)*0.5){
 				color = "Red";
 			} else color = "GreenRed";
-			LifeTile Lipton = new LifeTile(Color.valueOf(this.color));
+			//LifeTile Lipton = new LifeTile(Color.valueOf(color));
 			Point2D tile_pos = new Point2D(i,getPosition().getY()); //new Point2D(i,GameEngine.GRID_HEIGHT);
-			GameEngine.getInstance().addObject(GameElement.create(color,tile_pos,null,null,null));			
+			GameEngine.getInstance().addObject(GameElement.create(color,tile_pos,null,null,null));
 		}
 		if(LivingElement.isDeadOnNextAttack())
 			GameEngine.getInstance().GameOver();

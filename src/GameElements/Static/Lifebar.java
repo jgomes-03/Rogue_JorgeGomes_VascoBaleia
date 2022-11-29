@@ -5,6 +5,7 @@ import pt.iscte.poo.example.GameEngine;
 import pt.iscte.poo.utils.Point2D;
 import GameElements.Movable.Movable;
 import GameElements.Static.LifeTile;
+import GameElements.Static.LifeTile.Color;
 
 public class Lifebar extends GameElement {
 
@@ -27,6 +28,8 @@ public class Lifebar extends GameElement {
 			} else color = "GreenRed";
 			Point2D tile_pos = new Point2D(i,getPosition().getY()); //new Point2D(i,GameEngine.GRID_HEIGHT);
 			GameEngine.getInstance().addObject(GameElement.create(color,tile_pos,null,null,null));
+			LifeTile Lipton = new LifeTile(Color.RED);
+			
 		}
 		if(LivingElement.isDeadOnNextAttack())
 			GameEngine.getInstance().GameOver();

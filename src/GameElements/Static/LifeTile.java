@@ -4,12 +4,13 @@ import pt.iscte.poo.example.GameElement;
 import pt.iscte.poo.gui.ImageTile;
 import pt.iscte.poo.utils.Point2D;
 
-public class LifeTile implements ImageTile{
+public class LifeTile extends GameElement{
 	
-	Point2D position;
+	//Point2D position;
 	String name;
 	
-	public LifeTile(Color color) {
+	public LifeTile(Color color,Point2D position) {
+		super(position);
 		this.name = color.name;
 	}
 
@@ -20,7 +21,7 @@ public class LifeTile implements ImageTile{
 	}
 	
 	public enum Color{
-		RED("red"), GREEN("green"),GreenRed("GreenRed");
+		Red("Red"), Green("Green"),GreenRed("GreenRed"),RedGreen("RedGreen");
 		
 	public String name;
 		
@@ -30,15 +31,15 @@ public class LifeTile implements ImageTile{
 	}
 
 	@Override
-	public Point2D getPosition() {
-		// TODO Auto-generated method stub
-		return position;
-	}
-
-	@Override
 	public String getName() {
 		// TODO Auto-generated method stub
 		return name;
+	}
+
+	@Override
+	public boolean isTransposable() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 }

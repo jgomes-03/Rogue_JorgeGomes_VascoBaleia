@@ -12,15 +12,15 @@ public abstract class Pickable extends GameElement {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void pick() {
+	public void pick(int i) {
 		if (this != null) {
-			GameEngine.getInstance().getHero().getInventory().add(this);
+			GameEngine.getInstance().getHero().getInventory()[i] = this;
 			GameEngine.getInstance().removeObject(this);
 		}
 	}
 
 	public void drop(int item) {
-		GameEngine.getInstance().dropObject(GameEngine.getInstance().getHero().getInventory().get(item));
+		GameEngine.getInstance().dropObject(GameEngine.getInstance().getHero().getInventory()[item]);
 	}
 
 }

@@ -28,6 +28,8 @@ public abstract class GameElement implements ImageTile {
 			return new Skeleton(point);
 		case "Bat":
 			return new Bat(point);
+		case "Scorpio":
+			return new Scorpio(point);
 		case "Sword":
 			return new Sword(point);
 		case "Key":
@@ -40,14 +42,10 @@ public abstract class GameElement implements ImageTile {
 			return new Armor(point);
 		case "Thug":
 			return new Thug(point);
+		case "Thief":
+			return new Thief(point);
 		case "Treasure":
 			return new Treasure(point);
-		case "Green":
-			return new Green(point);
-		case "Red":
-			return new Red(point);
-		case "GreenRed":
-			return new GreenRed(point);
 		}
 		return null;
 	}

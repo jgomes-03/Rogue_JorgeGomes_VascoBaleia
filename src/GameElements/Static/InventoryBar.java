@@ -18,11 +18,13 @@ public class InventoryBar extends GameElement{
 	}
 
 	public void update() {
+		int i = pointer;
 		for(Pickable p : LivingElement.getInventory()) {
-			int i = pointer;
-			p.setPosition(new Point2D(i, getPosition().getY()));
-			i++;
-			GameEngine.getInstance().addObject(p);
+			if(p!=null) {
+				p.setPosition(new Point2D(i, getPosition().getY()));
+				GameEngine.getInstance().addObject(p);
+				i++;
+			}
 		}
 	}
 	

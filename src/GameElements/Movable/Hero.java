@@ -15,34 +15,33 @@ import GameElements.Static.*;
 
 public class Hero extends Movable {
 
-	private ArrayList<Pickable> inventory;
+	private Pickable[] inventory;
 	private static final int MAX_SIZE = 3;
 	private static final int MAX_LIFE = 10;
 	private Lifebar healthbar;
 	private InventoryBar inventorybar;
-	
+
 	public Hero(Point2D position) {
 		super(position);
-		inventory = new ArrayList<>();
+		inventory = new Pickable[MAX_SIZE];
 		super.setHitpoints(MAX_LIFE);
-		healthbar = createLifebar(new Point2D(0,GameEngine.GRID_HEIGHT), this);
-		inventorybar = new InventoryBar(new Point2D(6,GameEngine.GRID_HEIGHT),this);
-		//inventory.add(new Sword(new Point2D(2,2)));
-		//inventory.add(new Sword(new Point2D(2,2)));
+		healthbar = createLifebar(new Point2D(0, GameEngine.GRID_HEIGHT), this);
+		inventorybar = new InventoryBar(new Point2D(6, GameEngine.GRID_HEIGHT), this);
+		// inventory.add(new Sword(new Point2D(2,2)));
+		// inventory.add(new Sword(new Point2D(2,2)));
 	}
 
 	@Override
 	public String getName() {
 		return "Hero";
 	}
-	
-	
+
 	@Override
 	public int getLayer() {
 		return 1;
 	}
-	
-	public ArrayList<Pickable> getInventory(){
+
+	public Pickable[] getInventory() {
 		return inventory;
 	}
 
@@ -52,49 +51,38 @@ public class Hero extends Movable {
 	}
 
 	public void pickToInventory(Pickable p) {
-			if(inventory.isEmpty() || (inventory.size()<MAX_SIZE)) {
-				inventory.add(p);
-				p.pick();
+		for (int i = 0; i < inventory.length; i++) {
+			if (inventory[i]==null) {
+				inventory[i] = p;
+				p.pick(i);
 				inventorybar.update();
 				System.out.println("Picked:" + p);
 				return;
 			}
+		}
 	}
-	
+
 	public void dropFromInventory(Pickable p) {
-		for(int i=0;i<inventory.size();i++) {
-			if(p.equals(inventory.get(i))){
+		for (int i = 0; i < inventory.length; i++) {
+			if (p.equals(inventory[i])) {
 				p.drop(i);
-				inventory.remove(i);
+				inventory[i]=null;
 				return;
 			}
 		}
 	}
-	
+
 	public void nextRoom() {
-		
+
 	}
-	
-	
+
 	@Override
 	public boolean isDeadOnNextAttack() {
-		return getHitpoints()<1?true:false;
+		return getHitpoints() < 1 ? true : false;
 	}
-	@Override
-	public void attack(GameElement ge,int d) {
-		for(Pickable i : inventory) {
-			if(i instanceof Sword) {
-				super.attack(ge,getDamage()*2);
-				return;
-			}
-		}
-		super.attack(ge, getDamage());
-	}
-	
-	
+
 	public void updateLifeBar() {
 		healthbar.update();
 	}
-	
-	
+
 }

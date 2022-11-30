@@ -141,7 +141,7 @@ public class GameEngine implements Observer {
 			}
 		} 
 		else if(key == KeyEvent.VK_1 || key == KeyEvent.VK_2 || key == KeyEvent.VK_3) {
-			hero.dropFromInventory(hero.getInventory().get(key));
+			hero.dropFromInventory(hero.getInventory()[key]);
 		}
 		turns++;
 		hero.updateLifeBar();

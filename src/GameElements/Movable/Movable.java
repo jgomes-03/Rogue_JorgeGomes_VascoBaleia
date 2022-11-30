@@ -20,7 +20,7 @@ public abstract class Movable extends GameElement {
 
 	public Movable(Point2D position) {
 		super(position);
-		damage = 1;
+		setDamage(1);
 	}
 
 	public static Lifebar createLifebar(Point2D point, Movable g) {
@@ -41,6 +41,10 @@ public abstract class Movable extends GameElement {
 	
 	public int getDamage() {
 		return damage;
+	}
+	
+	public void setDamage(int d) {
+		this.damage = d;
 	}
 
 	public void move(int keyPressed) {
@@ -67,7 +71,7 @@ public abstract class Movable extends GameElement {
 			}
 			else
 				kill((Movable)ge);
-			//if(ge instanceof Skeleton) System.out.println(((Skeleton) ge).getHitpoints()); // DEBUG
+			if(ge instanceof Skeleton) System.out.println(((Skeleton) ge).getHitpoints()); // DEBUG
 			//if(ge instanceof Hero)((Hero) ge).updateLifeBar();
 		}
 	}

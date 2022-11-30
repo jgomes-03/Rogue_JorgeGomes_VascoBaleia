@@ -2,6 +2,7 @@ package GameElements.Pickable;
 
 
 
+import pt.iscte.poo.example.GameEngine;
 import pt.iscte.poo.utils.Point2D;
 
 public class Sword extends Pickable  {
@@ -26,7 +27,11 @@ public class Sword extends Pickable  {
 		return false;
 	}
 
-
+	@Override
+	public void pick(int i) {
+		super.pick(i);
+		GameEngine.getInstance().getHero().setDamage(GameEngine.getInstance().getHero().getDamage()*2);
+	}
 	
 
 

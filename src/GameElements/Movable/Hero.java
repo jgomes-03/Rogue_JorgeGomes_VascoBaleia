@@ -9,6 +9,7 @@ import pt.iscte.poo.example.GameEngine;
 import pt.iscte.poo.example.GameElement;
 import pt.iscte.poo.utils.Point2D;
 import pt.iscte.poo.utils.Vector2D;
+import GameElements.Pickable.Key;
 import GameElements.Pickable.Pickable;
 import GameElements.Pickable.Sword;
 import GameElements.Static.*;
@@ -27,7 +28,7 @@ public class Hero extends Movable {
 		super.setHitpoints(MAX_LIFE);
 		healthbar = createLifebar(new Point2D(0, GameEngine.GRID_HEIGHT), this);
 		inventorybar = new InventoryBar(new Point2D(6, GameEngine.GRID_HEIGHT), this);
-		// inventory.add(new Sword(new Point2D(2,2)));
+		 //inventory[0]= new Key(new Point2D(2,2),"KEY0");
 		// inventory.add(new Sword(new Point2D(2,2)));
 	}
 

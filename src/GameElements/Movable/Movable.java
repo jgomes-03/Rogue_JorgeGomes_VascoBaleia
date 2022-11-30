@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+import GameElements.Pickable.Key;
 import GameElements.Pickable.Pickable;
 import GameElements.Static.Door;
 import GameElements.Static.Lifebar;
@@ -24,25 +25,25 @@ public abstract class Movable extends GameElement {
 	}
 
 	public static Lifebar createLifebar(Point2D point, Movable g) {
-		return new Lifebar(point,g);
-}
-	
+		return new Lifebar(point, g);
+	}
+
 	public void setHitpoints(int h) {
 		hitpoints = h;
 	}
-	
-	/*public void setDamage(int d) {
-		damage=d;
-	} Not sure if need it yet*/
+
+	/*
+	 * public void setDamage(int d) { damage=d; } Not sure if need it yet
+	 */
 
 	public int getHitpoints() {
 		return hitpoints;
 	}
-	
+
 	public int getDamage() {
 		return damage;
 	}
-	
+
 	public void setDamage(int d) {
 		this.damage = d;
 	}
@@ -54,33 +55,45 @@ public abstract class Movable extends GameElement {
 				.selectBy(s -> s.getPosition().equals(nextPosition) && (!s.isTransposable()));
 		if (selection.isEmpty()) {
 			super.setPosition(nextPosition);
-		} else if(selection.get(0) instanceof Pickable && this instanceof Hero) {
-			GameEngine.getInstance().getHero().pickToInventory(((Pickable)selection.get(0)));
-		} else {
-			Movable enemy = (Movable)getEnemy(selection);
-			if (enemy != null && enemy instanceof Movable) {
-					attack(enemy,damage);
+		} else if (this instanceof Hero) {
+			if (selection.get(0) instanceof Pickable) {
+				GameEngine.getInstance().getHero().pickToInventory(((Pickable) selection.get(0)));
+			} else if (selection.get(0) instanceof Door) {
+				if (selection.get(0).getName() == "DoorClosed") {
+					for (Pickable p : GameEngine.getInstance().getHero().getInventory()) {
+						if (p instanceof Key) {
+							if (((Key) p).getKeycode().equals(((Door) selection.get(0)).getKeycode())) {
+								((Door) selection.get(0)).openDoor();
+							}
+						}
+					}
+				}
+			} else {
+				Movable enemy = (Movable) getEnemy(selection);
+				if (enemy != null && enemy instanceof Movable) {
+					attack(enemy, damage);
+				}
 			}
 		}
 	}
 
 	public void attack(GameElement ge, int damage) {
 		if (ge instanceof Movable) {
-			if(!((Movable)ge).isDeadOnNextAttack())	{
-				((Movable) ge).hitpoints = ((Movable) ge).hitpoints-damage;
-			}
-			else
-				kill((Movable)ge);
-			if(ge instanceof Skeleton) System.out.println(((Skeleton) ge).getHitpoints()); // DEBUG
-			//if(ge instanceof Hero)((Hero) ge).updateLifeBar();
+			if (!((Movable) ge).isDeadOnNextAttack()) {
+				((Movable) ge).hitpoints = ((Movable) ge).hitpoints - damage;
+			} else
+				kill((Movable) ge);
+			if (ge instanceof Skeleton)
+				System.out.println(((Skeleton) ge).getHitpoints()); // DEBUG
+			// if(ge instanceof Hero)((Hero) ge).updateLifeBar();
 		}
 	}
-	
+
 	public void kill(Movable ge) {
-		if(!(ge instanceof Hero))
+		if (!(ge instanceof Hero))
 			GameEngine.getInstance().removeObject(ge);
 	}
-	
+
 	public int getKey(Direction d) {
 		switch (d) {
 		case UP:
@@ -104,9 +117,9 @@ public abstract class Movable extends GameElement {
 		return null;
 
 	}
-	
+
 	public boolean isDeadOnNextAttack() {
-		return getHitpoints()<=1?true:false;
+		return getHitpoints() <= 1 ? true : false;
 	}
-	
+
 }

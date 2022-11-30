@@ -18,14 +18,15 @@ public class Hero extends Movable {
 	private ArrayList<Pickable> inventory;
 	private static final int MAX_SIZE = 3;
 	private static final int MAX_LIFE = 10;
-	private Lifebar health;
+	private Lifebar healthbar;
+	private InventoryBar inventorybar;
 	
 	public Hero(Point2D position) {
 		super(position);
 		inventory = new ArrayList<>();
 		super.setHitpoints(MAX_LIFE);
-		health = createLifebar(new Point2D(0,GameEngine.GRID_HEIGHT), this);
-		
+		healthbar = createLifebar(new Point2D(0,GameEngine.GRID_HEIGHT), this);
+		inventorybar = new InventoryBar(new Point2D(6,GameEngine.GRID_HEIGHT),this);
 		inventory.add(new Sword(new Point2D(2,2)));
 		inventory.add(new Sword(new Point2D(2,2)));
 	}
@@ -55,6 +56,7 @@ public class Hero extends Movable {
 			if(inventory.isEmpty() || (inventory.indexOf(i)<MAX_SIZE && i!=null)) {
 				inventory.add(p);
 				p.pick();
+				inventorybar.update();
 				System.out.println("Picked:" + p);
 				return;
 			}
@@ -93,7 +95,7 @@ public class Hero extends Movable {
 	
 	
 	public void updateLifeBar() {
-		health.update();
+		healthbar.update();
 	}
 	
 	

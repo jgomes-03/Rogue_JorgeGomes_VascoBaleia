@@ -52,7 +52,9 @@ public class GameEngine implements Observer {
 		PlayerName = gui.askUser("Introduza o seu nome");
 		if (PlayerName == null) {
 			gui.dispose();
-			gui.setMessage("Username inválido");
+			gui.setMessage("Deverá escolher um username para puder jogar");
+			System.exit(0);
+			return;
 		}
 		addObject(new Sword(new Point2D(0, 10)));
 		gui.setStatusMessage("ROGUE - Turns: " + turns + " | Player: " + PlayerName);

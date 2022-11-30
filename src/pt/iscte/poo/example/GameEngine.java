@@ -10,6 +10,7 @@ import java.util.function.Predicate;
 import GameElements.Movable.Hero;
 import GameElements.Movable.Movable;
 import GameElements.Pickable.Pickable;
+import GameElements.Pickable.Sword;
 import pt.iscte.poo.gui.ImageMatrixGUI;
 import pt.iscte.poo.observer.Observed;
 import pt.iscte.poo.observer.Observer;
@@ -54,9 +55,9 @@ public class GameEngine implements Observer {
 			gui.dispose();
 			gui.setMessage("Username inválido");
 		}
+		addObject(new Sword(new Point2D(0,10)));
 		gui.setStatusMessage("ROGUE - Turns: " + turns + " | Player: " + PlayerName);
 		gui.update();
-		// addObject(new Lifebar((super.,new Point2D(0,11)));
 	}
 	
 	public void GameOver() {
@@ -128,7 +129,6 @@ public class GameEngine implements Observer {
 				GameElement current = iterator.next();
 				if (current instanceof Hero) {
 					hero.move(key);
-					
 					turns++;
 					hero.updateLifeBar();
 					gui.setStatusMessage("ROGUE - Turns:" + turns);

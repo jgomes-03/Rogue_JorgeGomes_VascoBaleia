@@ -62,20 +62,16 @@ public abstract class Movable extends GameElement {
 
 	public void attack(GameElement ge, int damage) {
 		if (ge instanceof Movable) {
-			if(!((Movable)ge).isDeadOnNextAttack())	
+			if(!((Movable)ge).isDeadOnNextAttack())	{
 				((Movable) ge).hitpoints = ((Movable) ge).hitpoints-damage;
+			}
 			else
 				kill((Movable)ge);
-			if(ge instanceof Skeleton) System.out.println(((Skeleton) ge).getHitpoints()); // DEBUG
+			//if(ge instanceof Skeleton) System.out.println(((Skeleton) ge).getHitpoints()); // DEBUG
+			//if(ge instanceof Hero)((Hero) ge).updateLifeBar();
 		}
 	}
 	
-	public void attackHero(GameElement ge, int damage) {
-		if(ge instanceof Hero)
-			attack(ge, damage);
-	}
-
-
 	public void kill(Movable ge) {
 		if(!(ge instanceof Hero))
 			GameEngine.getInstance().removeObject(ge);

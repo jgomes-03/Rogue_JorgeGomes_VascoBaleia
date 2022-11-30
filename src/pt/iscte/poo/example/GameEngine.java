@@ -28,7 +28,7 @@ public class GameEngine implements Observer {
 	private Hero hero;
 	private int turns;
 	private int currentRoom = 0;
-	
+
 	private String PlayerName;
 
 	List<Room> roomList = new ArrayList<>();
@@ -46,20 +46,19 @@ public class GameEngine implements Observer {
 	}
 
 	public void start() {
-		addRooms();
 		addHero();
-		nextRoom(GameEngine.getInstance().roomList.get(currentRoom).getName(),getHero().getPosition());
+		nextRoom("room0", getHero().getPosition());
 		hero.updateLifeBar();
 		PlayerName = gui.askUser("Introduza o seu nome");
-		if(PlayerName == null) {
+		if (PlayerName == null) {
 			gui.dispose();
 			gui.setMessage("Username inválido");
 		}
-		addObject(new Sword(new Point2D(0,10)));
+		addObject(new Sword(new Point2D(0, 10)));
 		gui.setStatusMessage("ROGUE - Turns: " + turns + " | Player: " + PlayerName);
 		gui.update();
 	}
-	
+
 	public void GameOver() {
 		gui.dispose();
 		gui.setMessage("Game Over " + PlayerName + "!");
@@ -88,28 +87,34 @@ public class GameEngine implements Observer {
 		gui.removeImage(ge);
 	}
 
-	
 	public void dropObject(Pickable p) {
 		p.setPosition(hero.getPosition());
 		addObject(p);
 	}
 
-	private void addRooms() {
+	private void addRoom(String nextRoom) {
 		File dir = new File("rooms/");
 		for (int i = 0; i < dir.list().length; i++) {
-			roomList.add(new Room("room" + i));
+			if (nextRoom.equals("room" + i)) {
+				roomList.add(new Room("room" + i));
+				Room.generateMap(GameEngine.getInstance().roomList.get(i));
+				currentRoom = i;
+				return;
+			}
 		}
 	}
 
 	public void nextRoom(String nextRoom, Point2D heroNextPosition) {
-		Room r=null;
-		for(Room i : GameEngine.getInstance().roomList) {
-			if(i.getName().equals(nextRoom)) {
-				r = i;
-				currentRoom = GameEngine.getInstance().roomList.indexOf(i);
+		if (!GameEngine.getInstance().roomList.isEmpty()) {
+			for (int i = 0; i < GameEngine.getInstance().roomList.size(); i++) {
+				if (GameEngine.getInstance().roomList.get(i).getName().equals(nextRoom)) {
+					currentRoom = i;
+					break;
+				} else if(i==GameEngine.getInstance().roomList.size()-1){
+					addRoom(nextRoom);
+				}
 			}
-		}
-		Room.generateMap(GameEngine.getInstance().roomList.get(currentRoom));
+		} else addRoom(nextRoom);
 		roomList.get(currentRoom).roomObjects.add(hero);
 		for (GameElement ge : roomList.get(currentRoom).roomObjects) {
 			gui.addImage(ge);
@@ -118,11 +123,6 @@ public class GameEngine implements Observer {
 		hero.setPosition(heroNextPosition);
 	}
 
-	private void previousRoom() {
-		currentRoom--;
-		Room.generateMap(roomList.get(currentRoom));
-	}
-	
 	public void clearLifebar() {
 		roomList.get(currentRoom).lifeBar.clear();
 	}
@@ -146,9 +146,9 @@ public class GameEngine implements Observer {
 					((Movable) current).move(key);
 				}
 			}
-		} 
-		else if((key == KeyEvent.VK_1 || key == KeyEvent.VK_2 || key == KeyEvent.VK_3 )&& hero.getInventory()[Pickable.getInventorySlot(key)-1] != null ) {
-			hero.dropFromInventory(hero.getInventory()[Pickable.getInventorySlot(key)-1]);
+		} else if ((key == KeyEvent.VK_1 || key == KeyEvent.VK_2 || key == KeyEvent.VK_3)
+				&& hero.getInventory()[Pickable.getInventorySlot(key) - 1] != null) {
+			hero.dropFromInventory(hero.getInventory()[Pickable.getInventorySlot(key) - 1]);
 		}
 		turns++;
 		hero.updateLifeBar();
@@ -167,5 +167,5 @@ public class GameEngine implements Observer {
 		}
 		return result;
 	}
-	
+
 }

@@ -64,10 +64,11 @@ public abstract class Movable extends GameElement {
 						if (p instanceof Key) {
 							if (((Key) p).getKeycode().equals(((Door) selection.get(0)).getKeycode())) {
 								((Door) selection.get(0)).openDoor();
-								return;
+								
 							}
 						}
 					}
+					return;
 				} else {
 					GameEngine.getInstance().nextRoom(((Door) selection.get(0)).getNextRoom(),((Door) selection.get(0)).getNextRoomPosition());
 					return;

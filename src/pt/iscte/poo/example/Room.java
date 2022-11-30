@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import GameElements.Pickable.Key;
+import GameElements.Static.Door;
 import pt.iscte.poo.gui.ImageTile;
 //import pt.iscte.poo.gui.ImageTile;
 import pt.iscte.poo.utils.Point2D;
@@ -53,13 +55,14 @@ public class Room {
 					GameElement currentElement = null;
 					if (lineRead.hasNext()) {
 						String keyOrNextRoom = lineRead.next();
-						if (lineRead.hasNext()) {
+						if (lineRead.hasNext()) { //ITS A DOOR
 							int pxD = lineRead.nextInt();
 							int pyD = lineRead.nextInt();
 							if (lineRead.hasNext()) {
+								String keyCode = lineRead.next();
 								// DOOR W/ KEY
 								currentElement = GameElement.create(name, new Point2D(px, py), keyOrNextRoom,
-										new Point2D(pxD, pyD), lineRead.next());
+										new Point2D(pxD, pyD), keyCode);
 							} else {
 								// DOOR WITHOUT/ KEY
 								currentElement = GameElement.create(name, new Point2D(px, py), keyOrNextRoom,

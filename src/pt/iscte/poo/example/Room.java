@@ -14,15 +14,19 @@ public class Room {
 	List<GameElement> roomObjects = new ArrayList<>();
 	List<GameElement> lifeBar = new ArrayList<>();
 
-	String roomName;
+	private String roomName;
 
 	public Room(String roomName) {
 		this.roomName = roomName;
 	}
-
+	
+	public String getName() {
+		return roomName;
+	}
+	
 	public void generateCurrentMap() {
 		try {
-			Scanner roomRead = new Scanner(new File(roomName));
+			Scanner roomRead = new Scanner(new File("rooms/" + roomName+ ".txt"));
 			int i = 0;
 
 			// reads the map

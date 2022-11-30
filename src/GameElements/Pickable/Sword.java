@@ -33,6 +33,13 @@ public class Sword extends Pickable  {
 		GameEngine.getInstance().getHero().setDamage(GameEngine.getInstance().getHero().getDamage()*2);
 	}
 	
+	@Override
+	public void drop(int i) {
+		super.drop(i);
+		GameEngine.getInstance().getHero().setDamage(GameEngine.getInstance().getHero().getDamage()/2);
+	}
+	
+	
 
 
 }

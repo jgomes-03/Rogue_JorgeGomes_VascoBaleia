@@ -50,9 +50,18 @@ public class Door extends GameElement  {
 	@Override
 	public boolean isTransposable() {
 		// TODO Auto-generated method stub
-		if(isClosed) {
+		/*if(isClosed) {
 			return false;
-		} else return true;
+		} else return true;*/
+		return false;
+	}
+
+	public String getNextRoom() {
+		return nextRoom;
+	}
+
+	public Point2D getNextRoomPosition() {
+		return nextRoomPosition;
 	}
 	
 	

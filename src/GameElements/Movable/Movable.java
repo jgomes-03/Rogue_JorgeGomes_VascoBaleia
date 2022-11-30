@@ -69,6 +69,11 @@ public abstract class Movable extends GameElement {
 			if(ge instanceof Skeleton) System.out.println(((Skeleton) ge).getHitpoints()); // DEBUG
 		}
 	}
+	
+	public void attackHero(GameElement ge, int damage) {
+		if(ge instanceof Hero)
+			attack(ge, damage);
+	}
 
 
 	public void kill(Movable ge) {

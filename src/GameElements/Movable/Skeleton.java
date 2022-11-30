@@ -29,11 +29,16 @@ public class Skeleton extends Movable  {
 	}
 	
 
-
 	@Override
 	public void move(int keyPressed) {
 		if(GameEngine.getInstance().getTurns()%2==0) {
 			super.move(keyPressed);
 		}
+	}
+	
+	@Override
+	public void attack(GameElement ge, int damage) {
+		if(ge instanceof Hero)
+			super.attack(ge, damage);
 	}
 }

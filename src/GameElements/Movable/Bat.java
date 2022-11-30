@@ -1,6 +1,7 @@
 package GameElements.Movable;
 
 
+import pt.iscte.poo.example.GameElement;
 import pt.iscte.poo.utils.Direction;
 import pt.iscte.poo.utils.Point2D;
 
@@ -38,11 +39,11 @@ public class Bat extends Movable {
 		}
 	}
 	
-//	@Override
-//	public void attack(GameElement ge) {
-//		if(Math.random() > 0.5) {
-//			super.attack(ge);
-//		}
-//	}
+
+	@Override
+	public void attack(GameElement ge, int damage) {
+		if(ge instanceof Hero && Math.random() > 0.5)
+			super.attack(ge, damage);
+	}
 
 }

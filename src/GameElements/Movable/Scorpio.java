@@ -41,9 +41,9 @@ public class Scorpio extends Movable {
 	
 
 	@Override
-	public void attack(GameElement ge, int damage) {
-		if(ge instanceof Hero && Math.random() > 0.5)
-			super.attack(ge, damage);
+	public void attack(Movable m, int damage) {
+		if(m instanceof Hero && Math.random() > 0.5)
+			super.attack(m, damage);
 	}
 
 }

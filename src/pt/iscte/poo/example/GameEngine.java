@@ -87,6 +87,7 @@ public class GameEngine implements Observer {
 	public void removeObject(GameElement ge) {
 		roomList.get(currentRoom).roomObjects.remove(ge);
 		gui.removeImage(ge);
+		gui.removeImage(ge);
 	}
 
 	public void dropObject(Pickable p) {
@@ -99,7 +100,13 @@ public class GameEngine implements Observer {
 		for (int i = 0; i < dir.list().length; i++) {
 			if (nextRoom.equals("room" + i)) {
 				roomList.add(new Room("room" + i));
-				Room.generateMap(GameEngine.getInstance().roomList.get(i));
+				Room next = null;
+				for(Room r : GameEngine.getInstance().roomList) {
+					if(r.getName().equals(nextRoom)) {
+						next = r;
+					}
+				}
+				Room.generateMap(GameEngine.getInstance().roomList.get(GameEngine.getInstance().roomList.indexOf(next)));
 				currentRoom = i;
 				return;
 			}
@@ -107,14 +114,17 @@ public class GameEngine implements Observer {
 	}
 
 	public void nextRoom(String nextRoom, Point2D heroNextPosition) {
+		gui.clearImages();
 		if (!GameEngine.getInstance().roomList.isEmpty()) {
 			for (int i = 0; i < GameEngine.getInstance().roomList.size(); i++) {
 				if (GameEngine.getInstance().roomList.get(i).getName().equals(nextRoom)) {
 					currentRoom = i;
 					break;
+					
 				} else if(i==GameEngine.getInstance().roomList.size()-1){
 					addRoom(nextRoom);
 				}
+				
 			}
 		} else addRoom(nextRoom);
 		roomList.get(currentRoom).roomObjects.add(hero);

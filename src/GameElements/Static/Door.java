@@ -1,7 +1,6 @@
 package GameElements.Static;
 
 
-import pt.iscte.poo.example.GameEngine;
 import pt.iscte.poo.example.GameElement;
 import pt.iscte.poo.utils.Point2D;
 
@@ -14,14 +13,16 @@ public class Door extends GameElement  {
 
 	public Door(Point2D position,String nextRoom,Point2D nextRoomPosition,String keyCode) {
 		super(position);
+		if(keyCode == null) {
+			isClosed = false;
+		} else isClosed = true;
 		this.keyCode = keyCode;
 		this.nextRoom = nextRoom;
 		this.nextRoomPosition = nextRoomPosition;
-		isClosed = true;
 	}
 	
 	public String getName() {
-		if(isClosed) {
+		if(isClosed==true) {
 			return "DoorClosed";
 		} else return "DoorOpen";
 	}

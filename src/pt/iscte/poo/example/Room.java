@@ -66,7 +66,7 @@ public class Room {
 							} else {
 								// DOOR WITHOUT/ KEY
 								currentElement = GameElement.create(name, new Point2D(px, py), keyOrNextRoom,
-										new Point2D(pxD, pxD), null);
+										new Point2D(pxD, pyD), null);
 							}
 						} else {
 							currentElement = GameElement.create(name, new Point2D(px, py), null, null, keyOrNextRoom);

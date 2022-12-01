@@ -32,9 +32,6 @@ public abstract class Movable extends GameElement {
 		hitpoints = h;
 	}
 
-	/*
-	 * public void setDamage(int d) { damage=d; } Not sure if need it yet
-	 */
 
 	public int getHitpoints() {
 		return hitpoints;
@@ -74,24 +71,22 @@ public abstract class Movable extends GameElement {
 					return;
 				}
 			} else {
-				Movable enemy = (Movable) getEnemy(selection);
+				GameElement enemy = getEnemy(selection);
 				if (enemy != null && enemy instanceof Movable) {
-					attack(enemy, damage);
+					attack((Movable)enemy, damage);
 				}
 			}
 		}
 	}
 
-	public void attack(GameElement ge, int damage) {
-		if (ge instanceof Movable) {
-			if (!((Movable) ge).isDeadOnNextAttack()) {
-				((Movable) ge).hitpoints = ((Movable) ge).hitpoints - damage;
+	public void attack(Movable m, int damage) {
+			if (!m.isDeadOnNextAttack()) {
+				m.hitpoints = m.hitpoints - damage;
 			} else
-				kill((Movable) ge);
-			if (ge instanceof Skeleton)
-				System.out.println(((Skeleton) ge).getHitpoints()); // DEBUG
-			// if(ge instanceof Hero)((Hero) ge).updateLifeBar();
-		}
+				kill(m);
+			if (m instanceof Skeleton)
+				System.out.println(((Skeleton) m).getHitpoints()); // DEBUG
+			// if(m instanceof Hero)((Hero) m).updateLifeBar();
 	}
 
 	public void kill(Movable ge) {

@@ -37,8 +37,8 @@ public class Skeleton extends Movable  {
 	}
 	
 	@Override
-	public void attack(GameElement ge, int damage) {
-		if(ge instanceof Hero)
-			super.attack(ge, damage);
+	public void attack(Movable m, int damage) {
+		if(m instanceof Hero)
+			super.attack(m, damage);
 	}
 }

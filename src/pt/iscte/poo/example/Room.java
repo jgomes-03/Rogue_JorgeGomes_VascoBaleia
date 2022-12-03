@@ -32,7 +32,6 @@ public class Room {
 		try {
 			Scanner roomRead = new Scanner(new File("rooms/" + roomName+ ".txt"));
 			int i = 0;
-
 			// reads the map
 			while (roomRead.hasNext() && i < GameEngine.GRID_HEIGHT) {
 				String current = roomRead.nextLine();

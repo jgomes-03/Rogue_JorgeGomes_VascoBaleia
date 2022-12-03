@@ -48,7 +48,7 @@ public class GameEngine implements Observer {
 	public void start() {
 		addHero();
 		nextRoom("room0", getHero().getPosition());
-		hero.updateLifeBar();
+		hero.updateHeroBars();
 		PlayerName = gui.askUser("Introduza o seu nome");
 		if (PlayerName == null) {
 			gui.dispose();
@@ -123,6 +123,7 @@ public class GameEngine implements Observer {
 					
 				} else if(i==GameEngine.getInstance().roomList.size()-1){
 					addRoom(nextRoom);
+					hero.updateHeroBars();
 				}
 				
 			}
@@ -131,12 +132,15 @@ public class GameEngine implements Observer {
 		for (GameElement ge : roomList.get(currentRoom).roomObjects) {
 			gui.addImage(ge);
 		}
-		// addObject(hero);
 		hero.setPosition(heroNextPosition);
 	}
 
-	public void clearLifebar() {
+	public void clearLifeBar() {
 		roomList.get(currentRoom).lifeBar.clear();
+	}
+	
+	public void clearInventoryBar() {
+		roomList.get(currentRoom).inventoryBar.clear();
 	}
 
 	@Override
@@ -149,7 +153,6 @@ public class GameEngine implements Observer {
 				if (current instanceof Hero) {
 					hero.move(key);
 					turns++;
-					hero.updateLifeBar();
 					gui.setStatusMessage("ROGUE - Turns:" + turns);
 					gui.update();
 					return;
@@ -162,8 +165,6 @@ public class GameEngine implements Observer {
 				&& hero.getInventory()[Pickable.getInventorySlot(key) - 1] != null) {
 			hero.dropFromInventory(hero.getInventory()[Pickable.getInventorySlot(key) - 1]);
 		}
-		turns++;
-		hero.updateLifeBar();
 		gui.setStatusMessage("ROGUE - Turns:" + turns);
 		gui.update();
 	}

@@ -8,13 +8,15 @@ import java.util.Scanner;
 
 import GameElements.Pickable.Key;
 import GameElements.Static.Door;
+import GameElements.Static.LifeTile;
 import pt.iscte.poo.gui.ImageTile;
 //import pt.iscte.poo.gui.ImageTile;
 import pt.iscte.poo.utils.Point2D;
 
 public class Room {
 	List<GameElement> roomObjects = new ArrayList<>();
-	List<GameElement> lifeBar = new ArrayList<>();
+	List<LifeTile> lifeBar = new ArrayList<>();
+	List<GameElement>  inventoryBar = new ArrayList<>();
 
 	private String roomName;
 

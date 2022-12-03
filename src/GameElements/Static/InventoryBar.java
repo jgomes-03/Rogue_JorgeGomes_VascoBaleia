@@ -18,6 +18,7 @@ public class InventoryBar extends GameElement{
 	}
 
 	public void update() {
+		
 		int i = pointer;
 		for(Pickable p : LivingElement.getInventory()) {
 			if(p!=null) {

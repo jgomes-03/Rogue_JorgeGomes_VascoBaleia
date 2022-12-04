@@ -152,6 +152,7 @@ public class GameEngine implements Observer {
 				GameElement current = iterator.next();
 				if (current instanceof Hero) {
 					hero.move(key);
+					hero.updateHeroBars();
 					turns++;
 					gui.setStatusMessage("ROGUE - Turns:" + turns);
 					gui.update();

@@ -87,14 +87,15 @@ public class GameEngine implements Observer {
 		gui.addImage(ge);
 	}
 	
-	public void addtoBar(GameElement ge) {
-		if(ge.getName()=="LifeTile") {
+	public void addToBar(GameElement ge) {
+		if(ge instanceof LifeTile) {
 			//roomList.get(currentRoom).LifeBarTiles.clear();
 			roomList.get(currentRoom).LifeBarTiles.add((LifeTile) ge);
 		}
 		else if(ge instanceof Pickable) {
 			//roomList.get(currentRoom).InventoryBarTiles.clear();
 			roomList.get(currentRoom).InventoryBarTiles.add((Pickable) ge);
+			
 		}
 		gui.addImage(ge);
 	}
@@ -137,8 +138,7 @@ public class GameEngine implements Observer {
 					break;
 					
 				} else if(i==GameEngine.getInstance().roomList.size()-1){
-					addRoom(nextRoom);
-					
+					addRoom(nextRoom);	
 				}
 				
 			}

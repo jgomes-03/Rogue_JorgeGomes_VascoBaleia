@@ -23,7 +23,7 @@ public class InventoryBar extends GameElement{
 		for(Pickable p : LivingElement.getInventory()) {
 			if(p!=null) {
 				p.setPosition(new Point2D(drawStartPoint+p.getItemIndex(), getPosition().getY()));
-				GameEngine.getInstance().addtoBar(p);
+				GameEngine.getInstance().addToBar(p);
 			}
 		}
 	}

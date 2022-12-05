@@ -31,19 +31,16 @@ public class InventoryBar extends GameElement{
 	
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
 		return "Inventory";
 	}
 
 	@Override
 	public int getLayer() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public boolean isTransposable() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 	

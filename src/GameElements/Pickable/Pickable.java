@@ -16,7 +16,7 @@ public abstract class Pickable extends GameElement {
 
 	public void pick(int i) {
 		if (this != null) {
-			GameEngine.getInstance().getHero().getInventory()[i] = this;
+			//GameEngine.getInstance().getHero().getInventory()[i] = this;
 			GameEngine.getInstance().removeObject(this);
 			GameEngine.getInstance().getHero().setPosition(this.getPosition());
 		}

@@ -65,6 +65,7 @@ public class GameEngine implements Observer {
 	public void GameOver() {
 		gui.dispose();
 		gui.setMessage("Game Over " + PlayerName + "!");
+		System.exit(0);
 	}
 
 	public int getTurns() {
@@ -136,7 +137,7 @@ public class GameEngine implements Observer {
 					
 				} else if(i==GameEngine.getInstance().roomList.size()-1){
 					addRoom(nextRoom);
-					hero.updateHeroBars();
+					
 				}
 				
 			}
@@ -145,6 +146,7 @@ public class GameEngine implements Observer {
 		for (GameElement ge : roomList.get(currentRoom).roomObjects) {
 			gui.addImage(ge);
 		}
+		hero.updateHeroBars();
 		hero.setPosition(heroNextPosition);
 	}
 

@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.function.Predicate;
 
+import GameElements.Consumable.Consumable;
 import GameElements.Movable.Hero;
 import GameElements.Movable.Movable;
 import GameElements.Pickable.Pickable;
@@ -88,12 +89,12 @@ public class GameEngine implements Observer {
 	
 	public void addtoBar(GameElement ge) {
 		if(ge.getName()=="LifeTile") {
-			//roomList.get(currentRoom).LifeBar.clear();
-			roomList.get(currentRoom).LifeBar.add((LifeTile) ge);
+			//roomList.get(currentRoom).LifeBarTiles.clear();
+			roomList.get(currentRoom).LifeBarTiles.add((LifeTile) ge);
 		}
 		else if(ge instanceof Pickable) {
-			//roomList.get(currentRoom).InventoryBar.clear();
-			roomList.get(currentRoom).InventoryBar.add((Pickable) ge);
+			//roomList.get(currentRoom).InventoryBarTiles.clear();
+			roomList.get(currentRoom).InventoryBarTiles.add((Pickable) ge);
 		}
 		gui.addImage(ge);
 	}
@@ -150,16 +151,16 @@ public class GameEngine implements Observer {
 		hero.setPosition(heroNextPosition);
 	}
 
-	public void clearLifeBar() {
-		for(LifeTile lt: roomList.get(currentRoom).LifeBar)
+	public void clearLifeBarTiles() {
+		for(LifeTile lt: roomList.get(currentRoom).LifeBarTiles)
 			gui.removeImage(lt);
-		roomList.get(currentRoom).LifeBar.clear();
+		roomList.get(currentRoom).LifeBarTiles.clear();
 	}
 	
-	public void clearInventoryBar() {
-		for(Pickable p: roomList.get(currentRoom).InventoryBar)
+	public void clearInventoryBarTiles() {
+		for(Pickable p: roomList.get(currentRoom).InventoryBarTiles)
 			gui.removeImage(p);
-		roomList.get(currentRoom).InventoryBar.clear();
+		roomList.get(currentRoom).InventoryBarTiles.clear();
 	}
 
 	@Override
@@ -181,9 +182,15 @@ public class GameEngine implements Observer {
 					((Movable) current).move(key);
 				}
 			}
-		} else if ((key == KeyEvent.VK_1 || key == KeyEvent.VK_2 || key == KeyEvent.VK_3)
-				&& hero.getInventory()[Pickable.getInventorySlot(key) - 1] != null) {
-			hero.dropFromInventory(hero.getInventory()[Pickable.getInventorySlot(key) - 1]);
+		} else if (key == KeyEvent.VK_1 || key == KeyEvent.VK_2 || key == KeyEvent.VK_3){
+			hero.getInventoryBar().setSelectPointer(Pickable.getInventorySlot(key));
+		} else if (key == KeyEvent.VK_D && hero.getInventory()[hero.getInventoryBar().getSelectPointer()-1] != null) { //DROP
+				hero.dropFromInventory(hero.getInventory()[hero.getInventoryBar().getSelectPointer()-1]);
+		} else if ((key == KeyEvent.VK_C)) {
+				if(hero.getInventory()[hero.getInventoryBar().getSelectPointer()-1] instanceof Consumable) {
+					((Consumable)hero.getInventory()[hero.getInventoryBar().getSelectPointer()-1]).consume(hero.getInventoryBar().getSelectPointer()-1);
+					hero.updateHeroBars();		
+			}
 		}
 		gui.setStatusMessage("ROGUE - Turns:" + turns);
 		gui.update();

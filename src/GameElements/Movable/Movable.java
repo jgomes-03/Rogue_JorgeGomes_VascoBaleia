@@ -76,6 +76,7 @@ public abstract class Movable extends GameElement {
 					return;
 				}
 			}
+			System.out.println(GameEngine.getInstance().getHero().getHitpoints());
 		} 
 			GameElement enemy = getEnemy(selection);
 			if (enemy != null && enemy instanceof Movable)
@@ -88,8 +89,6 @@ public abstract class Movable extends GameElement {
 			m.hitpoints = m.hitpoints - damage;
 		} else
 			kill(m);
-		if (m instanceof Skeleton)
-			System.out.println(((Skeleton) m).getHitpoints()); // DEBUG
 		// if(m instanceof Hero)((Hero) m).updateLifeBar();
 	}
 

@@ -8,20 +8,21 @@ import pt.iscte.poo.example.*;
 public class InventoryBar extends GameElement{
 
 	Movable LivingElement;
-	int pointer;
+	private int drawStartPoint;
+	private int selectPointer;
 	
 	public InventoryBar(Point2D position, Movable m) {
 		super(position);
 		LivingElement = m;
-		pointer = position.getX();
-		//update();
+		drawStartPoint = position.getX();
+		setSelectPointer(1);
 	}
 
 	public void update() {
-		GameEngine.getInstance().clearInventoryBar();
+		GameEngine.getInstance().clearInventoryBarTiles();
 		for(Pickable p : LivingElement.getInventory()) {
 			if(p!=null) {
-				p.setPosition(new Point2D(pointer+p.getItemIndex(), getPosition().getY()));
+				p.setPosition(new Point2D(drawStartPoint+p.getItemIndex(), getPosition().getY()));
 				GameEngine.getInstance().addtoBar(p);
 			}
 		}
@@ -40,6 +41,14 @@ public class InventoryBar extends GameElement{
 	@Override
 	public boolean isTransposable() {
 		return false;
+	}
+
+	public void setSelectPointer(int selectPointer) {
+		this.selectPointer = selectPointer;
+	}
+
+	public int getSelectPointer() {
+		return selectPointer;
 	}
 	
 }

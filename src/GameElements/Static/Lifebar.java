@@ -18,7 +18,7 @@ public class Lifebar extends GameElement {
 
 	
 	public void update() {
-		GameEngine.getInstance().clearLifeBar();
+		GameEngine.getInstance().clearLifeBarTiles();
 		String tileColor = "";
 		for(int i=0;i<5;i++) {
 			if(i < (LivingElement.getHitpoints()-1)*0.5) {

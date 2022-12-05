@@ -16,7 +16,6 @@ public abstract class Pickable extends GameElement {
 
 	public void pick(int i) {
 		if (this != null) {
-			//GameEngine.getInstance().getHero().getInventory()[i] = this;
 			GameEngine.getInstance().removeObject(this);
 			GameEngine.getInstance().getHero().setPosition(this.getPosition());
 		}
@@ -25,6 +24,15 @@ public abstract class Pickable extends GameElement {
 	public void drop(int item) {
 		GameEngine.getInstance().dropObject(GameEngine.getInstance().getHero().getInventory()[item]);
 	}
+	
+	public int getItemIndex() {
+	for (int i = 0; i < GameEngine.getInstance().getHero().getInventory().length; i++) {
+		if (this.equals(GameEngine.getInstance().getHero().getInventory()[i])) {
+			return i;
+		}
+	}
+	return -1;
+}
 	
 	public static int getInventorySlot(int key) {
 		switch(key) {

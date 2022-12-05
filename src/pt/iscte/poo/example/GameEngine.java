@@ -157,7 +157,7 @@ public class GameEngine implements Observer {
 	public void clearInventoryBar() {
 		for(Pickable p: roomList.get(currentRoom).InventoryBar)
 			gui.removeImage(p);
-		roomList.get(currentRoom).LifeBar.clear();
+		roomList.get(currentRoom).InventoryBar.clear();
 	}
 
 	@Override

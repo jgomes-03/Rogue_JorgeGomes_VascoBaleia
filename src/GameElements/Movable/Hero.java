@@ -20,7 +20,7 @@ public class Hero extends Movable {
 		super.setHitpoints(MAX_LIFE);
 		healthBar = createLifebar(new Point2D(0, GameEngine.GRID_HEIGHT), this);
 		inventoryBar = createInventoryBar(new Point2D(6, GameEngine.GRID_HEIGHT), this);
-		 //inventory[0]= new Key(new Point2D(2,2),"KEY0");
+		// inventory[0]= new Key(new Point2D(2,2),"KEY0");
 		// inventory.add(new Sword(new Point2D(2,2)));
 	}
 
@@ -34,18 +34,27 @@ public class Hero extends Movable {
 		return 1;
 	}
 
-	public Pickable[] getInventory() {
-		return inventory;
-	}
-
 	@Override
 	public boolean isTransposable() {
 		return false;
 	}
 
+	public Pickable[] getInventory() {
+		return inventory;
+	}
+
+//	public int getItemIndex(Pickable p) {
+//		for (int i = 0; i < inventory.length; i++) {
+//			if (p.equals(inventory[i])) {
+//				return i;
+//			}
+//		}
+//		return -1;
+//	}
+
 	public void pickToInventory(Pickable p) {
 		for (int i = 0; i < inventory.length; i++) {
-			if (inventory[i]==null) {
+			if (inventory[i] == null) {
 				inventory[i] = p;
 				p.pick(i);
 				inventoryBar.update();
@@ -59,12 +68,11 @@ public class Hero extends Movable {
 		for (int i = 0; i < inventory.length; i++) {
 			if (p.equals(inventory[i])) {
 				p.drop(i);
-				inventory[i]=null;
+				inventory[i] = null;
 				return;
 			}
 		}
 	}
-
 
 	@Override
 	public boolean isDeadOnNextAttack() {
@@ -75,6 +83,5 @@ public class Hero extends Movable {
 		healthBar.update();
 		inventoryBar.update();
 	}
-	
 
 }

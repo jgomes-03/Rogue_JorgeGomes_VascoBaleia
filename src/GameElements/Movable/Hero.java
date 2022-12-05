@@ -1,18 +1,10 @@
 package GameElements.Movable;
 
-import java.awt.event.KeyEvent;
-import java.util.ArrayList;
-
-import javax.swing.DropMode;
-
-import pt.iscte.poo.example.GameEngine;
-import pt.iscte.poo.example.GameElement;
-import pt.iscte.poo.utils.Point2D;
-import pt.iscte.poo.utils.Vector2D;
-import GameElements.Pickable.Key;
 import GameElements.Pickable.Pickable;
-import GameElements.Pickable.Sword;
-import GameElements.Static.*;
+import GameElements.Static.InventoryBar;
+import GameElements.Static.Lifebar;
+import pt.iscte.poo.example.GameEngine;
+import pt.iscte.poo.utils.Point2D;
 
 public class Hero extends Movable {
 
@@ -27,7 +19,7 @@ public class Hero extends Movable {
 		inventory = new Pickable[MAX_SIZE];
 		super.setHitpoints(MAX_LIFE);
 		healthBar = createLifebar(new Point2D(0, GameEngine.GRID_HEIGHT), this);
-		inventoryBar = new InventoryBar(new Point2D(6, GameEngine.GRID_HEIGHT), this);
+		inventoryBar = createInventoryBar(new Point2D(6, GameEngine.GRID_HEIGHT), this);
 		 //inventory[0]= new Key(new Point2D(2,2),"KEY0");
 		// inventory.add(new Sword(new Point2D(2,2)));
 	}

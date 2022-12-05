@@ -7,23 +7,23 @@ import pt.iscte.poo.example.*;
 
 public class InventoryBar extends GameElement{
 
-	Hero LivingElement;
+	Movable LivingElement;
 	int pointer;
 	
-	public InventoryBar(Point2D position, Hero m) {
+	public InventoryBar(Point2D position, Movable m) {
 		super(position);
 		LivingElement = m;
 		pointer = position.getX();
-		update();
+		//update();
 	}
 
 	public void update() {
-		//GameEngine.getInstance().clearLifeBar();
+		GameEngine.getInstance().clearInventoryBar();
 		int i = pointer;
 		for(Pickable p : LivingElement.getInventory()) {
 			if(p!=null) {
 				p.setPosition(new Point2D(i, getPosition().getY()));
-				GameEngine.getInstance().addObject(p);
+				GameEngine.getInstance().addtoBar(p);
 				i++;
 			}
 		}
@@ -46,5 +46,5 @@ public class InventoryBar extends GameElement{
 		// TODO Auto-generated method stub
 		return false;
 	}
-
+	
 }

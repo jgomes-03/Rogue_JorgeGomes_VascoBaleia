@@ -11,6 +11,7 @@ import GameElements.Movable.Hero;
 import GameElements.Movable.Movable;
 import GameElements.Pickable.Pickable;
 import GameElements.Pickable.Sword;
+import GameElements.Static.LifeTile;
 import pt.iscte.poo.gui.ImageMatrixGUI;
 import pt.iscte.poo.observer.Observed;
 import pt.iscte.poo.observer.Observer;
@@ -83,11 +84,23 @@ public class GameEngine implements Observer {
 		roomList.get(currentRoom).roomObjects.add(ge);
 		gui.addImage(ge);
 	}
+	
+	public void addtoBar(GameElement ge) {
+		if(ge.getName()=="LifeTile") {
+			//roomList.get(currentRoom).LifeBar.clear();
+			roomList.get(currentRoom).LifeBar.add((LifeTile) ge);
+		}
+		else if(ge instanceof Pickable) {
+			//roomList.get(currentRoom).InventoryBar.clear();
+			roomList.get(currentRoom).InventoryBar.add((Pickable) ge);
+		}
+		gui.addImage(ge);
+	}
 
 	public void removeObject(GameElement ge) {
 		roomList.get(currentRoom).roomObjects.remove(ge);
 		gui.removeImage(ge);
-		gui.removeImage(ge);
+		//gui.removeImage(ge);
 	}
 
 	public void dropObject(Pickable p) {
@@ -136,11 +149,15 @@ public class GameEngine implements Observer {
 	}
 
 	public void clearLifeBar() {
-		roomList.get(currentRoom).lifeBar.clear();
+		for(LifeTile lt: roomList.get(currentRoom).LifeBar)
+			gui.removeImage(lt);
+		roomList.get(currentRoom).LifeBar.clear();
 	}
 	
 	public void clearInventoryBar() {
-		roomList.get(currentRoom).inventoryBar.clear();
+		for(Pickable p: roomList.get(currentRoom).InventoryBar)
+			gui.removeImage(p);
+		roomList.get(currentRoom).LifeBar.clear();
 	}
 
 	@Override

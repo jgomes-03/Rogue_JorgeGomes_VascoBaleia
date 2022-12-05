@@ -7,6 +7,7 @@ import java.util.List;
 import GameElements.Pickable.Key;
 import GameElements.Pickable.Pickable;
 import GameElements.Static.Door;
+import GameElements.Static.InventoryBar;
 import GameElements.Static.Lifebar;
 import pt.iscte.poo.example.GameElement;
 import pt.iscte.poo.example.GameEngine;
@@ -27,11 +28,14 @@ public abstract class Movable extends GameElement {
 	public static Lifebar createLifebar(Point2D point, Movable g) {
 		return new Lifebar(point, g);
 	}
+	
+	public static InventoryBar createInventoryBar(Point2D point, Movable g) {
+		return new InventoryBar(point, g);
+	}
 
 	public void setHitpoints(int h) {
 		hitpoints = h;
 	}
-
 
 	public int getHitpoints() {
 		return hitpoints;
@@ -61,32 +65,32 @@ public abstract class Movable extends GameElement {
 						if (p instanceof Key) {
 							if (((Key) p).getKeycode().equals(((Door) selection.get(0)).getKeycode())) {
 								((Door) selection.get(0)).openDoor();
-								
+
 							}
 						}
 					}
 					return;
 				} else {
-					GameEngine.getInstance().nextRoom(((Door) selection.get(0)).getNextRoom(),((Door) selection.get(0)).getNextRoomPosition());
+					GameEngine.getInstance().nextRoom(((Door) selection.get(0)).getNextRoom(),
+							((Door) selection.get(0)).getNextRoomPosition());
 					return;
 				}
-			} else {
-				GameElement enemy = getEnemy(selection);
-				if (enemy != null && enemy instanceof Movable) {
-					attack((Movable)enemy, damage);
-				}
 			}
-		}
+		} 
+			GameElement enemy = getEnemy(selection);
+			if (enemy != null && enemy instanceof Movable)
+				attack((Movable) enemy, damage);
+		
 	}
 
 	public void attack(Movable m, int damage) {
-			if (!m.isDeadOnNextAttack()) {
-				m.hitpoints = m.hitpoints - damage;
-			} else
-				kill(m);
-			if (m instanceof Skeleton)
-				System.out.println(((Skeleton) m).getHitpoints()); // DEBUG
-			// if(m instanceof Hero)((Hero) m).updateLifeBar();
+		if (!m.isDeadOnNextAttack()) {
+			m.hitpoints = m.hitpoints - damage;
+		} else
+			kill(m);
+		if (m instanceof Skeleton)
+			System.out.println(((Skeleton) m).getHitpoints()); // DEBUG
+		// if(m instanceof Hero)((Hero) m).updateLifeBar();
 	}
 
 	public void kill(Movable ge) {
@@ -122,4 +126,7 @@ public abstract class Movable extends GameElement {
 		return getHitpoints() <= 1 ? true : false;
 	}
 
+	public Pickable[] getInventory() {
+		return null;
+	}
 }

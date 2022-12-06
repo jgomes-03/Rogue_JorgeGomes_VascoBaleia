@@ -8,15 +8,11 @@ import pt.iscte.poo.utils.Vector2D;
 
 public class Thug extends Movable  {
 	
-	/*public Skeleton(int hitpoints, int damage) {
-		super(hitpoints, damage);
-		this.setHitpoints(GameSettings.skeleton_hitpoints);
-		this.setDamage(GameSettings.skeleton_damage);
-	}*/
 	
 	public Thug(Point2D position) {
 		super(position);
 		super.setHitpoints(10);
+		super.setDamage(3);
 	}
 
 	public String getName() {
@@ -38,6 +34,13 @@ public class Thug extends Movable  {
 	public void move(int keyPressed) {
 		keyPressed = super.getKey(Direction.forVector(Vector2D.movementVector(getPosition(), GameEngine.getInstance().getHero().getPosition())));
 		super.move(keyPressed);
+	}
+	
+	@Override
+	public void attack(Movable m, int damage) {
+		if(Math.random()<0.3) {
+			super.attack(m, damage);
+		}
 	}
 
 }

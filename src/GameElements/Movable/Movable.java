@@ -9,6 +9,7 @@ import GameElements.Pickable.Pickable;
 import GameElements.Static.Door;
 import GameElements.Static.InventoryBar;
 import GameElements.Static.Lifebar;
+import GameElements.Static.Treasure;
 import pt.iscte.poo.example.GameElement;
 import pt.iscte.poo.example.GameEngine;
 import pt.iscte.poo.utils.Direction;
@@ -22,7 +23,6 @@ public abstract class Movable extends GameElement {
 
 	public Movable(Point2D position) {
 		super(position);
-		setDamage(1);
 	}
 
 	public static Lifebar createLifebar(Point2D point, Movable g) {
@@ -62,12 +62,14 @@ public abstract class Movable extends GameElement {
 		} else if (this instanceof Hero) {
 			if (selection.get(0) instanceof Pickable) {
 				GameEngine.getInstance().getHero().pickToInventory(((Pickable) selection.get(0)));
+				GameEngine.getInstance().addPlayerScore(5);
 			} else if (selection.get(0) instanceof Door) {
 				if (selection.get(0).getName() == "DoorClosed") {
 					for (Pickable p : GameEngine.getInstance().getHero().getInventory()) {
 						if (p instanceof Key) {
 							if (((Key) p).getKeycode().equals(((Door) selection.get(0)).getKeycode())) {
 								((Door) selection.get(0)).openDoor();
+								GameEngine.getInstance().addPlayerScore(10);
 							}
 						}
 					}
@@ -75,11 +77,14 @@ public abstract class Movable extends GameElement {
 				} else {
 					GameEngine.getInstance().nextRoom(((Door) selection.get(0)).getNextRoom(),
 							((Door) selection.get(0)).getNextRoomPosition());
+					GameEngine.getInstance().addPlayerScore(5);
 					
 				}
 				return;
+			} else if(selection.get(0) instanceof Treasure) {
+				GameEngine.getInstance().addPlayerScore(100);
+				GameEngine.getInstance().gameWin();
 			}
-			System.out.println(GameEngine.getInstance().getHero().getHitpoints());
 		} 
 			GameElement enemy = getEnemy(selection);
 			if (enemy != null && enemy instanceof Movable)
@@ -93,6 +98,13 @@ public abstract class Movable extends GameElement {
 				return;
 			}
 			m.hitpoints = m.hitpoints - damage;
+			if(this instanceof Hero) {
+				if(this instanceof Skeleton) GameEngine.getInstance().addPlayerScore(10);
+				if(this instanceof Bat) GameEngine.getInstance().addPlayerScore(15);
+				if(this instanceof Thug) GameEngine.getInstance().addPlayerScore(20);
+				if(this instanceof Scorpio) GameEngine.getInstance().addPlayerScore(25);
+				if(this instanceof Thief) GameEngine.getInstance().addPlayerScore(30);
+			}
 		} else
 			kill(m);
 		// if(m instanceof Hero)((Hero) m).updateLifeBar();

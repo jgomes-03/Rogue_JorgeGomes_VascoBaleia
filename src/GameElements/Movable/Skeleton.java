@@ -11,6 +11,7 @@ public class Skeleton extends Movable  {
 	public Skeleton(Point2D position) {
 		super(position);
 		super.setHitpoints(5);
+		super.setDamage(1);
 	}
 
 	public String getName() {

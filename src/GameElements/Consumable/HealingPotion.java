@@ -32,5 +32,6 @@ public class HealingPotion extends Pickable implements Consumable  {
 	public void consume(int item) {
 		GameEngine.getInstance().getHero().heal();
 		GameEngine.getInstance().getHero().getInventory()[item] = null;
+		GameEngine.getInstance().addPlayerScore(10);
 	}
 }

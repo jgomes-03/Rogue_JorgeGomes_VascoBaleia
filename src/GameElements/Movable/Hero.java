@@ -18,6 +18,7 @@ public class Hero extends Movable {
 
 	public Hero(Point2D position) {
 		super(position);
+		super.setDamage(1);
 		inventory = new Pickable[MAX_SIZE];
 		super.setHitpoints(MAX_LIFE);
 		healthBar = createLifebar(new Point2D(0, GameEngine.GRID_HEIGHT), this);

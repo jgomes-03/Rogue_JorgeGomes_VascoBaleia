@@ -13,6 +13,8 @@ import GameElements.Movable.Movable;
 import GameElements.Pickable.Pickable;
 import GameElements.Pickable.Sword;
 import GameElements.Static.LifeTile;
+import pt.iscte.poo.GameStats.GameScores;
+import pt.iscte.poo.GameStats.Player;
 import pt.iscte.poo.gui.ImageMatrixGUI;
 import pt.iscte.poo.observer.Observed;
 import pt.iscte.poo.observer.Observer;
@@ -23,6 +25,8 @@ public class GameEngine implements Observer {
 
 	public static final int GRID_HEIGHT = 10;
 	public static final int GRID_WIDTH = 10;
+	private File scoreBoardFile = new File("info/top_score.txt");
+	private Player player;
 
 	private static GameEngine INSTANCE = null;
 	private ImageMatrixGUI gui = ImageMatrixGUI.getInstance();
@@ -31,7 +35,7 @@ public class GameEngine implements Observer {
 	private int turns;
 	private int currentRoom = 0;
 
-	private String PlayerName;
+	private ArrayList<Player> scoreBoard = new ArrayList<>();
 
 	List<Room> roomList = new ArrayList<>();
 
@@ -48,29 +52,55 @@ public class GameEngine implements Observer {
 	}
 
 	public void start() {
+		if(scoreBoardFile.exists() || scoreBoardFile.length()!=0) GameScores.readFromFile(scoreBoardFile);
 		addHero();
 		nextRoom("room0", getHero().getPosition());
 		hero.updateHeroBars();
-		while (PlayerName == null || PlayerName.isEmpty() || PlayerName.isBlank()) {
-			PlayerName = gui.askUser("Introduza o seu nome");
-			if(PlayerName == null) {
+		while (player == null || player.getName() == null || player.getName().isEmpty() || player.getName().isBlank()) {
+			player = new Player(gui.askUser("Introduza o seu nome"));
+			if(player.getName() == null) {
 				gui.dispose();
 				gui.setMessage("Obrigado por jogar o Rogue das Conas");
 				System.exit(0);
-			} else if(PlayerName.isEmpty() || PlayerName.isBlank()) {
+			} else if(player.getName().isEmpty() || player.getName().isBlank()) {
 				gui.setMessage("Insira um nome válido");
 			}
 				
 		}
 		addObject(new Sword(new Point2D(0, 10)));
-		gui.setStatusMessage("ROGUE - Turns: " + turns + " | Player: " + PlayerName);
+		gui.setStatusMessage("ROGUE - Turns: " + turns + " | Player: " + player.getName());
 		gui.update();
 	}
 	
 	public void GameOver() {
+		scoreBoard.add(player);
 		gui.dispose();
-		gui.setMessage("Game Over " + PlayerName + "!");
+		gui.setMessage("Game Over " + player.getName() + "!");
+		GameScores.writeToFile(scoreBoardFile);
 		System.exit(0);
+	}
+	
+	public void gameWin() {
+		scoreBoard.add(player);
+		gui.setMessage("PARABENS SEU CORNO DO CARALHO!!! SEU PRETO, MISOGENO!!!!");
+		GameScores.writeToFile(scoreBoardFile);
+		System.exit(1);
+	}
+	
+	public void addPlayerScore(int value) {
+		player.setScore(player.getScore()+value);
+	}
+	
+	public ArrayList<Player> getScoreBoard() {
+		return scoreBoard;
+	}
+	
+	public void addToScoreBoard(Player p1) {
+		scoreBoard.add(p1);
+	}
+	
+	public void removeFromScoreBoard(Player p1) {
+		scoreBoard.remove(p1);
 	}
 
 	public int getTurns() {
@@ -178,7 +208,7 @@ public class GameEngine implements Observer {
 					hero.move(key);
 					hero.updateHeroBars();
 					turns++;
-					gui.setStatusMessage("ROGUE - Turns:" + turns + " | Player: " + PlayerName);
+					gui.setStatusMessage("ROGUE - Turns:" + turns + " | Player: " + player.getName());
 					gui.update();
 					return;
 				}
@@ -196,7 +226,7 @@ public class GameEngine implements Observer {
 					hero.updateHeroBars();		
 			}
 		}
-		gui.setStatusMessage("ROGUE - Turns:" + turns + " | Player: " + PlayerName);
+		gui.setStatusMessage("ROGUE - Turns:" + turns + " | Player: " + player.getName());
 		gui.update();
 	}
 	

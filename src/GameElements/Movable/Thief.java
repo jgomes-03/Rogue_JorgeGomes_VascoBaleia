@@ -17,6 +17,7 @@ public class Thief extends Movable  {
 	public Thief(Point2D position) {
 		super(position);
 		super.setHitpoints(10);
+		super.setDamage(0);
 	}
 
 	public String getName() {

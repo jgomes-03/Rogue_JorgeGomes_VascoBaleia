@@ -10,6 +10,7 @@ public class Bat extends Movable {
 	public Bat(Point2D position) {
 		super(position);
 		super.setHitpoints(3);
+		super.setDamage(1);
 	}
 
 	@Override

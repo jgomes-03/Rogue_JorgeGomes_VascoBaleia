@@ -56,7 +56,6 @@ public class GameEngine implements Observer {
 			gui.dispose();
 			gui.setMessage("Deverá escolher um username para puder jogar");
 			System.exit(0);
-			return;
 		}
 		addObject(new Sword(new Point2D(0, 10)));
 		gui.setStatusMessage("ROGUE - Turns: " + turns + " | Player: " + PlayerName);
@@ -195,6 +194,7 @@ public class GameEngine implements Observer {
 		gui.setStatusMessage("ROGUE - Turns:" + turns);
 		gui.update();
 	}
+	
 
 	public ArrayList<GameElement> selectBy(Predicate<GameElement> predicate) {
 		ArrayList<GameElement> result = new ArrayList<>();

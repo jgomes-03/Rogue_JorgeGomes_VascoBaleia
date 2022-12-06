@@ -89,6 +89,9 @@ public abstract class Movable extends GameElement {
 
 	public void attack(Movable m, int damage) {
 		if (!m.isDeadOnNextAttack()) {
+			if(m instanceof Hero && ((Hero)m).isArmored() && Math.random()>0.5) {
+				return;
+			}
 			m.hitpoints = m.hitpoints - damage;
 		} else
 			kill(m);

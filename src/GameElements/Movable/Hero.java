@@ -1,6 +1,7 @@
 package GameElements.Movable;
 
 import GameElements.Consumable.HealingPotion;
+import GameElements.Pickable.Armor;
 import GameElements.Pickable.Pickable;
 import GameElements.Static.InventoryBar;
 import GameElements.Static.Lifebar;
@@ -94,5 +95,13 @@ public class Hero extends Movable {
 			 super.setHitpoints(MAX_LIFE);
 		} else super.setHitpoints(super.getHitpoints()+HealingPotion.HEAL_VALUE);
 	}
+	
+	public boolean isArmored() {
+		for(Pickable p : inventory) {
+			if(p instanceof Armor) return true;
+		}
+		return false;
+	}
+	
 
 }

@@ -14,7 +14,7 @@ public abstract class Pickable extends GameElement {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void pick(int i) {
+	public void pick() {
 		if (this != null) {
 			GameEngine.getInstance().removeObject(this);
 			GameEngine.getInstance().getHero().setPosition(this.getPosition());

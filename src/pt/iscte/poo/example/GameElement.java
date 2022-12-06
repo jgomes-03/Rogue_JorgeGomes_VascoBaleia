@@ -1,5 +1,6 @@
 package pt.iscte.poo.example;
 
+import GameElements.Consumable.HealingPotion;
 import GameElements.Movable.*;
 import GameElements.Pickable.*;
 import GameElements.Static.*;

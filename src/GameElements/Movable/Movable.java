@@ -53,7 +53,10 @@ public abstract class Movable extends GameElement {
 		Vector2D moveVector = (Direction.directionFor(keyPressed)).asVector();
 		Point2D nextPosition = this.getPosition().plus(moveVector);
 		ArrayList<GameElement> selection = GameEngine.getInstance()
-				.selectBy(s -> s.getPosition().equals(nextPosition) && (!s.isTransposable()));
+				.selectBy(s -> s.getPosition().equals(nextPosition)  && (!s.isTransposable()));
+		if(!isInsideWindow(nextPosition)) {
+			return; //Checks if the Movable is inside GameBoarders
+		}
 		if (selection.isEmpty()) {
 			super.setPosition(nextPosition);
 		} else if (this instanceof Hero) {
@@ -65,17 +68,18 @@ public abstract class Movable extends GameElement {
 						if (p instanceof Key) {
 							if (((Key) p).getKeycode().equals(((Door) selection.get(0)).getKeycode())) {
 								((Door) selection.get(0)).openDoor();
-
 							}
 						}
 					}
-					return;
+					
 				} else {
 					GameEngine.getInstance().nextRoom(((Door) selection.get(0)).getNextRoom(),
 							((Door) selection.get(0)).getNextRoomPosition());
-					return;
+					
 				}
+				return;
 			}
+			System.out.println(GameEngine.getInstance().getHero().getHitpoints());
 		} 
 			GameElement enemy = getEnemy(selection);
 			if (enemy != null && enemy instanceof Movable)
@@ -85,13 +89,14 @@ public abstract class Movable extends GameElement {
 
 	public void attack(Movable m, int damage) {
 		if (!m.isDeadOnNextAttack()) {
+			if(m instanceof Hero && ((Hero)m).isArmored() && Math.random()>0.5) {
+				return;
+			}
 			m.hitpoints = m.hitpoints - damage;
 		} else {
 			m.die();
 			kill(m);
 		}
-		if (m instanceof Skeleton)
-			System.out.println(((Skeleton) m).getHitpoints()); // DEBUG
 		// if(m instanceof Hero)((Hero) m).updateLifeBar();
 	}
 
@@ -136,5 +141,9 @@ public abstract class Movable extends GameElement {
 
 	public Pickable[] getInventory() {
 		return null;
+	}
+	
+	private boolean isInsideWindow(Point2D nextPosition) {
+		return nextPosition.getX()>=0 && nextPosition.getX()< GameEngine.GRID_WIDTH && nextPosition.getY()>=0 && nextPosition.getY()<GameEngine.GRID_HEIGHT ? true:false; 
 	}
 }

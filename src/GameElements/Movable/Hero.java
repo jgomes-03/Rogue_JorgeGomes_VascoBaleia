@@ -1,5 +1,7 @@
 package GameElements.Movable;
 
+import GameElements.Consumable.HealingPotion;
+import GameElements.Pickable.Armor;
 import GameElements.Pickable.Pickable;
 import GameElements.Static.InventoryBar;
 import GameElements.Static.Lifebar;
@@ -43,6 +45,10 @@ public class Hero extends Movable {
 	public Pickable[] getInventory() {
 		return inventory;
 	}
+	
+	public InventoryBar getInventoryBar() {
+		return inventoryBar;
+	}
 
 //	public int getItemIndex(Pickable p) {
 //		for (int i = 0; i < inventory.length; i++) {
@@ -57,7 +63,7 @@ public class Hero extends Movable {
 		for (int i = 0; i < inventory.length; i++) {
 			if (inventory[i] == null) {
 				inventory[i] = p;
-				p.pick(i);
+				p.pick();
 				inventoryBar.update();
 				System.out.println("Picked:" + p);
 				return;
@@ -92,5 +98,19 @@ public class Hero extends Movable {
 		healthBar.update();
 		inventoryBar.update();
 	}
+	
+	public void heal() {
+		if(super.getHitpoints()+HealingPotion.HEAL_VALUE >= MAX_LIFE) {
+			 super.setHitpoints(MAX_LIFE);
+		} else super.setHitpoints(super.getHitpoints()+HealingPotion.HEAL_VALUE);
+	}
+	
+	public boolean isArmored() {
+		for(Pickable p : inventory) {
+			if(p instanceof Armor) return true;
+		}
+		return false;
+	}
+	
 
 }

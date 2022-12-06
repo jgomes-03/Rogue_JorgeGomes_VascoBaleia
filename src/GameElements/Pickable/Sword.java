@@ -28,8 +28,8 @@ public class Sword extends Pickable  {
 	}
 
 	@Override
-	public void pick(int i) {
-		super.pick(i);
+	public void pick() {
+		super.pick();
 		GameEngine.getInstance().getHero().setDamage(GameEngine.getInstance().getHero().getDamage()*2);
 	}
 	

@@ -15,8 +15,8 @@ import pt.iscte.poo.utils.Point2D;
 
 public class Room {
 	List<GameElement> roomObjects = new ArrayList<>();
-	List<LifeTile> LifeBar = new ArrayList<>();
-	List<Pickable>  InventoryBar = new ArrayList<>();
+	List<LifeTile> LifeBarTiles = new ArrayList<>();
+	List<Pickable>  InventoryBarTiles = new ArrayList<>();
 
 	private String roomName;
 

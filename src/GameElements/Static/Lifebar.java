@@ -18,7 +18,7 @@ public class Lifebar extends GameElement {
 
 	
 	public void update() {
-		GameEngine.getInstance().clearLifeBar();
+		GameEngine.getInstance().clearLifeBarTiles();
 		String tileColor = "";
 		for(int i=0;i<5;i++) {
 			if(i < (LivingElement.getHitpoints()-1)*0.5) {
@@ -29,7 +29,7 @@ public class Lifebar extends GameElement {
 			Point2D tile_pos = new Point2D(i,getPosition().getY()); //new Point2D(i,GameEngine.GRID_HEIGHT);
 			LifeTile lf = new LifeTile(Color.valueOf(tileColor),tile_pos);
 			//GameEngine.getInstance().addObject(GameElement.create(tileColor,tile_pos,null,null,null));	
-			GameEngine.getInstance().addtoBar(lf);
+			GameEngine.getInstance().addToBar(lf);
 		}
 		if(LivingElement.isDeadOnNextAttack())
 			GameEngine.getInstance().GameOver();

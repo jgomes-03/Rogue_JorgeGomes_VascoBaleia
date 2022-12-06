@@ -55,6 +55,7 @@ public abstract class Movable extends GameElement {
 		ArrayList<GameElement> selection = GameEngine.getInstance()
 				.selectBy(s -> s.getPosition().equals(nextPosition)  && (!s.isTransposable()));
 		if(!isInsideWindow(nextPosition)) {
+			GameEngine.getInstance().getHero().PoisonDamage();				
 			return; //Checks if the Movable is inside GameBoarders
 		}
 		if (selection.isEmpty()) {

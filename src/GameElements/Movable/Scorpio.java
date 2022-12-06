@@ -39,11 +39,11 @@ public class Scorpio extends Movable {
 	public void attack(Movable m, int damage) {
 		if (m instanceof Hero) {
 			GameEngine.getInstance().getHero().setPoisoned(true);
-			while (GameEngine.getInstance().getHero().getisPoisoned()) {
-				super.attack(m, damage);
-				//GameEngine.getInstance().getHero().
-			}
 		}
 	}
+	
+	
+	
+	}
 
-}
+

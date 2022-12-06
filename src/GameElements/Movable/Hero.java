@@ -86,7 +86,7 @@ public class Hero extends Movable {
 		return getHitpoints() < 1 ? true : false;
 	}
 
-	public boolean getisPoisoned() {
+	private boolean getIsPoisoned() {
 		return isPoisoned;
 	}
 	
@@ -103,6 +103,12 @@ public class Hero extends Movable {
 		if(super.getHitpoints()+HealingPotion.HEAL_VALUE >= MAX_LIFE) {
 			 super.setHitpoints(MAX_LIFE);
 		} else super.setHitpoints(super.getHitpoints()+HealingPotion.HEAL_VALUE);
+		setPoisoned(false);
+	}
+	
+	public void PoisonDamage() {
+		if(getIsPoisoned()==true)
+			setHitpoints(getHitpoints()-1);
 	}
 	
 	public boolean isArmored() {

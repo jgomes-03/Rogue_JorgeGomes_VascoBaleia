@@ -51,17 +51,22 @@ public class GameEngine implements Observer {
 		addHero();
 		nextRoom("room0", getHero().getPosition());
 		hero.updateHeroBars();
-		PlayerName = gui.askUser("Introduza o seu nome");
-		if (PlayerName == null) {
-			gui.dispose();
-			gui.setMessage("Deverá escolher um username para puder jogar");
-			System.exit(0);
+		while (PlayerName == null || PlayerName.isEmpty() || PlayerName.isBlank()) {
+			PlayerName = gui.askUser("Introduza o seu nome");
+			if(PlayerName == null) {
+				gui.dispose();
+				gui.setMessage("Obrigado por jogar o Rogue das Conas");
+				System.exit(0);
+			} else if(PlayerName.isEmpty() || PlayerName.isBlank()) {
+				gui.setMessage("Insira um nome válido");
+			}
+				
 		}
 		addObject(new Sword(new Point2D(0, 10)));
 		gui.setStatusMessage("ROGUE - Turns: " + turns + " | Player: " + PlayerName);
 		gui.update();
 	}
-
+	
 	public void GameOver() {
 		gui.dispose();
 		gui.setMessage("Game Over " + PlayerName + "!");
@@ -173,7 +178,7 @@ public class GameEngine implements Observer {
 					hero.move(key);
 					hero.updateHeroBars();
 					turns++;
-					gui.setStatusMessage("ROGUE - Turns:" + turns);
+					gui.setStatusMessage("ROGUE - Turns:" + turns + " | Player: " + PlayerName);
 					gui.update();
 					return;
 				}
@@ -191,7 +196,7 @@ public class GameEngine implements Observer {
 					hero.updateHeroBars();		
 			}
 		}
-		gui.setStatusMessage("ROGUE - Turns:" + turns);
+		gui.setStatusMessage("ROGUE - Turns:" + turns + " | Player: " + PlayerName);
 		gui.update();
 	}
 	

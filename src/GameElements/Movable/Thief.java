@@ -8,7 +8,7 @@ import pt.iscte.poo.utils.Vector2D;
 
 public class Thief extends Movable  {
 	
-	private static final int MAX_INVENTORY_SIZE = 2;
+	private static final int MAX_INVENTORY_SIZE = 1;
 	private static final int MAX_LIFE = 5;
 	
 	private Pickable[] inventory;
@@ -60,15 +60,20 @@ public class Thief extends Movable  {
 			return inventory;
 		}
 
+	public int getRandomNumber(int min, int max) {
+	    return (int) ((Math.random() * (max - min)) + min);
+	}
+
+	
 	public void steal() { 
-			for (int i = 0; i < inventory.length; i++) {
+				int i = getRandomNumber(0,GameEngine.getInstance().getHero().getInventory().length-1);
 				Pickable aux = GameEngine.getInstance().getHero().getInventory()[i];
-				if (inventory[i] == null && aux !=null) {
-					inventory[i] = aux;
+				if (inventory[0] == null && aux !=null) {
+					inventory[0] = aux;
 					GameEngine.getInstance().getHero().getInventory()[i] = null;
 					System.out.println("Gamei " + inventory[i].toString());
 					return;
-				}
+				
 			}
 		}
 

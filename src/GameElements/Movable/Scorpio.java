@@ -1,9 +1,9 @@
 package GameElements.Movable;
 
-
-import pt.iscte.poo.example.GameElement;
+import pt.iscte.poo.example.GameEngine;
 import pt.iscte.poo.utils.Direction;
 import pt.iscte.poo.utils.Point2D;
+import pt.iscte.poo.utils.Vector2D;
 
 public class Scorpio extends Movable {
 
@@ -28,22 +28,22 @@ public class Scorpio extends Movable {
 		return false;
 	}
 
-	public boolean isMovable() {
-		return true;
-	}
-
 	@Override
 	public void move(int keyPressed) {
-		if (Math.random() > 0.5) {
-			super.move(getKey(Direction.random()));
-		}
+		keyPressed = super.getKey(Direction
+				.forVector(Vector2D.movementVector(getPosition(), GameEngine.getInstance().getHero().getPosition())));
+		super.move(keyPressed);
 	}
-	
 
 	@Override
 	public void attack(Movable m, int damage) {
-		if(m instanceof Hero && Math.random() > 0.5)
-			super.attack(m, damage);
+		if (m instanceof Hero) {
+			GameEngine.getInstance().getHero().setPoisoned(true);
+			while (GameEngine.getInstance().getHero().getisPoisoned()) {
+				super.attack(m, damage);
+				//GameEngine.getInstance().getHero().
+			}
+		}
 	}
 
 }

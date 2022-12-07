@@ -68,7 +68,7 @@ public class GameEngine implements Observer {
 				
 		}
 		addObject(new Sword(new Point2D(0, 10)));
-		gui.setStatusMessage("ROGUE - Turns: " + turns + " | Player: " + player.getName() + " | Score: " + player.getScore());
+		updateGameHeader();
 		gui.update();
 	}
 	
@@ -77,6 +77,7 @@ public class GameEngine implements Observer {
 		gui.dispose();
 		gui.setMessage("Game Over " + player.getName() + "!");
 		GameScores.writeToFile(scoreBoardFile);
+		printTopScore();
 		System.exit(0);
 	}
 	
@@ -84,11 +85,22 @@ public class GameEngine implements Observer {
 		scoreBoard.add(player);
 		gui.setMessage("PARABENS SEU CORNO DO CARALHO!!! SEU PRETO, MISOGENO!!!!");
 		GameScores.writeToFile(scoreBoardFile);
+		printTopScore();
 		System.exit(1);
+	}
+	
+	public void updateGameHeader() {
+		gui.setStatusMessage("ROGUE - Turns: " + turns + " | Player: " + player.getName() + " | Score: " + player.getScore());
+	}
+	
+	public void printTopScore() {
+		gui.setMessage("TOP 5 BEST SCORE OF ALL TIME\n1º: " + scoreBoard.get(1) + "\n2º: " + scoreBoard.get(2) + "\n3º: " + scoreBoard.get(3) + "\n4º: " + scoreBoard.get(4) + "\n5º: " + scoreBoard.get(5));
+;
 	}
 	
 	public void addPlayerScore(int value) {
 		player.setScore(player.getScore()+value);
+		updateGameHeader();
 	}
 	
 	public ArrayList<Player> getScoreBoard() {
@@ -208,7 +220,7 @@ public class GameEngine implements Observer {
 					hero.move(key);
 					hero.updateHeroBars();
 					turns++;
-					gui.setStatusMessage("ROGUE - Turns:" + turns + " | Player: " + player.getName()  + " | Score: " + player.getScore());
+					updateGameHeader();
 					gui.update();
 					return;
 				}

@@ -17,7 +17,7 @@ public class GameScores {
 			PrintWriter out = new PrintWriter(scoreBoardFile);
 			for(Player p : GameEngine.getInstance().getScoreBoard()) {
 				if(aux==5) break;
-				out.println(aux+1 + "º: " + p.getName() +" with a score of: " + p.getScore());
+				out.println(aux+1 + "º: " + p);
 				aux++;
 			}
 			out.close();

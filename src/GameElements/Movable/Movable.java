@@ -101,6 +101,7 @@ public abstract class Movable extends GameElement {
 			if(this instanceof Hero) {
 				if(m instanceof Skeleton) GameEngine.getInstance().addPlayerScore(10);
 				if(m instanceof Bat) GameEngine.getInstance().addPlayerScore(15);
+				if(m instanceof Thug) GameEngine.getInstance().addPlayerScore(20);
 				if(m instanceof Scorpio) GameEngine.getInstance().addPlayerScore(25);
 				if(m instanceof Thief) GameEngine.getInstance().addPlayerScore(30);
 			}

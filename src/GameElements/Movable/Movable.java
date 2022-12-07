@@ -69,7 +69,7 @@ public abstract class Movable extends GameElement {
 						if (p instanceof Key) {
 							if (((Key) p).getKeycode().equals(((Door) selection.get(0)).getKeycode())) {
 								((Door) selection.get(0)).openDoor();
-								GameEngine.getInstance().addPlayerScore(10);
+								GameEngine.getInstance().addPlayerScore(15);
 							}
 						}
 					}
@@ -77,7 +77,6 @@ public abstract class Movable extends GameElement {
 				} else {
 					GameEngine.getInstance().nextRoom(((Door) selection.get(0)).getNextRoom(),
 							((Door) selection.get(0)).getNextRoomPosition());
-					GameEngine.getInstance().addPlayerScore(5);
 					
 				}
 				return;
@@ -98,15 +97,15 @@ public abstract class Movable extends GameElement {
 				return;
 			}
 			m.hitpoints = m.hitpoints - damage;
+		} else {
 			if(this instanceof Hero) {
-				if(this instanceof Skeleton) GameEngine.getInstance().addPlayerScore(10);
-				if(this instanceof Bat) GameEngine.getInstance().addPlayerScore(15);
-				if(this instanceof Thug) GameEngine.getInstance().addPlayerScore(20);
-				if(this instanceof Scorpio) GameEngine.getInstance().addPlayerScore(25);
-				if(this instanceof Thief) GameEngine.getInstance().addPlayerScore(30);
+				if(m instanceof Skeleton) GameEngine.getInstance().addPlayerScore(10);
+				if(m instanceof Bat) GameEngine.getInstance().addPlayerScore(15);
+				if(m instanceof Scorpio) GameEngine.getInstance().addPlayerScore(25);
+				if(m instanceof Thief) GameEngine.getInstance().addPlayerScore(30);
 			}
-		} else
 			kill(m);
+		}
 		// if(m instanceof Hero)((Hero) m).updateLifeBar();
 	}
 

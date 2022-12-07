@@ -10,8 +10,6 @@ import pt.iscte.poo.example.GameEngine;
 
 public class GameScores {
 
-	
-
 	public static void writeToFile(File scoreBoardFile) {
 		GameEngine.getInstance().getScoreBoard().sort(new PlayerComparator());
 		int aux =0;
@@ -19,7 +17,8 @@ public class GameScores {
 			PrintWriter out = new PrintWriter(scoreBoardFile);
 			for(Player p : GameEngine.getInstance().getScoreBoard()) {
 				if(aux==5) break;
-				out.println(p.getName() +"," + p.getScore());
+				out.println(aux+1 + "º: " + p.getName() +" with a score of: " + p.getScore());
+				aux++;
 			}
 			out.close();
 		} catch (IOException e) {
@@ -32,7 +31,9 @@ public class GameScores {
 		try {
 			Scanner in = new Scanner(scoreBoardFile);
 			while (in.hasNextLine()) {
-				GameEngine.getInstance().addToScoreBoard(new Player(in.next(), in.nextInt()));
+				String[] currentLine = in.nextLine().split(" with a score of: "); //The split divides the first scan from the file to: 1º: + PlayerName.
+				String name = currentLine[0].split(": ")[1];
+				GameEngine.getInstance().addToScoreBoard(new Player(name, Integer.parseInt(currentLine[1])));
 			}
 			in.close();
 		} catch (IOException e) {

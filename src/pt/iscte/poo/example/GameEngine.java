@@ -68,7 +68,7 @@ public class GameEngine implements Observer {
 				
 		}
 		addObject(new Sword(new Point2D(0, 10)));
-		gui.setStatusMessage("ROGUE - Turns: " + turns + " | Player: " + player.getName());
+		gui.setStatusMessage("ROGUE - Turns: " + turns + " | Player: " + player.getName() + " | Score: " + player.getScore());
 		gui.update();
 	}
 	
@@ -208,7 +208,7 @@ public class GameEngine implements Observer {
 					hero.move(key);
 					hero.updateHeroBars();
 					turns++;
-					gui.setStatusMessage("ROGUE - Turns:" + turns + " | Player: " + player.getName());
+					gui.setStatusMessage("ROGUE - Turns:" + turns + " | Player: " + player.getName()  + " | Score: " + player.getScore());
 					gui.update();
 					return;
 				}
@@ -223,11 +223,12 @@ public class GameEngine implements Observer {
 		} else if ((key == KeyEvent.VK_C)) {
 				if(hero.getInventory()[hero.getInventoryBar().getSelectPointer()-1] instanceof Consumable) {
 					((Consumable)hero.getInventory()[hero.getInventoryBar().getSelectPointer()-1]).consume(hero.getInventoryBar().getSelectPointer()-1);
-					hero.updateHeroBars();		
+					hero.updateHeroBars();
+					addPlayerScore(-10); //Punishment for using consumables
 			}
 		}
-		gui.setStatusMessage("ROGUE - Turns:" + turns + " | Player: " + player.getName());
-		gui.update();
+		//gui.setStatusMessage("ROGUE - Turns:" + turns + " | Player: " + player.getName()  + " | Score: " + player.getScore());
+		//gui.update();
 	}
 	
 

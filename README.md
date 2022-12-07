@@ -65,3 +65,9 @@ Passo 3: Criado o repositório, siga todos os passos apresentados a cima (a part
 ## Inicializar o jogo
 
 Depois de criado o repositório e adicionado ao EclipseIDE, poderá inicializar o jogo abrindo o ficheiro [MainExample.java](src/pt/iscte/poo/test/MainExample.java) e clicando no Run (botão verde na barra de ferramentas). Isso irá abrir uma janela e o jogo estará desponivel.
+
+
+[^1]: https://www.eclipse.org/downloads/
+[^2]: https://www.eclipse.org/egit/
+[^3]: https://www.oracle.com/pt/java/technologies/downloads/
+[^4]: GraphPack indisponivel (por agora)

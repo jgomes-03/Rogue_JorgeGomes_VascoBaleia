@@ -1,4 +1,4 @@
-package pt.iscte.poo.example;
+package pt.iscte.poo.gameEngine;
 
 import java.awt.event.KeyEvent;
 import java.io.File;

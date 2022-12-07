@@ -5,7 +5,7 @@ import GameElements.Pickable.Armor;
 import GameElements.Pickable.Pickable;
 import GameElements.Static.InventoryBar;
 import GameElements.Static.Lifebar;
-import pt.iscte.poo.example.GameEngine;
+import pt.iscte.poo.gameEngine.GameEngine;
 import pt.iscte.poo.utils.Point2D;
 
 public class Hero extends Movable {

@@ -1,7 +1,7 @@
 package GameElements.Static;
 
-import pt.iscte.poo.example.GameElement;
-import pt.iscte.poo.example.GameEngine;
+import pt.iscte.poo.gameEngine.GameElement;
+import pt.iscte.poo.gameEngine.GameEngine;
 import pt.iscte.poo.utils.Point2D;
 import GameElements.Movable.Movable;
 import GameElements.Static.LifeTile;

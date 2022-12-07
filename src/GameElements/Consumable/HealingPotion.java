@@ -1,7 +1,7 @@
 package GameElements.Consumable;
 
 import GameElements.Pickable.Pickable;
-import pt.iscte.poo.example.GameEngine;
+import pt.iscte.poo.gameEngine.GameEngine;
 import pt.iscte.poo.utils.Point2D;
 
 public class HealingPotion extends Pickable implements Consumable  {

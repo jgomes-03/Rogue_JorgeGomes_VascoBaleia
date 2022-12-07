@@ -19,5 +19,45 @@ Se pretender descarregar o projeto para a sua área de trabalho, poderá fazê-l
 ### 1. Diretamente através do EclipseIDE
 
 Passo 1: Abrir o EclipseIDE na sua workspace de trabalho.
-![This is an image](https://)
-Passo 2: 
+
+![This is an image](/readme-imgs/readme1.png)
+
+Passo 2: Depois de aberto, clique no botão "*Importar projetos...*"
+
+![This is an image](/readme-imgs/readme2.png)
+
+Passo 3: Na janela de import, selecione a opção *"Projetos do Git (com smart import)"* dentro da pasta *"Git"*
+
+![This is an image](/readme-imgs/readme3.png)
+
+Passo 4: Na janela do *Git Source*, insira o link do repositório no campo em *"Localização/URL"*. Os restantes campos serão preenchidos automaticamente conforme as configurações do repositório. Insira as suas credênciais nos campos em *"Autenticação"*
+    
+    Link para o repositório: https://github.com/MKingPT/Rogue_JorgeGomes_VascoBaleia
+
+![This is an image](/readme-imgs/readme4.png)
+
+Passo 4: Selecione o destino pretendido para o repositório local. Configure as opções disponiveis da forma que achar mais conveniente.
+
+![This is an image](/readme-imgs/readme5.png)
+
+Passo 5: Após selecionar o destino do repositório, e esperar que o Eclipse crie e carregue o repositório, irá obter um resultado semelhante ao abaixo. Se não chegou a este resultado, então o import do repositório não foi concluído. Deverá tentar de novo desde o **Passo 2**
+
+![This is an image](/readme-imgs/readme6.png)
+
+
+### 2. Através da consola de comandos (CMD ou GitBash)
+
+Passo 1: Através do terminal, escolha o diretório no qual pretende colocar o repositório
+
+Passo 2: Depois de escolher o diretório, insira os comandos abaixo:
+
+```
+git clone https://github.com/MKingPT/Rogue_JorgeGomes_VascoBaleia
+git pull
+```
+
+Passo 3: Criado o repositório, siga todos os passos apresentados a cima (a partir do Passo 1).
+
+**Notas:** 
+- Em vez de selecionar a opção *"Projetos do Git"*, selecione a opção *"Projeto de um diretório existente..."* (Passo 3)
+- O passo 4 não será executado neste caso.

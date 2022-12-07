@@ -61,3 +61,7 @@ Passo 3: Criado o repositório, siga todos os passos apresentados a cima (a part
 **Notas:** 
 - Em vez de selecionar a opção *"Projetos do Git"*, selecione a opção *"Projeto de um diretório existente..."* (Passo 3)
 - O passo 4 não será executado neste caso.
+
+## Inicializar o jogo
+
+Depois de criado o repositório e adicionado ao EclipseIDE, poderá inicializar o jogo abrindo o ficheiro [MainExample.java](src/pt/iscte/poo/test/MainExample.java) e clicando no Run (botão verde na barra de ferramentas). Isso irá abrir uma janela e o jogo estará desponivel.

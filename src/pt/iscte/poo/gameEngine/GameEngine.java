@@ -67,7 +67,6 @@ public class GameEngine implements Observer {
 			}
 				
 		}
-		addObject(new Sword(new Point2D(0, 10)));
 		updateGameHeader();
 		gui.update();
 	}

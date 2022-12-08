@@ -1,5 +1,2 @@
-1º: MC PILA DE ACO with a score of: 400
-2º: Ai preto with a score of: 285
-3º: Coninhas with a score of: 255
-4º: Conaca with a score of: 240
-5º: Heroi with a score of: 235
+1º: MC PILA DE ACO with a score of: 15
+2º: Pixao with a score of: 5

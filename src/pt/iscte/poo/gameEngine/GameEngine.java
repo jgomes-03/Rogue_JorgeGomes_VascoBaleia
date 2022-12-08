@@ -65,14 +65,13 @@ public class GameEngine implements Observer {
 			} else if(player.getName().isEmpty() || player.getName().isBlank()) {
 				gui.setMessage("Insira um nome válido");
 			}
-				
 		}
 		updateGameHeader();
 		gui.update();
 	}
 	
 	public void GameOver() {
-		scoreBoard.add(player);
+		addToScoreBoard(player);
 		gui.dispose();
 		gui.setMessage("Game Over " + player.getName() + "!");
 		GameScores.writeToFile(scoreBoardFile);
@@ -81,7 +80,7 @@ public class GameEngine implements Observer {
 	}
 	
 	public void gameWin() {
-		scoreBoard.add(player);
+		addToScoreBoard(player);
 		gui.setMessage("Vitória!");
 		GameScores.writeToFile(scoreBoardFile);
 		printTopScore();
@@ -93,8 +92,11 @@ public class GameEngine implements Observer {
 	}
 	
 	public void printTopScore() {
-		gui.setMessage("TOP 5 BEST SCORE OF ALL TIME\n1º: " + scoreBoard.get(1) + "\n2º: " + scoreBoard.get(2) + "\n3º: " + scoreBoard.get(3) + "\n4º: " + scoreBoard.get(4) + "\n5º: " + scoreBoard.get(5));
-;
+		String result = "TOP 5 BEST SCORE OF ALL TIME";
+		for(Player p : scoreBoard) {
+			result += "\n" + (scoreBoard.indexOf(p)+1) + "º: " + p;
+		}
+		gui.setMessage(result);
 	}
 	
 	public void addPlayerScore(int value) {
@@ -107,7 +109,14 @@ public class GameEngine implements Observer {
 	}
 	
 	public void addToScoreBoard(Player p1) {
+		for(Player p : scoreBoard) {
+			if(p.getName().equals(p1.getName())) {
+				p.setScore(p1.getScore());
+				return;
+			}
+		}
 		scoreBoard.add(p1);
+		
 	}
 	
 	public void removeFromScoreBoard(Player p1) {
@@ -212,19 +221,11 @@ public class GameEngine implements Observer {
 	public void update(Observed source) {
 		int key = ((ImageMatrixGUI) source).keyPressed();
 		if (Direction.isDirection(key)) {
+			hero.move(key);
 			Iterator<GameElement> iterator = roomList.get(currentRoom).roomObjects.iterator();
 			while (iterator.hasNext()) {
 				GameElement current = iterator.next();
-				if (current instanceof Hero) {
-					hero.move(key);
-					hero.PoisonDamage();	
-					hero.updateHeroBars();
-					turns++;
-					updateGameHeader();
-					gui.update();
-					return;
-				}
-				if (current instanceof Movable) {
+				if (current instanceof Movable && current.getName() != "Hero") {
 					((Movable) current).move(key);
 				}
 			}
@@ -238,10 +239,16 @@ public class GameEngine implements Observer {
 					((Consumable)hero.getInventory()[hero.getInventoryBar().getSelectPointer()-1]).consume(hero.getInventoryBar().getSelectPointer()-1);
 					hero.updateHeroBars();
 					addPlayerScore(-10); //Punishment for using consumables
+					return; //doesnt add round
 			}
 		}
 		//gui.setStatusMessage("ROGUE - Turns:" + turns + " | Player: " + player.getName()  + " | Score: " + player.getScore());
 		//gui.update();
+		hero.PoisonDamage();	
+		hero.updateHeroBars();
+		turns++;
+		updateGameHeader();
+		gui.update();
 	}
 	
 

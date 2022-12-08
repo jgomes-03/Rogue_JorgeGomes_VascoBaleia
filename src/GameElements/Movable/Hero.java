@@ -5,7 +5,7 @@ import GameElements.Pickable.Armor;
 import GameElements.Pickable.Pickable;
 import GameElements.Static.InventoryBar;
 import GameElements.Static.Lifebar;
-import pt.iscte.poo.example.GameEngine;
+import pt.iscte.poo.gameEngine.GameEngine;
 import pt.iscte.poo.utils.Point2D;
 
 public class Hero extends Movable {
@@ -19,6 +19,7 @@ public class Hero extends Movable {
 
 	public Hero(Point2D position) {
 		super(position);
+		super.setDamage(1);
 		inventory = new Pickable[MAX_SIZE];
 		super.setHitpoints(MAX_LIFE);
 		healthBar = createLifebar(new Point2D(0, GameEngine.GRID_HEIGHT), this);

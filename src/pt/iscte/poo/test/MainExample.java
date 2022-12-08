@@ -1,6 +1,6 @@
 package pt.iscte.poo.test;
 
-import pt.iscte.poo.example.GameEngine;
+import pt.iscte.poo.gameEngine.GameEngine;
 
 public class MainExample {
 	public static void main(String[] args) {

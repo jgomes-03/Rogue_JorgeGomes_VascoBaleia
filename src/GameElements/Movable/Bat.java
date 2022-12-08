@@ -1,7 +1,7 @@
 package GameElements.Movable;
 
 
-import pt.iscte.poo.example.GameElement;
+import pt.iscte.poo.gameEngine.GameElement;
 import pt.iscte.poo.utils.Direction;
 import pt.iscte.poo.utils.Point2D;
 
@@ -10,6 +10,7 @@ public class Bat extends Movable {
 	public Bat(Point2D position) {
 		super(position);
 		super.setHitpoints(3);
+		super.setDamage(1);
 	}
 
 	@Override

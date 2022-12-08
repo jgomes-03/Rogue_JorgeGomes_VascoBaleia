@@ -1,4 +1,4 @@
-package pt.iscte.poo.example;
+package pt.iscte.poo.gameEngine;
 
 import java.io.File;
 import java.io.FileNotFoundException;

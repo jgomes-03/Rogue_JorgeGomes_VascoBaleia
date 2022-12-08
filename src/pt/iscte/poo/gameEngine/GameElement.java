@@ -1,4 +1,4 @@
-package pt.iscte.poo.example;
+package pt.iscte.poo.gameEngine;
 
 import GameElements.Consumable.HealingPotion;
 import GameElements.Movable.*;

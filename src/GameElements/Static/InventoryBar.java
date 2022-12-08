@@ -1,9 +1,10 @@
 package GameElements.Static;
 
+import pt.iscte.poo.gameEngine.GameElement;
+import pt.iscte.poo.gameEngine.GameEngine;
 import pt.iscte.poo.utils.Point2D;
 import GameElements.Movable.*;
 import GameElements.Pickable.Pickable;
-import pt.iscte.poo.example.*;
 
 public class InventoryBar extends GameElement{
 

@@ -1,7 +1,7 @@
 package GameElements.Movable;
 
-import pt.iscte.poo.example.GameEngine;
-import pt.iscte.poo.example.GameElement;
+import pt.iscte.poo.gameEngine.GameElement;
+import pt.iscte.poo.gameEngine.GameEngine;
 import pt.iscte.poo.utils.Direction;
 import pt.iscte.poo.utils.Point2D;
 import pt.iscte.poo.utils.Vector2D;
@@ -11,6 +11,7 @@ public class Skeleton extends Movable  {
 	public Skeleton(Point2D position) {
 		super(position);
 		super.setHitpoints(5);
+		super.setDamage(1);
 	}
 
 	public String getName() {

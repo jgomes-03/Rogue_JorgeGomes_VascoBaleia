@@ -1,4 +1,4 @@
-package pt.iscte.poo.example;
+package pt.iscte.poo.GameStats;
 
 
 import pt.iscte.poo.utils.Point2D;

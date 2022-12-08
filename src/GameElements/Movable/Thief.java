@@ -1,7 +1,8 @@
 package GameElements.Movable;
 
 import GameElements.Pickable.Pickable;
-import pt.iscte.poo.example.GameEngine;
+import pt.iscte.poo.gameEngine.GameElement;
+import pt.iscte.poo.gameEngine.GameEngine;
 import pt.iscte.poo.utils.Direction;
 import pt.iscte.poo.utils.Point2D;
 import pt.iscte.poo.utils.Vector2D;
@@ -17,6 +18,7 @@ public class Thief extends Movable  {
 		super(position);
 		super.setHitpoints(MAX_LIFE);
 		inventory = new Pickable[MAX_INVENTORY_SIZE];
+		super.setDamage(0);
 	}
 
 	public String getName() {

@@ -9,6 +9,8 @@ import pt.iscte.poo.utils.Vector2D;
 
 public class Thief extends Movable  {
 	
+	//BUG1: Sometimes we get an error when thief tries to steal more than one thing
+	
 	private static final int MAX_INVENTORY_SIZE = 1;
 	private static final int MAX_LIFE = 5;
 	

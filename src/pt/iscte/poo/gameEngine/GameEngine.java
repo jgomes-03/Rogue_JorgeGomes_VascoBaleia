@@ -26,7 +26,7 @@ public class GameEngine implements Observer {
 	public static final int GRID_HEIGHT = 10;
 	public static final int GRID_WIDTH = 10;
 	private File scoreBoardFile = new File("info/top_score.txt");
-	private Player player;
+	
 
 	private static GameEngine INSTANCE = null;
 	private ImageMatrixGUI gui = ImageMatrixGUI.getInstance();
@@ -34,6 +34,7 @@ public class GameEngine implements Observer {
 	private Hero hero;
 	private int turns;
 	private int currentRoom = 0;
+	private Player player;
 
 	private ArrayList<Player> scoreBoard = new ArrayList<>();
 

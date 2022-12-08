@@ -54,9 +54,8 @@ public abstract class Movable extends GameElement {
 		Point2D nextPosition = this.getPosition().plus(moveVector);
 		ArrayList<GameElement> selection = GameEngine.getInstance()
 				.selectBy(s -> s.getPosition().equals(nextPosition)  && (!s.isTransposable()));
-		if(!isInsideWindow(nextPosition)) {
-			GameEngine.getInstance().getHero().PoisonDamage();				
-			return; //Checks if the Movable is inside GameBoarders
+		if(!isInsideWindow(nextPosition)) {			
+			return; //Checks if the Movable is inside GameBorders
 		}
 		if (selection.isEmpty()) {
 			super.setPosition(nextPosition);

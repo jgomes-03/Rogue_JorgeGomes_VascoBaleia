@@ -83,7 +83,7 @@ public class GameEngine implements Observer {
 	
 	public void gameWin() {
 		scoreBoard.add(player);
-		gui.setMessage("PARABENS SEU CORNO DO CARALHO!!! SEU PRETO, MISOGENO!!!!");
+		gui.setMessage("Vitória!");
 		GameScores.writeToFile(scoreBoardFile);
 		printTopScore();
 		System.exit(1);
@@ -218,6 +218,7 @@ public class GameEngine implements Observer {
 				GameElement current = iterator.next();
 				if (current instanceof Hero) {
 					hero.move(key);
+					hero.PoisonDamage();	
 					hero.updateHeroBars();
 					turns++;
 					updateGameHeader();
@@ -228,6 +229,7 @@ public class GameEngine implements Observer {
 					((Movable) current).move(key);
 				}
 			}
+			//getHero().PoisonDamage();
 		} else if (key == KeyEvent.VK_1 || key == KeyEvent.VK_2 || key == KeyEvent.VK_3){
 			hero.getInventoryBar().setSelectPointer(Pickable.getInventorySlot(key));
 		} else if (key == KeyEvent.VK_D && hero.getInventory()[hero.getInventoryBar().getSelectPointer()-1] != null) { //DROP

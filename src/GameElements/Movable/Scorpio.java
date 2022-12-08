@@ -10,7 +10,8 @@ public class Scorpio extends Movable {
 
 	public Scorpio(Point2D position) {
 		super(position);
-		super.setHitpoints(3);
+		super.setHitpoints(2);
+		super.setDamage(0);
 	}
 
 	@Override
@@ -39,7 +40,7 @@ public class Scorpio extends Movable {
 	@Override
 	public void attack(Movable m, int damage) {
 		if (m instanceof Hero) {
-			GameEngine.getInstance().getHero().setPoisoned(true);
+			GameEngine.getInstance().getHero().isPoisoned = true;
 		}
 	}
 	

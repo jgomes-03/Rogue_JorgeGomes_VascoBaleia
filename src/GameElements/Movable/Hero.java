@@ -15,7 +15,7 @@ public class Hero extends Movable {
 	private static final int MAX_LIFE = 10;
 	private Lifebar healthBar;
 	private InventoryBar inventoryBar;
-	private boolean isPoisoned;
+	public boolean isPoisoned;
 
 	public Hero(Point2D position) {
 		super(position);
@@ -108,8 +108,10 @@ public class Hero extends Movable {
 	}
 	
 	public void PoisonDamage() {
-		if(getIsPoisoned()==true)
+		if(getIsPoisoned()==true) {
 			setHitpoints(getHitpoints()-1);
+			return;
+		}
 	}
 	
 	public boolean isArmored() {
@@ -119,5 +121,4 @@ public class Hero extends Movable {
 		return false;
 	}
 	
-
 }

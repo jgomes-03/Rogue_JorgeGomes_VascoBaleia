@@ -23,7 +23,6 @@ public class Bat extends Movable {
 
 	@Override
 	public boolean isTransposable() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

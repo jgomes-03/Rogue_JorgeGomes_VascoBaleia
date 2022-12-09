@@ -23,7 +23,6 @@ public class Floor extends GameElement {
 	
 	@Override
 	public boolean isTransposable() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 

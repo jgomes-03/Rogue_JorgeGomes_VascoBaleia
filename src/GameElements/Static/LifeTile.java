@@ -14,7 +14,6 @@ public class LifeTile extends GameElement{
 
 	@Override
 	public int getLayer() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 	

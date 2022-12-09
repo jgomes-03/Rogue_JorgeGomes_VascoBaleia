@@ -22,7 +22,6 @@ public class Treasure extends GameElement  {
 	
 	@Override
 	public boolean isTransposable() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

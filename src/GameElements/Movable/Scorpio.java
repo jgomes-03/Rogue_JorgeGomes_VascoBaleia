@@ -7,9 +7,6 @@ import pt.iscte.poo.utils.Vector2D;
 
 public class Scorpio extends Movable {
 
-	//BUG1: Can be killed in that next position
-	//BUG2: After healing, it keeps taking damage
-	
 	public Scorpio(Point2D position) {
 		super(position);
 		super.setHitpoints(2);

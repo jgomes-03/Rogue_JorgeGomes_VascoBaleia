@@ -38,22 +38,10 @@ public class Door extends GameElement  {
 	
 	public void openDoor() {
 		isClosed = false;
-//		Key k = (Key)ge;
-//		Door d = (Door)element;
-//		if(k.getKeycode().equals(d.getKeycode())) d.openDoor();
-//		Engine.getInstance().removeObject(element);
-//		Engine.getInstance().addObject(element);
-		//Make this a void, and if opens successfully return true, 
-		//else return false and perhaps throw an error in the GUI or
-		//play a sound? could be unimplemented even
 	}
 	
 	@Override
 	public boolean isTransposable() {
-		// TODO Auto-generated method stub
-		/*if(isClosed) {
-			return false;
-		} else return true;*/
 		return false;
 	}
 

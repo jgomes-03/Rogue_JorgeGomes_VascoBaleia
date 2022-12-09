@@ -113,7 +113,7 @@ public abstract class Movable extends GameElement {
 	}
 
 	public void kill(Movable ge) {
-		if (!(ge instanceof Hero))
+		if (!(ge.getName().equals("Hero")))
 			GameEngine.getInstance().removeObject(ge);
 	}
 

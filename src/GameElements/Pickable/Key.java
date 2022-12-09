@@ -27,7 +27,6 @@ public class Key extends Pickable  {
 	
 	@Override
 	public boolean isTransposable() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 }

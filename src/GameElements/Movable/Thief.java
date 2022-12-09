@@ -72,7 +72,6 @@ public class Thief extends Movable  {
 				if (inventory[0] == null && aux !=null) {
 					inventory[0] = aux;
 					GameEngine.getInstance().getHero().getInventory()[i] = null;
-					System.out.println("Gamei " + inventory[i].toString());
 					return;
 				
 			}

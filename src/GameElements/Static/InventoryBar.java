@@ -11,6 +11,7 @@ public class InventoryBar extends GameElement{
 	Movable LivingElement;
 	private int drawStartPoint;
 	private int selectPointer;
+	private Highlight visualSelectedPointer;
 	
 	public InventoryBar(Point2D position, Movable m) {
 		super(position);
@@ -27,6 +28,8 @@ public class InventoryBar extends GameElement{
 				GameEngine.getInstance().addToBar(p);
 			}
 		}
+//		visualSelectedPointer.setPosition(LivingElement.getInventory()[selectPointer-1].getPosition());
+//		GameEngine.getInstance().addToBar(visualSelectedPointer);
 	}
 	
 	@Override

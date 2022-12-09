@@ -233,6 +233,7 @@ public class GameEngine implements Observer {
 			}
 		} else if (key == KeyEvent.VK_1 || key == KeyEvent.VK_2 || key == KeyEvent.VK_3){
 			hero.getInventoryBar().setSelectPointer(Pickable.getInventorySlot(key));
+			
 		} else if (key == KeyEvent.VK_D && hero.getInventory()[hero.getInventoryBar().getSelectPointer()-1] != null) { //DROP
 				hero.dropFromInventory(hero.getInventory()[hero.getInventoryBar().getSelectPointer()-1]);
 		} else if ((key == KeyEvent.VK_C)) {
@@ -243,9 +244,6 @@ public class GameEngine implements Observer {
 					return; //doesnt add round
 			}
 		}
-		//gui.setStatusMessage("ROGUE - Turns:" + turns + " | Player: " + player.getName()  + " | Score: " + player.getScore());
-		//gui.update();
-		//hero.PoisonDamage();	
 		hero.updateHeroBars();
 		turns++;
 		updateGameHeader();

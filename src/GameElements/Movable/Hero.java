@@ -24,8 +24,8 @@ public class Hero extends Movable {
 		super.setHitpoints(MAX_LIFE);
 		healthBar = createLifebar(new Point2D(0, GameEngine.GRID_HEIGHT), this);
 		inventoryBar = createInventoryBar(new Point2D(6, GameEngine.GRID_HEIGHT), this);
-		// inventory[0]= new Key(new Point2D(2,2),"KEY0");
-		// inventory.add(new Sword(new Point2D(2,2)));
+//		inventoryBar.visualSelectedPointer.setPosition(getInventory()[getInventoryBar().getSelectPointer()-1].getPosition());
+//		GameEngine.getInstance().addToBar(inventoryBar.visualSelectedPointer);
 	}
 
 	@Override

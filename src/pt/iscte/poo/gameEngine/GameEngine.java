@@ -12,6 +12,7 @@ import GameElements.Movable.Hero;
 import GameElements.Movable.Movable;
 import GameElements.Pickable.Pickable;
 import GameElements.Pickable.Sword;
+import GameElements.Static.Highlight;
 import GameElements.Static.LifeTile;
 import pt.iscte.poo.GameStats.GameScores;
 import pt.iscte.poo.GameStats.Player;
@@ -233,6 +234,7 @@ public class GameEngine implements Observer {
 			}
 		} else if (key == KeyEvent.VK_1 || key == KeyEvent.VK_2 || key == KeyEvent.VK_3){
 			hero.getInventoryBar().setSelectPointer(Pickable.getInventorySlot(key));
+			//addToBar(new Highlight((hero.getInventory()[hero.getInventoryBar().getSelectPointer()-1]).getPosition()));
 			
 		} else if (key == KeyEvent.VK_D && hero.getInventory()[hero.getInventoryBar().getSelectPointer()-1] != null) { //DROP
 				hero.dropFromInventory(hero.getInventory()[hero.getInventoryBar().getSelectPointer()-1]);

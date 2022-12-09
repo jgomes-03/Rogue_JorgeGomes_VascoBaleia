@@ -1,14 +1,19 @@
 package GameElements.Static;
 
+import GameElements.Pickable.Pickable;
 import pt.iscte.poo.gameEngine.GameElement;
 import pt.iscte.poo.utils.Point2D;
 
-public class Highlight extends GameElement{
+public class Highlight extends Pickable{
 
 	public Highlight(Point2D position) {
 		super(position);
 	}
 
+//	public Highlight(int index) {
+//		getInventory()[Pickable.getInventorySlot(index);
+//	}
+//	
 	@Override
 	public String getName() {
 		// TODO Auto-generated method stub

@@ -11,7 +11,7 @@ public class InventoryBar extends GameElement{
 	Movable LivingElement;
 	private int drawStartPoint;
 	private int selectPointer;
-	private Highlight visualSelectedPointer;
+	public Highlight visualSelectedPointer;
 	
 	public InventoryBar(Point2D position, Movable m) {
 		super(position);

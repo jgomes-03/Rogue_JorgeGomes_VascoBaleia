@@ -18,7 +18,7 @@ public class Armor extends Pickable {
 
 	@Override
 	public int getLayer() {
-		return 0;
+		return 1;
 	}
 	
 	@Override

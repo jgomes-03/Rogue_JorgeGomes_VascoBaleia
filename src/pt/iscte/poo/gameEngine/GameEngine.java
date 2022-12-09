@@ -223,6 +223,7 @@ public class GameEngine implements Observer {
 		int key = ((ImageMatrixGUI) source).keyPressed();
 		if (Direction.isDirection(key)) {
 			hero.move(key);
+			hero.PoisonDamage();	
 			Iterator<GameElement> iterator = roomList.get(currentRoom).roomObjects.iterator();
 			while (iterator.hasNext()) {
 				GameElement current = iterator.next();
@@ -230,7 +231,6 @@ public class GameEngine implements Observer {
 					((Movable) current).move(key);
 				}
 			}
-			//getHero().PoisonDamage();
 		} else if (key == KeyEvent.VK_1 || key == KeyEvent.VK_2 || key == KeyEvent.VK_3){
 			hero.getInventoryBar().setSelectPointer(Pickable.getInventorySlot(key));
 		} else if (key == KeyEvent.VK_D && hero.getInventory()[hero.getInventoryBar().getSelectPointer()-1] != null) { //DROP
@@ -245,7 +245,7 @@ public class GameEngine implements Observer {
 		}
 		//gui.setStatusMessage("ROGUE - Turns:" + turns + " | Player: " + player.getName()  + " | Score: " + player.getScore());
 		//gui.update();
-		hero.PoisonDamage();	
+		//hero.PoisonDamage();	
 		hero.updateHeroBars();
 		turns++;
 		updateGameHeader();

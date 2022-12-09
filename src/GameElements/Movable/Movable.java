@@ -78,6 +78,7 @@ public abstract class Movable extends GameElement {
 						((Door) selection.get(0)).getNextRoomPosition());
 
 			}
+			//GameEngine.getInstance().getHero().PoisonDamage();
 		} else if (selection.get(0) instanceof Treasure) {
 			GameEngine.getInstance().addPlayerScore(100);
 			GameEngine.getInstance().gameWin();

@@ -18,7 +18,7 @@ public class Key extends Pickable  {
 
 	@Override
 	public int getLayer() {
-		return 0;
+		return 1;
 	}
 	
 	public String getKeycode() {

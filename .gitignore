@@ -25,3 +25,4 @@ hs_err_pid*
 # Files we don't need to have shown
 bin/
 .settings/
+/Relatório.docx

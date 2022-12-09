@@ -46,7 +46,7 @@ public class Thief extends Movable  {
 
 	@Override
 	public void attack(Movable m, int damage) {
-		if(m instanceof Hero) {
+		if(m.getName().equals("Hero") && getInventory()[0] == null) {
 			steal();
 		}
 	}

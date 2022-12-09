@@ -26,9 +26,8 @@ public class Lifebar extends GameElement {
 			} else if (i > (LivingElement.getHitpoints()-1)*0.5){
 				tileColor = "Red";
 			} else tileColor = "GreenRed";
-			Point2D tile_pos = new Point2D(i,getPosition().getY()); //new Point2D(i,GameEngine.GRID_HEIGHT);
+			Point2D tile_pos = new Point2D(i,getPosition().getY()); 
 			LifeTile lf = new LifeTile(Color.valueOf(tileColor),tile_pos);
-			//GameEngine.getInstance().addObject(GameElement.create(tileColor,tile_pos,null,null,null));	
 			GameEngine.getInstance().addToBar(lf);
 		}
 		if(LivingElement.isDeadOnNextAttack())
@@ -37,19 +36,16 @@ public class Lifebar extends GameElement {
 	
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
 		return "Lifebar";
 	}
 
 	@Override
 	public int getLayer() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public boolean isTransposable() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

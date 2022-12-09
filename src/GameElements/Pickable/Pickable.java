@@ -11,7 +11,6 @@ public abstract class Pickable extends GameElement {
 
 	public Pickable(Point2D position) {
 		super(position);
-		// TODO Auto-generated constructor stub
 	}
 
 	public void pick() {

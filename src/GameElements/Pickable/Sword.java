@@ -1,7 +1,5 @@
 package GameElements.Pickable;
 
-
-
 import pt.iscte.poo.gameEngine.GameEngine;
 import pt.iscte.poo.utils.Point2D;
 
@@ -23,7 +21,6 @@ public class Sword extends Pickable  {
 	
 	@Override
 	public boolean isTransposable() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

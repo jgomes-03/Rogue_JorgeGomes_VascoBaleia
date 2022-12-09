@@ -56,7 +56,6 @@ public class Hero extends Movable {
 				inventory[i] = p;
 				p.pick();
 				inventoryBar.update();
-				System.out.println("Picked:" + p);
 				return;
 			}
 		}

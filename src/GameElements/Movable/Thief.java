@@ -1,7 +1,6 @@
 package GameElements.Movable;
 
 import GameElements.Pickable.Pickable;
-import pt.iscte.poo.gameEngine.GameElement;
 import pt.iscte.poo.gameEngine.GameEngine;
 import pt.iscte.poo.utils.Direction;
 import pt.iscte.poo.utils.Point2D;
@@ -43,7 +42,7 @@ public class Thief extends Movable  {
 		if(getInventory()[0] == null)
 			keyPressed = super.getKey(Direction.forVector(Vector2D.movementVector(getPosition(), GameEngine.getInstance().getHero().getPosition())));
 		else // Add case to get away from hero
-			keyPressed = super.getKey(Direction.forVector(Vector2D.movementVector(getPosition(), GameEngine.getInstance().getHero().getPosition())));
+			keyPressed = super.getKey(Direction.forVector(Vector2D.movementVector(getPosition(), GameEngine.getInstance().getHero().getPosition())).opposite());
 		super.move(keyPressed);
 	}
 
@@ -67,11 +66,6 @@ public class Thief extends Movable  {
 			return inventory;
 		}
 
-	public int getRandomNumber(int min, int max) {
-	    return (int) ((Math.random() * (max - min)) + min);
-	}
-
-	
 	public void steal() { 
 				int i = getRandomNumber(0,GameEngine.getInstance().getHero().getInventory().length-1);
 				Pickable aux = GameEngine.getInstance().getHero().getInventory()[i];

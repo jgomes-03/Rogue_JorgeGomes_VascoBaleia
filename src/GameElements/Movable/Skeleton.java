@@ -1,6 +1,5 @@
 package GameElements.Movable;
 
-import pt.iscte.poo.gameEngine.GameElement;
 import pt.iscte.poo.gameEngine.GameEngine;
 import pt.iscte.poo.utils.Direction;
 import pt.iscte.poo.utils.Point2D;
@@ -33,6 +32,7 @@ public class Skeleton extends Movable  {
 	@Override
 	public void move(int keyPressed) {
 		if(GameEngine.getInstance().getTurns()%2==0) {
+			keyPressed = super.getKey(Direction.forVector(Vector2D.movementVector(getPosition(), GameEngine.getInstance().getHero().getPosition())));
 			super.move(keyPressed);
 		}
 	}

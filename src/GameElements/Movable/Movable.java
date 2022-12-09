@@ -57,8 +57,6 @@ public abstract class Movable extends GameElement {
 		if (!isInsideWindow(nextPosition)) {
 			return; // Checks if the Movable is inside GameBorders
 		}
-		// Pif(!selection.isEmpty() && this.getName()=="Hero")
-		// System.out.println(selection.get(0).getName());
 		if (selection.isEmpty()) {
 			super.setPosition(nextPosition);
 		} else if (this.getName().equals("Hero")) {
@@ -96,22 +94,21 @@ public abstract class Movable extends GameElement {
 			}
 			m.hitpoints = m.hitpoints - damage;
 		} else {
-			if (this instanceof Hero) {
-				if (m instanceof Skeleton)
+			if (getName().equals("Hero")) {
+				if (m.getName().equals("Skeleton") )
 					GameEngine.getInstance().addPlayerScore(10);
-				if (m instanceof Bat)
+				if (m.getName().equals("Bat"))
 					GameEngine.getInstance().addPlayerScore(15);
-				if (m instanceof Thug)
+				if (m.getName().equals("Thug"))
 					GameEngine.getInstance().addPlayerScore(20);
-				if (m instanceof Scorpio)
+				if (m.getName().equals("Scorpio"))
 					GameEngine.getInstance().addPlayerScore(25);
-				if (m instanceof Thief)
+				if (m.getName().equals("Thief"))
 					GameEngine.getInstance().addPlayerScore(30);
 			}
 			m.die();
 			kill(m);
 		}
-		// if(m instanceof Hero)((Hero) m).updateLifeBar();
 	}
 
 	public void die() {
@@ -155,6 +152,10 @@ public abstract class Movable extends GameElement {
 		return null;
 	}
 
+	public int getRandomNumber(int min, int max) {
+	    return (int) ((Math.random() * (max - min)) + min);
+	}
+	
 	private boolean isInsideWindow(Point2D nextPosition) {
 		return nextPosition.getX() >= 0 && nextPosition.getX() < GameEngine.GRID_WIDTH && nextPosition.getY() >= 0
 				&& nextPosition.getY() < GameEngine.GRID_HEIGHT ? true : false;

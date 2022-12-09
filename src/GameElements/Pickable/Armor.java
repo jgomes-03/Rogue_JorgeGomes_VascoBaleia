@@ -1,7 +1,6 @@
 package GameElements.Pickable;
 
 
-import pt.iscte.poo.gameEngine.GameEngine;
 import pt.iscte.poo.utils.Point2D;
 
 public class Armor extends Pickable {

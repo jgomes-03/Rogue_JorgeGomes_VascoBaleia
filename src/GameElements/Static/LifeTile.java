@@ -30,13 +30,11 @@ public class LifeTile extends GameElement{
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
 		return name;
 	}
 
 	@Override
 	public boolean isTransposable() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 	

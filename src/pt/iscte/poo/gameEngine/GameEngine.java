@@ -145,11 +145,9 @@ public class GameEngine implements Observer {
 	
 	public void addToBar(GameElement ge) {
 		if(ge instanceof LifeTile) {
-			//roomList.get(currentRoom).LifeBarTiles.clear();
 			roomList.get(currentRoom).LifeBarTiles.add((LifeTile) ge);
 		}
 		else if(ge instanceof Pickable) {
-			//roomList.get(currentRoom).InventoryBarTiles.clear();
 			roomList.get(currentRoom).InventoryBarTiles.add((Pickable) ge);
 			
 		}
@@ -159,7 +157,6 @@ public class GameEngine implements Observer {
 	public void removeObject(GameElement ge) {
 		roomList.get(currentRoom).roomObjects.remove(ge);
 		gui.removeImage(ge);
-		//gui.removeImage(ge);
 	}
 
 	public void dropObject(Pickable p) {
@@ -234,9 +231,6 @@ public class GameEngine implements Observer {
 			}
 		} else if (key == KeyEvent.VK_1 || key == KeyEvent.VK_2 || key == KeyEvent.VK_3){
 			hero.getInventoryBar().setSelectPointer(Pickable.getInventorySlot(key));
-//			if(hero.getInventory()[hero.getInventoryBar().getSelectPointer()-1] != null)
-//				addToBar(new Highlight((hero.getInventory()[hero.getInventoryBar().getSelectPointer()-1]).getPosition()));
-//			
 		} else if (key == KeyEvent.VK_D && hero.getInventory()[hero.getInventoryBar().getSelectPointer()-1] != null) { //DROP
 				hero.dropFromInventory(hero.getInventory()[hero.getInventoryBar().getSelectPointer()-1]);
 		} else if ((key == KeyEvent.VK_C)) {

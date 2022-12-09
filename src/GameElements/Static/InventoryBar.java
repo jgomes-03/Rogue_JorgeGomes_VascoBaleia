@@ -16,7 +16,7 @@ public class InventoryBar extends GameElement{
 	public InventoryBar(Point2D position, Movable m) {
 		super(position);
 		LivingElement = m;
-		drawStartPoint = position.getX();
+		drawStartPoint = position.getX()+1;
 		setSelectPointer(1);
 	}
 
@@ -31,8 +31,6 @@ public class InventoryBar extends GameElement{
 		if(!GameEngine.getInstance().getHero().inventoryIsEmpty() && GameEngine.getInstance().getHero().getInventory()[selectPointer-1] != null) {
 			GameEngine.getInstance().addToBar(new Highlight(GameEngine.getInstance().getHero().getInventory()[selectPointer-1].getPosition()));
 		}
-//		visualSelectedPointer.setPosition(LivingElement.getInventory()[selectPointer-1].getPosition());
-//		GameEngine.getInstance().addToBar(visualSelectedPointer);
 	}
 	
 	

@@ -19,7 +19,7 @@ public class HealingPotion extends Pickable implements Consumable  {
 
 	@Override
 	public int getLayer() {
-		return 0;
+		return 1;
 	}
 	
 	@Override

@@ -18,7 +18,7 @@ public class ReadFromFile {
 	}
 
 	
-	public List<Point2D> getWalls(){ //UM METODO QUE CHAMA O METODO DE FABRIC DO GAMEELEMENT
+	public List<Point2D> getWalls(){
 		try {
 			List<Point2D> points = new ArrayList<>();
 			Scanner roomRead = new Scanner(room);
@@ -40,7 +40,7 @@ public class ReadFromFile {
 		return null;
 	}
 	
-	//?????
+	
 	public List<Point2D> getEnemies(){
 		try {
 			List<Point2D> points = new ArrayList<>();

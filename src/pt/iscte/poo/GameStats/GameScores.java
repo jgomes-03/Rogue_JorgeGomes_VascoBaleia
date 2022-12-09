@@ -22,7 +22,6 @@ public class GameScores {
 			}
 			out.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -35,9 +34,6 @@ public class GameScores {
 				String name = currentLine[0].split(": ")[1];
 				GameEngine.getInstance().addToScoreBoard(new Player(name, Integer.parseInt(currentLine[1])));
 			}
-			/*for(Player p : GameEngine.getInstance().getScoreBoard()) {
-				if(p == null) p.setName("None");
-			}*/
 			in.close();
 		} catch (IOException e) {
 			e.printStackTrace();

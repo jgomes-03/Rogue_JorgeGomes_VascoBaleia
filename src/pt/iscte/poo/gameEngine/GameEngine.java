@@ -36,7 +36,7 @@ public class GameEngine implements Observer {
 
 	private ArrayList<Player> scoreBoard = new ArrayList<>();
 
-	List<Room> roomList = new ArrayList<>();
+	private List<Room> roomList = new ArrayList<>();
 
 	public static GameEngine getInstance() {
 		if (INSTANCE == null)
@@ -136,12 +136,12 @@ public class GameEngine implements Observer {
 	}
 
 	public void addObject(GameElement ge) {
-		roomList.get(currentRoom).roomObjects.add(ge);
+		getRoomList().get(currentRoom).roomObjects.add(ge);
 		gui.addImage(ge);
 	}
 	
 	public void removeObject(GameElement ge) {
-		roomList.get(currentRoom).roomObjects.remove(ge);
+		getRoomList().get(currentRoom).roomObjects.remove(ge);
 		gui.removeImage(ge);
 	}
 
@@ -152,39 +152,39 @@ public class GameEngine implements Observer {
 	
 	public void addToBar(GameElement ge) {
 		if(ge instanceof LifeTile) {
-			roomList.get(currentRoom).LifeBarTiles.add((LifeTile) ge);
+			getRoomList().get(currentRoom).LifeBarTiles.add((LifeTile) ge);
 		}
 		else if(ge instanceof Pickable) {
-			roomList.get(currentRoom).InventoryBarTiles.add((Pickable) ge);
+			getRoomList().get(currentRoom).InventoryBarTiles.add((Pickable) ge);
 			
 		}
 		gui.addImage(ge);
 	}
 
 	public void clearLifeBarTiles() {
-		for(LifeTile lt: roomList.get(currentRoom).LifeBarTiles)
+		for(LifeTile lt: getRoomList().get(currentRoom).LifeBarTiles)
 			gui.removeImage(lt);
-		roomList.get(currentRoom).LifeBarTiles.clear();
+		getRoomList().get(currentRoom).LifeBarTiles.clear();
 	}
 	
 	public void clearInventoryBarTiles() {
-		for(Pickable p: roomList.get(currentRoom).InventoryBarTiles)
+		for(Pickable p: getRoomList().get(currentRoom).InventoryBarTiles)
 			gui.removeImage(p);
-		roomList.get(currentRoom).InventoryBarTiles.clear();
+		getRoomList().get(currentRoom).InventoryBarTiles.clear();
 	}
 	
 	private void addRoom(String nextRoom) {
 		File dir = new File("rooms/");
 		for (int i = 0; i < dir.list().length; i++) {
 			if (nextRoom.equals("room" + i)) {
-				roomList.add(new Room("room" + i));
+				getRoomList().add(new Room("room" + i));
 				Room next = null;
-				for(Room r : GameEngine.getInstance().roomList) {
+				for(Room r : GameEngine.getInstance().getRoomList()) {
 					if(r.getName().equals(nextRoom)) {
 						next = r;
 					}
 				}
-				Room.generateMap(GameEngine.getInstance().roomList.get(GameEngine.getInstance().roomList.indexOf(next)));
+				Room.generateMap(GameEngine.getInstance().getRoomList().get(GameEngine.getInstance().getRoomList().indexOf(next)));
 				currentRoom = i;
 				return;
 			}
@@ -193,20 +193,20 @@ public class GameEngine implements Observer {
 
 	public void nextRoom(String nextRoom, Point2D heroNextPosition) {
 		gui.clearImages();
-		if (!GameEngine.getInstance().roomList.isEmpty()) {
-			for (int i = 0; i < GameEngine.getInstance().roomList.size(); i++) {
-				if (GameEngine.getInstance().roomList.get(i).getName().equals(nextRoom)) {
+		if (!GameEngine.getInstance().getRoomList().isEmpty()) {
+			for (int i = 0; i < GameEngine.getInstance().getRoomList().size(); i++) {
+				if (GameEngine.getInstance().getRoomList().get(i).getName().equals(nextRoom)) {
 					currentRoom = i;
 					break;
 					
-				} else if(i==GameEngine.getInstance().roomList.size()-1){
+				} else if(i==GameEngine.getInstance().getRoomList().size()-1){
 					addRoom(nextRoom);	
 				}
 				
 			}
 		} else addRoom(nextRoom);
-		roomList.get(currentRoom).roomObjects.add(hero);
-		for (GameElement ge : roomList.get(currentRoom).roomObjects) {
+		getRoomList().get(currentRoom).roomObjects.add(hero);
+		for (GameElement ge : getRoomList().get(currentRoom).roomObjects) {
 			gui.addImage(ge);
 		}
 		hero.updateHeroBars();
@@ -219,7 +219,7 @@ public class GameEngine implements Observer {
 		if (Direction.isDirection(key)) {
 			hero.move(key);
 			hero.PoisonDamage();	
-			Iterator<GameElement> iterator = roomList.get(currentRoom).roomObjects.iterator();
+			Iterator<GameElement> iterator = getRoomList().get(currentRoom).roomObjects.iterator();
 			while (iterator.hasNext()) {
 				GameElement current = iterator.next();
 				if (current instanceof Movable && current.getName() != "Hero") {
@@ -247,7 +247,7 @@ public class GameEngine implements Observer {
 
 	public ArrayList<GameElement> selectBy(Predicate<GameElement> predicate) {
 		ArrayList<GameElement> result = new ArrayList<>();
-		Iterator<GameElement> iterator = roomList.get(currentRoom).roomObjects.iterator();
+		Iterator<GameElement> iterator = getRoomList().get(currentRoom).roomObjects.iterator();
 		while (iterator.hasNext()) {
 			GameElement current = iterator.next();
 			if (predicate.test(current)) {
@@ -255,6 +255,10 @@ public class GameEngine implements Observer {
 			}
 		}
 		return result;
+	}
+
+	public List<Room> getRoomList() {
+		return roomList;
 	}
 
 }

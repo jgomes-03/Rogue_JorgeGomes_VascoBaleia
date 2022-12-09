@@ -57,7 +57,8 @@ public abstract class Movable extends GameElement {
 		if (!isInsideWindow(nextPosition)) {
 			return; // Checks if the Movable is inside GameBorders
 		}
-		//Pif(!selection.isEmpty() && this.getName()=="Hero") System.out.println(selection.get(0).getName());
+		// Pif(!selection.isEmpty() && this.getName()=="Hero")
+		// System.out.println(selection.get(0).getName());
 		if (selection.isEmpty()) {
 			super.setPosition(nextPosition);
 		} else if (this.getName().equals("Hero")) {
@@ -77,11 +78,10 @@ public abstract class Movable extends GameElement {
 				GameEngine.getInstance().nextRoom(((Door) selection.get(0)).getNextRoom(),
 						((Door) selection.get(0)).getNextRoomPosition());
 
+			} else if (selection.get(0).getName().equals("Treasure")) {
+				GameEngine.getInstance().addPlayerScore(100);
+				GameEngine.getInstance().gameWin();
 			}
-			//GameEngine.getInstance().getHero().PoisonDamage();
-		} else if (selection.get(0) instanceof Treasure) {
-			GameEngine.getInstance().addPlayerScore(100);
-			GameEngine.getInstance().gameWin();
 		}
 		GameElement enemy = getEnemy(selection);
 		if (enemy != null && enemy instanceof Movable)

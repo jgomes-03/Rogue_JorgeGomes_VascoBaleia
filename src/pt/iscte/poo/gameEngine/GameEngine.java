@@ -62,7 +62,7 @@ public class GameEngine implements Observer {
 			player = new Player(gui.askUser("Introduza o seu nome"));
 			if(player.getName() == null) {
 				gui.dispose();
-				gui.setMessage("Obrigado por jogar o Rogue das Conas");
+				gui.setMessage("Obrigado por jogar o Rogue - ISCTE");
 				System.exit(0);
 			} else if(player.getName().isEmpty() || player.getName().isBlank()) {
 				gui.setMessage("Insira um nome válido");
@@ -94,7 +94,7 @@ public class GameEngine implements Observer {
 	}
 	
 	public void printTopScore() {
-		String result = "TOP 5 BEST SCORE OF ALL TIME";
+		String result = "TOP 5 BEST SCORE OF ALL TIME\n";
 		for(Player p : scoreBoard) {
 			result += "\n" + (scoreBoard.indexOf(p)+1) + "º: " + p;
 		}
@@ -234,8 +234,9 @@ public class GameEngine implements Observer {
 			}
 		} else if (key == KeyEvent.VK_1 || key == KeyEvent.VK_2 || key == KeyEvent.VK_3){
 			hero.getInventoryBar().setSelectPointer(Pickable.getInventorySlot(key));
-			//addToBar(new Highlight((hero.getInventory()[hero.getInventoryBar().getSelectPointer()-1]).getPosition()));
-			
+//			if(hero.getInventory()[hero.getInventoryBar().getSelectPointer()-1] != null)
+//				addToBar(new Highlight((hero.getInventory()[hero.getInventoryBar().getSelectPointer()-1]).getPosition()));
+//			
 		} else if (key == KeyEvent.VK_D && hero.getInventory()[hero.getInventoryBar().getSelectPointer()-1] != null) { //DROP
 				hero.dropFromInventory(hero.getInventory()[hero.getInventoryBar().getSelectPointer()-1]);
 		} else if ((key == KeyEvent.VK_C)) {

@@ -24,8 +24,6 @@ public class Hero extends Movable {
 		super.setHitpoints(MAX_LIFE);
 		healthBar = createLifebar(new Point2D(0, GameEngine.GRID_HEIGHT), this);
 		inventoryBar = createInventoryBar(new Point2D(6, GameEngine.GRID_HEIGHT), this);
-//		inventoryBar.visualSelectedPointer.setPosition(getInventory()[getInventoryBar().getSelectPointer()-1].getPosition());
-//		GameEngine.getInstance().addToBar(inventoryBar.visualSelectedPointer);
 	}
 
 	@Override
@@ -35,7 +33,7 @@ public class Hero extends Movable {
 
 	@Override
 	public int getLayer() {
-		return 1;
+		return 2;
 	}
 
 	@Override
@@ -51,14 +49,6 @@ public class Hero extends Movable {
 		return inventoryBar;
 	}
 
-//	public int getItemIndex(Pickable p) {
-//		for (int i = 0; i < inventory.length; i++) {
-//			if (p.equals(inventory[i])) {
-//				return i;
-//			}
-//		}
-//		return -1;
-//	}
 
 	public void pickToInventory(Pickable p) {
 		for (int i = 0; i < inventory.length; i++) {
@@ -122,6 +112,13 @@ public class Hero extends Movable {
 				return true;
 		}
 		return false;
+	}
+	
+	public boolean inventoryIsEmpty() {
+		for(int i=0;i<inventory.length;i++) {
+			if(inventory[i]!=null) return false;
+		}
+		return true;
 	}
 
 }

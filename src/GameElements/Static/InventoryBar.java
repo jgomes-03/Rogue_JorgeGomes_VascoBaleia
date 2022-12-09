@@ -28,9 +28,13 @@ public class InventoryBar extends GameElement{
 				GameEngine.getInstance().addToBar(p);
 			}
 		}
+		if(!GameEngine.getInstance().getHero().inventoryIsEmpty() && GameEngine.getInstance().getHero().getInventory()[selectPointer-1] != null) {
+			GameEngine.getInstance().addToBar(new Highlight(GameEngine.getInstance().getHero().getInventory()[selectPointer-1].getPosition()));
+		}
 //		visualSelectedPointer.setPosition(LivingElement.getInventory()[selectPointer-1].getPosition());
 //		GameEngine.getInstance().addToBar(visualSelectedPointer);
 	}
+	
 	
 	@Override
 	public String getName() {

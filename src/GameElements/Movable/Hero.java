@@ -46,7 +46,7 @@ public class Hero extends Movable {
 	public Pickable[] getInventory() {
 		return inventory;
 	}
-	
+
 	public InventoryBar getInventoryBar() {
 		return inventoryBar;
 	}
@@ -90,35 +90,38 @@ public class Hero extends Movable {
 	private boolean getIsPoisoned() {
 		return isPoisoned;
 	}
-	
+
 	public boolean setPoisoned(boolean b) {
 		return isPoisoned = b;
 	}
-	
+
 	public void updateHeroBars() {
 		healthBar.update();
 		inventoryBar.update();
 	}
-	
+
 	public void heal() {
-		if(super.getHitpoints()+HealingPotion.HEAL_VALUE >= MAX_LIFE) {
-			 super.setHitpoints(MAX_LIFE);
-		} else super.setHitpoints(super.getHitpoints()+HealingPotion.HEAL_VALUE);
+		if (super.getHitpoints() + HealingPotion.HEAL_VALUE >= MAX_LIFE) {
+			super.setHitpoints(MAX_LIFE);
+		} else
+			super.setHitpoints(super.getHitpoints() + HealingPotion.HEAL_VALUE);
 		setPoisoned(false);
+
 	}
-	
+
 	public void PoisonDamage() {
-		if(getIsPoisoned()==true) {
-			setHitpoints(getHitpoints()-1);
+		if (getIsPoisoned() == true) {
+			setHitpoints(getHitpoints() - 1);
 			return;
 		}
 	}
-	
+
 	public boolean isArmored() {
-		for(Pickable p : inventory) {
-			if(p instanceof Armor) return true;
+		for (Pickable p : inventory) {
+			if (p instanceof Armor)
+				return true;
 		}
 		return false;
 	}
-	
+
 }

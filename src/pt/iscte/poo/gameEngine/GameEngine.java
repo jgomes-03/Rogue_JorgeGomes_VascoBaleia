@@ -26,7 +26,6 @@ public class GameEngine implements Observer {
 	public static final int GRID_WIDTH = 10;
 	private File scoreBoardFile = new File("info/top_score.txt");
 	
-
 	private static GameEngine INSTANCE = null;
 	private ImageMatrixGUI gui = ImageMatrixGUI.getInstance();
 
@@ -141,6 +140,16 @@ public class GameEngine implements Observer {
 		gui.addImage(ge);
 	}
 	
+	public void removeObject(GameElement ge) {
+		roomList.get(currentRoom).roomObjects.remove(ge);
+		gui.removeImage(ge);
+	}
+
+	public void dropObject(Pickable p) {
+		p.setPosition(hero.getPosition());
+		addObject(p);
+	}
+	
 	public void addToBar(GameElement ge) {
 		if(ge instanceof LifeTile) {
 			roomList.get(currentRoom).LifeBarTiles.add((LifeTile) ge);
@@ -152,16 +161,18 @@ public class GameEngine implements Observer {
 		gui.addImage(ge);
 	}
 
-	public void removeObject(GameElement ge) {
-		roomList.get(currentRoom).roomObjects.remove(ge);
-		gui.removeImage(ge);
+	public void clearLifeBarTiles() {
+		for(LifeTile lt: roomList.get(currentRoom).LifeBarTiles)
+			gui.removeImage(lt);
+		roomList.get(currentRoom).LifeBarTiles.clear();
 	}
-
-	public void dropObject(Pickable p) {
-		p.setPosition(hero.getPosition());
-		addObject(p);
+	
+	public void clearInventoryBarTiles() {
+		for(Pickable p: roomList.get(currentRoom).InventoryBarTiles)
+			gui.removeImage(p);
+		roomList.get(currentRoom).InventoryBarTiles.clear();
 	}
-
+	
 	private void addRoom(String nextRoom) {
 		File dir = new File("rooms/");
 		for (int i = 0; i < dir.list().length; i++) {
@@ -200,18 +211,6 @@ public class GameEngine implements Observer {
 		}
 		hero.updateHeroBars();
 		hero.setPosition(heroNextPosition);
-	}
-
-	public void clearLifeBarTiles() {
-		for(LifeTile lt: roomList.get(currentRoom).LifeBarTiles)
-			gui.removeImage(lt);
-		roomList.get(currentRoom).LifeBarTiles.clear();
-	}
-	
-	public void clearInventoryBarTiles() {
-		for(Pickable p: roomList.get(currentRoom).InventoryBarTiles)
-			gui.removeImage(p);
-		roomList.get(currentRoom).InventoryBarTiles.clear();
 	}
 
 	@Override

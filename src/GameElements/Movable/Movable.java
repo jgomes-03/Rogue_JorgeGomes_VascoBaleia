@@ -86,7 +86,7 @@ public abstract class Movable extends GameElement {
 
 	public void attack(Movable m, int damage) {
 		if (!m.isDeadOnNextAttack()) {
-			if (m instanceof Hero && ((Hero) m).isArmored() && Math.random() > 0.5) {
+			if (m.getName().equals("Hero") && ((Hero) m).isArmored() && Math.random() > 0.5) {
 				return;
 			}
 			m.hitpoints = m.hitpoints - damage;
@@ -109,7 +109,7 @@ public abstract class Movable extends GameElement {
 	}
 
 	public void die() {
-		// implement to specify actions of the killed move before executing the killing
+		// Implement to specify actions of the killed Movable before actually killing (for example, in Thief, drop item)
 	}
 
 	public void kill(Movable ge) {

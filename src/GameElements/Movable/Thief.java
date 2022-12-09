@@ -40,7 +40,10 @@ public class Thief extends Movable  {
 	
 	@Override
 	public void move(int keyPressed) {
-		keyPressed = super.getKey(Direction.forVector(Vector2D.movementVector(getPosition(), GameEngine.getInstance().getHero().getPosition())));
+		if(getInventory()[0] == null)
+			keyPressed = super.getKey(Direction.forVector(Vector2D.movementVector(getPosition(), GameEngine.getInstance().getHero().getPosition())));
+		else // Add case to get away from hero
+			keyPressed = super.getKey(Direction.forVector(Vector2D.movementVector(getPosition(), GameEngine.getInstance().getHero().getPosition())));
 		super.move(keyPressed);
 	}
 

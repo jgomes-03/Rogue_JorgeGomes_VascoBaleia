@@ -1,6 +1,5 @@
 package GameElements.Movable;
 
-import pt.iscte.poo.gameEngine.GameElement;
 import pt.iscte.poo.gameEngine.GameEngine;
 import pt.iscte.poo.utils.Direction;
 import pt.iscte.poo.utils.Point2D;

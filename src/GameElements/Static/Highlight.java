@@ -1,7 +1,6 @@
 package GameElements.Static;
 
 import GameElements.Pickable.Pickable;
-import pt.iscte.poo.gameEngine.GameElement;
 import pt.iscte.poo.utils.Point2D;
 
 public class Highlight extends Pickable{

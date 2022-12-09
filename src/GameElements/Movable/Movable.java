@@ -2,14 +2,11 @@ package GameElements.Movable;
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-import java.util.List;
-
 import GameElements.Pickable.Key;
 import GameElements.Pickable.Pickable;
 import GameElements.Static.Door;
 import GameElements.Static.InventoryBar;
 import GameElements.Static.Lifebar;
-import GameElements.Static.Treasure;
 import pt.iscte.poo.gameEngine.GameElement;
 import pt.iscte.poo.gameEngine.GameEngine;
 import pt.iscte.poo.utils.Direction;

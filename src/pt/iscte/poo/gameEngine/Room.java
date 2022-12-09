@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Scanner;
 
 //import GameElements.Pickable.Key;
-import GameElements.Static.Door;
 import GameElements.Static.LifeTile;
 import GameElements.Pickable.*;
 //import pt.iscte.poo.gui.ImageTile;

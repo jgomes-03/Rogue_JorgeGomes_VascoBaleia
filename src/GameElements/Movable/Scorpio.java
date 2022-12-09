@@ -1,6 +1,5 @@
 package GameElements.Movable;
 
-import pt.iscte.poo.gameEngine.GameElement;
 import pt.iscte.poo.gameEngine.GameEngine;
 import pt.iscte.poo.utils.Direction;
 import pt.iscte.poo.utils.Point2D;
@@ -41,9 +40,8 @@ public class Scorpio extends Movable {
 
 	@Override
 	public void attack(Movable m, int damage) {
-		if (m instanceof Hero) {
+		if (m.getName().equals("Hero") && !((Hero) m).getIsPoisoned()) {
 			GameEngine.getInstance().getHero().setPoisoned(true);
-			
 		}
 	}
 	

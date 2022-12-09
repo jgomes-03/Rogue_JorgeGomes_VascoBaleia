@@ -1,7 +1,6 @@
 package GameElements.Static;
 
 import pt.iscte.poo.gameEngine.GameElement;
-import pt.iscte.poo.gui.ImageTile;
 import pt.iscte.poo.utils.Point2D;
 
 public class LifeTile extends GameElement{

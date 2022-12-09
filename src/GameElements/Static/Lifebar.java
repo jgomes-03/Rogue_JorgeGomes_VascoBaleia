@@ -4,8 +4,7 @@ import pt.iscte.poo.gameEngine.GameElement;
 import pt.iscte.poo.gameEngine.GameEngine;
 import pt.iscte.poo.utils.Point2D;
 import GameElements.Movable.Movable;
-import GameElements.Static.LifeTile;
-import GameElements.Static.LifeTile.Color;
+import GameElements.Static.LifeTile.*;
 
 public class Lifebar extends GameElement {
 

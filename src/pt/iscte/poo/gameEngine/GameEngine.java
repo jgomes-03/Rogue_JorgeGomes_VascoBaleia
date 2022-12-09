@@ -11,8 +11,6 @@ import GameElements.Consumable.Consumable;
 import GameElements.Movable.Hero;
 import GameElements.Movable.Movable;
 import GameElements.Pickable.Pickable;
-import GameElements.Pickable.Sword;
-import GameElements.Static.Highlight;
 import GameElements.Static.LifeTile;
 import pt.iscte.poo.GameStats.GameScores;
 import pt.iscte.poo.GameStats.Player;

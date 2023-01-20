@@ -56,7 +56,7 @@ public class GameEngine implements Observer {
 		nextRoom("room0", getHero().getPosition());
 		hero.updateHeroBars();
 		while (player == null || player.getName() == null || player.getName().isEmpty() || player.getName().isBlank()) {
-			player = new Player(gui.askUser("Introduza o seu nome"));
+			player = new Player(gui.askUser("Introduz o teu nome"));
 			if(player.getName() == null) {
 				gui.dispose();
 				gui.setMessage("Obrigado por jogar o Rogue - ISCTE");

@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="MainExample" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="pt.iscte.poo.test.MainExample" />
+    <module name="Rogue_JorgeGomes_104558_VascoBaleia_104670" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
